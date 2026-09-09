@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #E8E8EA; font-family: Figtree, system-ui, sans-serif; color: #16181D; -webkit-font-smoothing: antialiased; }
+  a { color: #B26A00; text-decoration: none; }
+  a:hover { color: #8A5200; }
+  input, select, button { font-family: inherit; font-size: inherit; color: inherit; }
+  input::placeholder { color: #A7A9AE; }
+  select { appearance: none; background-image: linear-gradient(45deg, transparent 49%, #9A9CA1 51%), linear-gradient(135deg, #9A9CA1 49%, transparent 51%); background-position: calc(100% - 14px) 52%, calc(100% - 9px) 52%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #CFCFD3; border-radius: 8px; }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; padding: 22px 22px 60px; display: flex; justify-content: center;">
+<div style="width: 100%; max-width: 1480px; background: #FFFFFF; border-radius: 6px; overflow: hidden; box-shadow: 0 18px 50px rgba(20,22,28,0.16); display: flex; flex-direction: column;">
+
+  <!-- utility bar -->
+  <div style="display: flex; align-items: stretch; background: #F2F2F3; border-bottom: 1px solid #E3E3E6; min-height: 46px;">
+    <div style="width: 128px; flex: none;"></div>
+    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%);">
+      <sc-for list="{{ topNav }}" as="t" hint-placeholder-count="7">
+        <button onClick="{{ t.go }}" style="border: 0; background: {{ t.bg }}; color: {{ t.fg }}; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; font-weight: 500; padding: 15px 16px; cursor: pointer; white-space: nowrap;">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; padding: 0 18px; flex: none;">
+      <div onClick="{{ goProfile }}" title="Your profile" style="width: 26px; height: 26px; border-radius: 50%; background: #DDDEE1; flex: none; cursor: pointer;"></div>
+      <div onClick="{{ goMessages }}" title="Messages" style="width: 26px; height: 26px; border: 1px solid #D5D5D9; border-radius: 50%; display: grid; place-items: center; font-size: 11px; color: #6B7280; cursor: pointer;">✦</div>
+      <div onClick="{{ goOnboarding }}" title="Create a profile" style="width: 26px; height: 26px; border: 1px solid #D5D5D9; border-radius: 50%; display: grid; place-items: center; font-size: 11px; color: #6B7280; cursor: pointer;">◉</div>
+      <div onClick="{{ goSettings }}" title="Settings" style="width: 26px; height: 26px; border: 1px solid #D5D5D9; border-radius: 50%; display: grid; place-items: center; font-size: 11px; color: #6B7280; cursor: pointer;">⚙</div>
+    </div>
+  </div>
+
+  <!-- logo + section nav -->
+  <div style="display: flex; align-items: stretch; border-bottom: 1px solid #E3E3E6; position: relative; z-index: 3;">
+    <div style="width: 128px; flex: none; position: relative;">
+      <div onClick="{{ goHome }}" style="position: absolute; top: -46px; left: 22px; width: 84px; padding: 12px 8px 10px; background: linear-gradient(160deg, #FFC02E 0%, #F79E1B 55%, #EE7D0E 100%); display: flex; flex-direction: column; align-items: center; gap: 6px; box-shadow: 0 8px 18px rgba(214,132,10,0.28); cursor: pointer;">
+        <svg viewBox="0 0 48 34" width="42" height="30" aria-label="Work Hive">
+          <polygon points="4,2 16,2 10,13" fill="#FFFFFF"></polygon>
+          <polygon points="18,2 30,2 24,13" fill="#FFFFFF"></polygon>
+          <polygon points="32,2 44,2 38,13" fill="#FFFFFF"></polygon>
+          <polygon points="11,15 23,15 17,26" fill="#FFFFFF"></polygon>
+          <polygon points="25,15 37,15 31,26" fill="#FFFFFF"></polygon>
+          <polygon points="18,28 30,28 24,39" fill="#FFFFFF" opacity="0.55"></polygon>
+        </svg>
+        <div style="font-size: 12.5px; font-weight: 700; color: #FFFFFF; letter-spacing: 0.01em;">Work Hive</div>
+      </div>
+    </div>
+    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 26px; padding: 0 24px; overflow-x: auto;">
+      <sc-for list="{{ subNav }}" as="s" hint-placeholder-count="4">
+        <button onClick="{{ s.go }}" style="border: 0; background: none; padding: 16px 0; cursor: pointer; font-size: 13.5px; font-weight: {{ s.weight }}; color: {{ s.fg }}; border-bottom: 3px solid {{ s.line }}; white-space: nowrap;">{{ s.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ══ SEARCH JOBS ══ -->
+  <sc-if value="{{ isSearch }}" hint-placeholder-val="{{ true }}">
+  <div data-screen-label="Search Jobs" style="display: grid; grid-template-columns: 228px minmax(0, 1fr); align-items: start;">
+
+    <!-- refine rail -->
+    <aside style="background: #33363C; min-height: 940px; padding: 18px 0 40px; position: sticky; top: 0;">
+      <div style="padding: 0 18px 12px; display: flex; align-items: baseline; gap: 8px;">
+        <span style="flex: 1; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; color: #9EA1A8;">REFINE SEARCH</span>
+        <sc-if value="{{ hasAnyFacet }}" hint-placeholder-val="{{ false }}">
+          <a href="#0" onClick="{{ clearFacets }}" style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.08em; color: #FFC94D;">CLEAR</a>
+        </sc-if>
+      </div>
+      <sc-for list="{{ facets }}" as="f" hint-placeholder-count="12">
+        <div>
+          <button onClick="{{ f.go }}" style="width: 100%; border: 0; text-align: left; display: flex; align-items: center; gap: 10px; padding: 11px 18px; background: {{ f.bg }}; color: {{ f.fg }}; font-size: 12.5px; cursor: pointer; border-top: 1px solid rgba(255,255,255,0.06);">
+            <span style="width: 7px; height: 8px; flex: none; background: {{ f.dot }}; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);"></span>
+            <span style="flex: 1;">{{ f.label }}</span>
+            <span style="font-size: 9px; opacity: 0.7; transform: {{ f.arrow }}; display: inline-block;">▾</span>
+          </button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div style="background: #26282D; padding: 4px 18px 10px;">
+              <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="3">
+                <div onClick="{{ o.go }}" style="display: flex; align-items: center; gap: 9px; padding: 6px 0; cursor: pointer;">
+                  <span style="width: 12px; height: 12px; border: 1px solid #6B6E75; border-radius: 2px; background: {{ o.bg }}; flex: none;"></span>
+                  <span style="font-size: 11.5px; color: #D9DADD;">{{ o.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+      <div style="padding: 22px 18px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; color: #9EA1A8;">MATCH BY</div>
+      <sc-for list="{{ matchToggles }}" as="m" hint-placeholder-count="6">
+        <div onClick="{{ m.go }}" style="display: flex; align-items: center; gap: 10px; padding: 10px 18px; border-top: 1px solid rgba(255,255,255,0.06); cursor: pointer;">
+          <span style="flex: 1; font-size: 12px; color: #E7E8EA;">{{ m.label }}</span>
+          <span style="width: 30px; height: 16px; border-radius: 999px; background: {{ m.track }}; position: relative; transition: background 160ms;">
+            <span style="position: absolute; top: 2px; left: {{ m.knob }}; width: 12px; height: 12px; border-radius: 50%; background: #FFFFFF; transition: left 160ms;"></span>
+          </span>
+        </div>
+      </sc-for>
+    </aside>
+
+    <div style="min-width: 0;">
+      <!-- hero search band -->
+      <div style="position: relative; padding: 26px 28px 30px; background: linear-gradient(100deg, #F58A0B 0%, #FDB515 46%, #FFCB3D 100%); overflow: hidden;">
+        <div style="position: absolute; inset: 0; opacity: 0.16; background-image: linear-gradient(60deg, transparent 49.6%, #FFFFFF 50%, transparent 50.4%), linear-gradient(-60deg, transparent 49.6%, #FFFFFF 50%, transparent 50.4%); background-size: 74px 128px;"></div>
+        <div style="position: relative; font-size: 20px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.01em; margin-bottom: 16px; text-shadow: 0 1px 2px rgba(120,70,0,0.18);">Explore opportunities in the emerging talent hubs</div>
+        <div style="position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr) 148px; background: #FFFDF6; border-radius: 4px; box-shadow: 0 6px 18px rgba(140,84,0,0.18); overflow: hidden;">
+          <label style="display: flex; align-items: center; gap: 9px; padding: 14px 16px; border-right: 1px solid #EFE7D4;">
+            <span style="color: #B98A2E; font-size: 12px;">⌕</span>
+            <input value="Product Designer" style="border: 0; outline: none; background: none; width: 100%; font-size: 13.5px; font-weight: 500;">
+          </label>
+          <label style="display: flex; align-items: center; gap: 9px; padding: 14px 16px; border-right: 1px solid #EFE7D4;">
+            <span style="color: #B98A2E; font-size: 12px;">⌕</span>
+            <input placeholder="State or Country" value="United Arab Emirates" style="border: 0; outline: none; background: none; width: 100%; font-size: 13.5px;">
+          </label>
+          <label style="display: flex; align-items: center; gap: 9px; padding: 14px 16px; border-right: 1px solid #EFE7D4;">
+            <span style="color: #B98A2E; font-size: 12px;">⌕</span>
+            <input placeholder="Industry" style="border: 0; outline: none; background: none; width: 100%; font-size: 13.5px;">
+          </label>
+          <button style="border: 0; background: #23262C; color: #FFFFFF; font-size: 13.5px; font-weight: 600; cursor: pointer;" style-hover="background: #14161A;">Search</button>
+        </div>
+      </div>
+
+      <!-- results header -->
+      <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 20px 28px 4px;">
+        <div>
+          <div style="font-size: 17px; font-weight: 700;">Product Designer</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #7A7D84; margin-top: 4px; letter-spacing: 0.06em;">{{ resultsMeta }}</div>
+        </div>
+        <div style="flex: 1; min-width: 12px;"></div>
+        <div onClick="{{ toggleAssisted }}" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+          <span style="font-size: 12.5px; color: #4B4E55;">Assisted Search</span>
+          <span style="width: 38px; height: 20px; border-radius: 999px; background: {{ assistedTrack }}; position: relative; transition: background 160ms;">
+            <span style="position: absolute; top: 2px; left: {{ assistedKnob }}; width: 16px; height: 16px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.25); transition: left 160ms;"></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- assisted banner -->
+      <sc-if value="{{ assisted }}" hint-placeholder-val="{{ false }}">
+        <div style="margin: 14px 28px 0; padding: 14px 16px; background: #FFF8E6; border: 1px solid #F3DFA9; border-left: 3px solid #F5A623; display: flex; gap: 14px; align-items: flex-start;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #9A6A00; padding-top: 2px;">ASSIST</span>
+          <div style="font-size: 12.5px; line-height: 1.55; color: #4B4E55;">Results are re-ordered by your endorsement network. Roles where a first-degree connection can endorse you are listed first, and salary bands outside your stated range are hidden.</div>
+        </div>
+      </sc-if>
+
+      <!-- job cards -->
+      <div style="padding: 16px 28px 34px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px;">
+        <sc-for list="{{ filteredJobs }}" as="j" hint-placeholder-count="6">
+          <article style="border: 1px solid #E7E7EA; border-radius: 5px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 12px; background: #FFFFFF; box-shadow: 0 1px 2px rgba(20,22,28,0.04);" style-hover="box-shadow: 0 10px 24px rgba(20,22,28,0.10); border-color: #DCDCE0;">
+            <div style="display: flex; align-items: flex-start; gap: 12px;">
+              <div style="flex: 1; min-width: 0;">
+                <div onClick="{{ j.openDetail }}" style="font-size: 15.5px; font-weight: 700; letter-spacing: -0.01em; cursor: pointer;" style-hover="color: #B26A00;">{{ j.title }}</div>
+                <div style="font-size: 12.5px; color: #5C5F66; margin-top: 3px;"><span onClick="{{ j.openCompany }}" style="cursor: pointer;" style-hover="color: #B26A00;">{{ j.company }}</span> <span style="color: #C6C7CB;">|</span> {{ j.location }}</div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8C8F96; margin-top: 5px; letter-spacing: 0.06em;">{{ j.posted }}</div>
+              </div>
+              <div style="display: flex; gap: 6px; flex: none;">
+                <span onClick="{{ j.openDetail }}" style="width: 26px; height: 24px; border: 1px solid #E7E7EA; border-radius: 3px; display: grid; place-items: center; font-size: 10px; color: #8C8F96; cursor: pointer;" style-hover="border-color: #C9CACE; color: #4B4E55;">‹›</span>
+                <span onClick="{{ j.saveToggle }}" style="width: 26px; height: 24px; border: 1px solid #E7E7EA; border-radius: 3px; display: grid; place-items: center; font-size: 11px; cursor: pointer; background: {{ j.savedActive }}; color: #8C8F96;" style-hover="border-color: #C9CACE; color: #4B4E55;">⚑</span>
+                <span onClick="{{ j.dismiss }}" style="width: 26px; height: 24px; border: 1px solid #E7E7EA; border-radius: 3px; display: grid; place-items: center; font-size: 11px; color: #8C8F96; cursor: pointer;" style-hover="border-color: #C9CACE; color: #4B4E55;">✕</span>
+              </div>
+            </div>
+            <div style="font-size: 12.5px; line-height: 1.6; color: #4B4E55;">{{ j.blurb }}</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <sc-for list="{{ j.skills }}" as="sk" hint-placeholder-count="3">
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: #55585F; background: #F4F4F5; border: 1px solid #E7E7EA; padding: 4px 8px; border-radius: 2px;">{{ sk }}</span>
+              </sc-for>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px; padding-top: 4px; border-top: 1px solid #F0F0F2;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #2E7D53; letter-spacing: 0.04em;">{{ j.match }}</span>
+              <span style="font-size: 11.5px; color: #8C8F96;">{{ j.endorsers }}</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;">
+              <button onClick="{{ goConnections }}" style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 10px 4px; border-radius: 3px; font-size: 12.5px; font-weight: 500; cursor: pointer;" style-hover="background: #F6F6F7;">Refer Someone</button>
+              <button onClick="{{ j.openApply }}" style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 10px 4px; border-radius: 3px; font-size: 12.5px; font-weight: 500; cursor: pointer;" style-hover="background: #F6F6F7;">Apply Direct</button>
+              <button onClick="{{ j.openEndorsementForJob }}" style="border: 0; background: #F9AD16; color: #241A00; padding: 10px 4px; border-radius: 3px; font-size: 12.5px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Get Endorsed</button>
+            </div>
+          </article>
+        </sc-for>
+        <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px 0; color: #8C8F96;">
+            <div style="font-size: 14px; font-weight: 600; color: #4B4E55;">No roles match your filters</div>
+            <div style="font-size: 12.5px; margin-top: 6px;">Try clearing a facet in the refine panel.</div>
+            <a href="#0" onClick="{{ clearFacets }}" style="display: inline-block; margin-top: 12px; font-size: 12.5px;">Clear filters</a>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ CONNECTIONS ══ -->
+  <sc-if value="{{ isConnections }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Connections" style="display: grid; grid-template-columns: 228px minmax(0, 1fr); align-items: start;">
+    <aside style="background: #33363C; min-height: 860px; padding: 18px 0 40px;">
+      <div style="padding: 0 18px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; color: #9EA1A8;">REFINE SEARCH</div>
+      <sc-for list="{{ facets }}" as="f" hint-placeholder-count="12">
+        <button onClick="{{ f.go }}" style="width: 100%; border: 0; text-align: left; display: flex; align-items: center; gap: 10px; padding: 11px 18px; background: {{ f.bg }}; color: {{ f.fg }}; font-size: 12.5px; cursor: pointer; border-top: 1px solid rgba(255,255,255,0.06);">
+          <span style="width: 7px; height: 8px; flex: none; background: {{ f.dot }}; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);"></span>
+          <span style="flex: 1;">{{ f.label }}</span>
+          <span style="font-size: 9px; opacity: 0.7;">▾</span>
+        </button>
+      </sc-for>
+    </aside>
+
+    <div style="min-width: 0; padding: 0 0 34px;">
+      <div style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr) 148px; border-bottom: 1px solid #E7E7EA;">
+        <label style="display: flex; align-items: center; gap: 9px; padding: 15px 18px; border-right: 1px solid #EFEFF1;">
+          <span style="color: #9A9CA1; font-size: 12px;">⌕</span>
+          <input value="Brand Director" style="border: 0; outline: none; background: none; width: 100%; font-size: 13.5px; font-weight: 500;">
+        </label>
+        <label style="display: flex; align-items: center; gap: 9px; padding: 15px 18px; border-right: 1px solid #EFEFF1;">
+          <span style="color: #9A9CA1; font-size: 12px;">⌕</span>
+          <input value="United Arab Emirates" style="border: 0; outline: none; background: none; width: 100%; font-size: 13.5px;">
+        </label>
+        <label style="display: flex; align-items: center; gap: 9px; padding: 15px 18px; border-right: 1px solid #EFEFF1;">
+          <span style="color: #9A9CA1; font-size: 12px;">⌕</span>
+          <input placeholder="Industry" value="Retail & Apparel" style="border: 0; outline: none; background: none; width: 100%; font-size: 13.5px;">
+        </label>
+        <button style="border: 0; background: #23262C; color: #FFFFFF; font-size: 13.5px; font-weight: 600; cursor: pointer;" style-hover="background: #14161A;">Search</button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 14px; padding: 18px 28px 0;">
+        <div style="font-size: 15px; font-weight: 600;">122 search results</div>
+        <div style="flex: 1;"></div>
+        <div onClick="{{ toggleGraph }}" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+          <span style="font-size: 12.5px; color: #4B4E55;">{{ graphToggleLabel }}</span>
+          <span style="width: 38px; height: 20px; border-radius: 999px; background: {{ graphTrack }}; position: relative;">
+            <span style="position: absolute; top: 2px; left: {{ graphKnob }}; width: 16px; height: 16px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.25); transition: left 160ms;"></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- network map -->
+      <div style="margin: 16px 28px 0; border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFEFA; padding: 22px 22px 8px;">
+        <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
+          <div style="position: relative; width: 100%; max-width: 520px; aspect-ratio: 1 / 0.82; margin: 0 auto;">
+            <svg viewBox="0 0 520 426" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+              <circle cx="260" cy="213" r="150" fill="none" stroke="#EDE3C9" stroke-dasharray="3 5"></circle>
+              <circle cx="260" cy="213" r="104" fill="none" stroke="#F3ECDA" stroke-dasharray="3 5"></circle>
+              <sc-for list="{{ links }}" as="l" hint-placeholder-count="8">
+                <line x1="260" y1="213" x2="{{ l.x }}" y2="{{ l.y }}" stroke="#E7CE94" stroke-width="1"></line>
+              </sc-for>
+            </svg>
+            <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 152px; height: 152px; border-radius: 50%; background: #FFFFFF; border: 1px solid #E7E7EA; box-shadow: 0 8px 24px rgba(20,22,28,0.10); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 12px;">
+              <div style="font-size: 14.5px; font-weight: 700;">Brand Director</div>
+              <div style="font-size: 11.5px; color: #6B6E75; margin-top: 2px;">Halcyon Group</div>
+              <div style="font-size: 11.5px; color: #6B6E75;">Dubai, UAE</div>
+              <div style="margin-top: 8px; font-size: 17px; font-weight: 800; color: #16181D;">81% Match</div>
+            </div>
+            <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="8">
+              <div style="position: absolute; left: {{ n.left }}; top: {{ n.top }}; transform: translate(-50%, -50%); width: {{ n.size }}; height: {{ n.size }}; border-radius: 50%; background: {{ n.bg }}; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8px; cursor: pointer;">
+                <div style="font-size: 10.5px; font-weight: 600; line-height: 1.25; color: #2C2F35;">{{ n.role }}</div>
+                <div style="font-size: 9.5px; color: #6B6E75; line-height: 1.25; margin-top: 2px;">{{ n.org }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="flex: 1; min-width: 220px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #8C8F96;">WHY THIS MATCH</div>
+            <div style="font-size: 12.5px; line-height: 1.65; color: #4B4E55; margin-top: 10px;">Eight people in your network have worked with this team in the last four years. Two of them can endorse you on the strength of a shared project, which is what lifts this role above the other 121 results.</div>
+            <div style="display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap;">
+              <button style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 9px 14px; border-radius: 3px; font-size: 12.5px; cursor: pointer;" style-hover="background: #F6F6F7;">Refer Someone</button>
+              <button style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 9px 14px; border-radius: 3px; font-size: 12.5px; cursor: pointer;" style-hover="background: #F6F6F7;">Apply Direct</button>
+              <button onClick="{{ openEndorsement }}" style="border: 0; background: #F9AD16; color: #241A00; padding: 9px 16px; border-radius: 3px; font-size: 12.5px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Get Endorsed</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- gauges -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); border-top: 1px solid #EFEFF1; margin-top: 18px;">
+          <sc-for list="{{ gauges }}" as="g" hint-placeholder-count="3">
+            <div style="padding: 18px 14px 14px; border-right: 1px solid #EFEFF1; text-align: center;">
+              <div style="font-size: 14px; font-weight: 600; text-align: left;">{{ g.label }}</div>
+              <svg viewBox="0 0 200 118" style="width: 100%; max-width: 190px; margin-top: 6px;">
+                <sc-for list="{{ g.ticks }}" as="t" hint-placeholder-count="24">
+                  <line x1="{{ t.x1 }}" y1="{{ t.y1 }}" x2="{{ t.x2 }}" y2="{{ t.y2 }}" stroke="{{ t.c }}" stroke-width="5" stroke-linecap="round"></line>
+                </sc-for>
+                <text x="100" y="98" text-anchor="middle" font-family="Figtree, sans-serif" font-size="24" font-weight="800" fill="#16181D">{{ g.value }}</text>
+                <text x="100" y="112" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8C8F96">{{ g.caption }}</text>
+              </svg>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ COMPANY RATINGS ══ -->
+  <sc-if value="{{ isRatings }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Company Ratings">
+    <div style="position: relative; height: 268px; background: #2A2C31; overflow: hidden;">
+      <image-slot id="wh-hero-ratings" style="position: absolute; inset: 0; width: 100%; height: 100%; color: #FFFFFF;" placeholder="Hero — team portrait, wide crop" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=60" credit="Photo by Charles Deluvio on Unsplash" credit-href="https://unsplash.com/@charlesdeluvio"></image-slot>
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,22,28,0.72) 0%, rgba(20,22,28,0.46) 42%, rgba(20,22,28,0.08) 100%); pointer-events: none;"></div>
+      <div style="position: absolute; left: 28px; bottom: 84px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; color: #FFC94D;">WORK HIVE</div>
+        <div style="font-size: 36px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; margin-top: 6px;">Company Ratings</div>
+      </div>
+      <div style="position: absolute; left: 28px; right: 28px; bottom: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) 148px; background: rgba(255,255,255,0.96); border-radius: 4px; overflow: hidden; backdrop-filter: blur(4px);">
+        <input placeholder="Company Name" value="Northwind Telecom" style="border: 0; outline: none; padding: 14px 16px; border-right: 1px solid #E7E7EA; font-size: 13px; background: none;">
+        <input placeholder="City, State or Country" value="Dubai, UAE" style="border: 0; outline: none; padding: 14px 16px; border-right: 1px solid #E7E7EA; font-size: 13px; background: none;">
+        <input placeholder="Industry" style="border: 0; outline: none; padding: 14px 16px; border-right: 1px solid #E7E7EA; font-size: 13px; background: none;">
+        <input placeholder="Job Title" style="border: 0; outline: none; padding: 14px 16px; border-right: 1px solid #E7E7EA; font-size: 13px; background: none;">
+        <button style="border: 0; background: #23262C; color: #FFFFFF; font-size: 13px; font-weight: 600; cursor: pointer;">Quick Search</button>
+      </div>
+    </div>
+
+    <div style="padding: 26px 28px 40px; display: flex; flex-direction: column; gap: 20px; background: #FAFAFB;">
+
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 24px;">
+        <div style="font-size: 17px; font-weight: 700;">Company Ratings for <span style="color: #C07C05;">Northwind Telecom</span></div>
+        <div style="font-size: 12.5px; line-height: 1.65; color: #5C5F66; margin-top: 8px; max-width: 760px;">Ratings are submitted by verified current and former employees. Each score carries the reviewer's tenure and job level, so you can weigh a rating against who gave it.</div>
+
+        <div style="display: flex; gap: 2px; margin-top: 18px; overflow-x: auto; border-bottom: 1px solid #E7E7EA;">
+          <sc-for list="{{ ratingTabs }}" as="r" hint-placeholder-count="6">
+            <button onClick="{{ r.go }}" style="border: 0; background: {{ r.bg }}; color: {{ r.fg }}; font-size: 12.5px; font-weight: {{ r.weight }}; padding: 11px 18px; cursor: pointer; white-space: nowrap; border-radius: 3px 3px 0 0;">{{ r.label }}</button>
+          </sc-for>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; padding-top: 20px;">
+          <div style="display: flex; flex-direction: column; gap: 18px;">
+            <div>
+              <div style="display: flex; align-items: baseline; gap: 10px;">
+                <div style="font-size: 13px; font-weight: 600; flex: 1;">Work Hive Rating</div>
+                <div style="font-size: 22px; font-weight: 800;">4.13</div>
+              </div>
+              <div style="display: flex; gap: 3px; margin-top: 8px;">
+                <sc-for list="{{ starsEndorsed }}" as="s" hint-placeholder-count="5">
+                  <span style="width: 22px; height: 22px; border-radius: 2px; background: {{ s.bg }};"></span>
+                </sc-for>
+              </div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8C8F96; margin-top: 7px; letter-spacing: 0.06em;">BASED ON 412 VERIFIED REVIEWS · SOMEWHAT SATISFIED</div>
+            </div>
+            <div style="border-top: 1px solid #F0F0F2; padding-top: 16px;">
+              <div style="display: flex; align-items: baseline; gap: 10px;">
+                <div style="font-size: 13px; font-weight: 600; flex: 1;">External Rating</div>
+                <div style="font-size: 22px; font-weight: 800;">4.00</div>
+              </div>
+              <div style="display: flex; gap: 3px; margin-top: 8px;">
+                <sc-for list="{{ starsExternal }}" as="s" hint-placeholder-count="5">
+                  <span style="width: 22px; height: 22px; border-radius: 2px; background: {{ s.bg }};"></span>
+                </sc-for>
+              </div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8C8F96; margin-top: 7px; letter-spacing: 0.06em;">AGGREGATED FROM 3 PUBLIC SOURCES · VERY GOOD</div>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size: 13px; font-weight: 600; margin-bottom: 14px;">Distribution of ratings</div>
+            <sc-for list="{{ distribution }}" as="d" hint-placeholder-count="5">
+              <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #6B6E75; width: 34px;">{{ d.label }}</span>
+                <span style="flex: 1; height: 8px; background: #F1F1F3; border-radius: 999px; overflow: hidden;">
+                  <span style="display: block; height: 100%; width: {{ d.width }}; background: {{ d.color }};"></span>
+                </span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #6B6E75; width: 36px; text-align: right;">{{ d.pct }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid #F0F0F2; margin-top: 22px; padding-top: 18px;">
+          <div style="font-size: 13px; font-weight: 600;">About</div>
+          <div style="font-size: 12.5px; line-height: 1.7; color: #5C5F66; margin-top: 8px; max-width: 900px; text-wrap: pretty;">Northwind Telecom operates fixed-line, mobile and enterprise networks across the Gulf, with roughly 8.6 million subscribers. The company has been building out its enterprise cloud arm since 2021, which is where most of its current hiring sits. Reviewers consistently rate compensation and family benefits above the market, and career progression below it.</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 18px; margin-top: 20px;">
+            <sc-for list="{{ companyFacts }}" as="c" hint-placeholder-count="4">
+              <div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">{{ c.label }}</div>
+                <div style="font-size: 13px; margin-top: 5px; color: #2C2F35;">{{ c.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid #F0F0F2; margin-top: 22px; padding-top: 18px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="font-size: 13px; font-weight: 600; flex: 1;">Life at Northwind Telecom</div>
+            <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">‹</span>
+            <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">›</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 14px;">
+            <image-slot id="wh-life-1" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Office"></image-slot>
+            <image-slot id="wh-life-2" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Team"></image-slot>
+            <image-slot id="wh-life-3" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Lab"></image-slot>
+            <image-slot id="wh-life-4" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Event"></image-slot>
+            <image-slot id="wh-life-5" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Campus"></image-slot>
+          </div>
+        </div>
+      </section>
+
+      <sc-for list="{{ endorsementGroups }}" as="v" hint-placeholder-count="2">
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="font-size: 15px; font-weight: 600; flex: 1;">{{ v.title }}</div>
+            <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">‹</span>
+            <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">›</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 16px;">
+            <sc-for list="{{ v.people }}" as="p" hint-placeholder-count="5">
+              <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 16px 12px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px;" style-hover="border-color: #D8D9DD; background: #FCFCFD;">
+                <image-slot id="{{ p.slot }}" shape="circle" style="width: 44px; height: 44px;" placeholder="Photo" src="{{ p.photo }}" credit="{{ p.credit }}" credit-href="{{ p.creditHref }}"></image-slot>
+                <div style="font-size: 13px; font-weight: 600; margin-top: 4px;">{{ p.name }}</div>
+                <div style="font-size: 11.5px; color: #6B6E75; line-height: 1.4;">{{ p.role }}</div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.06em;">{{ p.org }}</div>
+                <button style="margin-top: 8px; border: 1px solid #D8D9DD; background: #FFFFFF; border-radius: 3px; padding: 7px 12px; font-size: 11.5px; cursor: pointer; width: 100%;" style-hover="background: #F6F6F7;">Reach out</button>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ SALARIES ══ -->
+  <sc-if value="{{ isSalaries }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Salaries">
+    <div style="position: relative; height: 250px; background: #2A2C31; overflow: hidden;">
+      <image-slot id="wh-hero-salaries" style="position: absolute; inset: 0; width: 100%; height: 100%; color: #FFFFFF;" placeholder="Hero — city skyline, wide crop" src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1600&q=60" credit="Photo by Denys Nevozhai on Unsplash" credit-href="https://unsplash.com/@dnevozhai"></image-slot>
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,22,28,0.74) 0%, rgba(20,22,28,0.38) 55%, rgba(20,22,28,0.08) 100%); pointer-events: none;"></div>
+      <div style="position: absolute; left: 28px; bottom: 82px; font-size: 34px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; line-height: 1.15;">Review &amp; compare<br>salaries</div>
+      <div style="position: absolute; left: 28px; right: 28px; bottom: 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) 148px; background: rgba(255,255,255,0.96); border-radius: 4px; overflow: hidden;">
+        <input placeholder="Company Name" style="border: 0; outline: none; padding: 14px 16px; border-right: 1px solid #E7E7EA; font-size: 13px; background: none;">
+        <input placeholder="City, State or Country" value="Dubai, UAE" style="border: 0; outline: none; padding: 14px 16px; border-right: 1px solid #E7E7EA; font-size: 13px; background: none;">
+        <input placeholder="Industry" style="border: 0; outline: none; padding: 14px 16px; border-right: 1px solid #E7E7EA; font-size: 13px; background: none;">
+        <input placeholder="Job Title" value="Solution Architect" style="border: 0; outline: none; padding: 14px 16px; border-right: 1px solid #E7E7EA; font-size: 13px; background: none;">
+        <button style="border: 0; background: #23262C; color: #FFFFFF; font-size: 13px; font-weight: 600; cursor: pointer;">Quick Search</button>
+      </div>
+    </div>
+
+    <div style="padding: 26px 28px 40px; display: flex; flex-direction: column; gap: 20px; background: #FAFAFB;">
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+        <div style="font-size: 15px; font-weight: 600;">Enter search criteria</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 20px; margin-top: 18px;">
+          <sc-for list="{{ salaryFields }}" as="f" hint-placeholder-count="6">
+            <label style="display: block;">
+              <span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">{{ f.label }}</span>
+              <input placeholder="{{ f.hint }}" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 10px 12px; font-size: 13px; outline: none; background: #FFFFFF;" style-focus="border-color: #F9AD16;">
+            </label>
+          </sc-for>
+        </div>
+        <button style="width: 100%; margin-top: 20px; border: 0; background: #33363C; color: #FFFFFF; padding: 13px; border-radius: 3px; font-size: 13.5px; font-weight: 600; cursor: pointer;" style-hover="background: #23262C;">Calculate</button>
+      </section>
+
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 24px;">
+        <div style="font-size: 16px; font-weight: 700;">Salaries &amp; benefits for <span style="color: #C07C05;">Solution Architect</span> in <span style="color: #C07C05;">Dubai, UAE</span></div>
+        <div style="font-size: 12.5px; line-height: 1.65; color: #5C5F66; margin-top: 8px; max-width: 780px;">Figures are self-reported by verified employees over the last 18 months and shown as annual total cash, tax-free. Sample sizes under 20 are marked as thin.</div>
+
+        <div style="display: flex; align-items: flex-end; gap: 22px; flex-wrap: wrap; margin-top: 22px; padding-bottom: 20px; border-bottom: 1px solid #F0F0F2;">
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">MEDIAN TOTAL CASH</div>
+            <div style="font-size: 34px; font-weight: 800; letter-spacing: -0.02em; margin-top: 4px;">AED 468,000</div>
+          </div>
+          <div style="border-left: 1px solid #EDEDEF; padding-left: 22px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">SAMPLE</div>
+            <div style="font-size: 15px; font-weight: 600; margin-top: 6px;">214 reports</div>
+          </div>
+          <div style="border-left: 1px solid #EDEDEF; padding-left: 22px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">YEAR ON YEAR</div>
+            <div style="font-size: 15px; font-weight: 600; margin-top: 6px; color: #2E7D53;">+6.4%</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 22px;">
+          <div style="font-size: 13px; font-weight: 600; margin-bottom: 14px;">Range by seniority</div>
+          <sc-for list="{{ salaryBands }}" as="b" hint-placeholder-count="5">
+            <div style="display: grid; grid-template-columns: 170px minmax(0, 1fr) 132px; align-items: center; gap: 14px; padding: 9px 0; border-top: 1px solid #F4F4F5;">
+              <div style="font-size: 12.5px; color: #2C2F35;">{{ b.label }}</div>
+              <div style="position: relative; height: 12px; background: #F4F4F5; border-radius: 999px;">
+                <div style="position: absolute; top: 0; bottom: 0; left: {{ b.left }}; width: {{ b.width }}; background: linear-gradient(90deg, #FFD782, #F9AD16); border-radius: 999px;"></div>
+                <div style="position: absolute; top: -3px; bottom: -3px; left: {{ b.median }}; width: 2px; background: #33363C;"></div>
+              </div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #55585F; text-align: right;">{{ b.range }}</div>
+            </div>
+          </sc-for>
+          <div style="display: flex; gap: 18px; margin-top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.08em;">
+            <span>▮ 25TH–75TH PERCENTILE</span><span>▏MEDIAN</span><span>AED THOUSANDS, ANNUAL</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 26px; border-top: 1px solid #F0F0F2; padding-top: 18px;">
+          <div style="font-size: 13px; font-weight: 600;">Benefits reported alongside base</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 14px;">
+            <sc-for list="{{ benefits }}" as="bn" hint-placeholder-count="4">
+              <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 14px;">
+                <div style="font-size: 20px; font-weight: 800;">{{ bn.pct }}</div>
+                <div style="font-size: 12px; color: #5C5F66; margin-top: 4px; line-height: 1.45;">{{ bn.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 15px; font-weight: 600; flex: 1;">Salaries for comparable positions</div>
+          <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">‹</span>
+          <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">›</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 16px;">
+          <sc-for list="{{ comparable }}" as="c" hint-placeholder-count="4">
+            <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 16px 14px;" style-hover="border-color: #D8D9DD; background: #FCFCFD;">
+              <div style="font-size: 13px; font-weight: 600;">{{ c.title }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #8C8F96; margin-top: 6px; letter-spacing: 0.06em;">{{ c.sample }}</div>
+              <div style="font-size: 15px; font-weight: 700; margin-top: 10px;">{{ c.median }}</div>
+              <div style="font-size: 11.5px; color: {{ c.deltaColor }}; margin-top: 3px;">{{ c.delta }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ COST OF LIVING ══ -->
+  <sc-if value="{{ isCost }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Cost of Living">
+    <div style="position: relative; height: 250px; background: #2A2C31; overflow: hidden;">
+      <image-slot id="wh-hero-cost" style="position: absolute; inset: 0; width: 100%; height: 100%; color: #FFFFFF;" placeholder="Hero — night skyline, wide crop" src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=1600&q=60" credit="Photo by Denys Nevozhai on Unsplash" credit-href="https://unsplash.com/@dnevozhai"></image-slot>
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,22,28,0.74) 0%, rgba(20,22,28,0.38) 55%, rgba(20,22,28,0.08) 100%); pointer-events: none;"></div>
+      <div style="position: absolute; left: 28px; bottom: 96px; font-size: 34px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; line-height: 1.15;">Estimate your<br>cost of living</div>
+      <div style="position: absolute; left: 28px; right: 28px; bottom: 44px; display: grid; grid-template-columns: minmax(0, 1fr) 148px; background: rgba(255,255,255,0.96); border-radius: 4px; overflow: hidden;">
+        <label style="display: flex; align-items: center; gap: 9px; padding: 14px 16px;">
+          <span style="color: #9A9CA1; font-size: 12px;">⌕</span>
+          <input placeholder="City, State and Country" value="Dubai, UAE" style="border: 0; outline: none; background: none; width: 100%; font-size: 13px;">
+        </label>
+        <button style="border: 0; background: #23262C; color: #FFFFFF; font-size: 13px; font-weight: 600; cursor: pointer;">Quick Search</button>
+      </div>
+      <div style="position: absolute; left: 28px; bottom: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.72); letter-spacing: 0.08em;">POPULAR: DUBAI · ABU DHABI · RIYADH · SINGAPORE</div>
+    </div>
+
+    <div style="padding: 26px 28px 40px; display: flex; flex-direction: column; gap: 20px; background: #FAFAFB;">
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+        <div style="font-size: 15px; font-weight: 600;">Detailed cost of living</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 20px; margin-top: 18px;">
+          <sc-for list="{{ costFields }}" as="f" hint-placeholder-count="6">
+            <label style="display: block;">
+              <span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">{{ f.label }}</span>
+              <input placeholder="{{ f.hint }}" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 10px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;">
+            </label>
+          </sc-for>
+        </div>
+        <button style="width: 100%; margin-top: 20px; border: 0; background: #33363C; color: #FFFFFF; padding: 13px; border-radius: 3px; font-size: 13.5px; font-weight: 600; cursor: pointer;" style-hover="background: #23262C;">Calculate</button>
+      </section>
+
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 24px;">
+        <div style="font-size: 16px; font-weight: 700;">Detailed cost of living between <span style="color: #C07C05;">Gurugram, India</span> and <span style="color: #C07C05;">Dubai, UAE</span></div>
+        <div style="font-size: 12.5px; line-height: 1.65; color: #5C5F66; margin-top: 8px; max-width: 800px;">Monthly figures for a household of three, converted at 0.044 AED to the rupee. Housing assumes a two-bedroom lease within 30 minutes of the business district.</div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 20px;">
+          <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 16px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">MONTHLY, GURUGRAM</div>
+            <div style="font-size: 24px; font-weight: 800; margin-top: 6px;">AED 6,190</div>
+          </div>
+          <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 16px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">MONTHLY, DUBAI</div>
+            <div style="font-size: 24px; font-weight: 800; margin-top: 6px;">AED 15,940</div>
+          </div>
+          <div style="border: 1px solid #F0DFB0; background: #FFFBEF; border-radius: 4px; padding: 16px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #9A6A00;">DIFFERENCE</div>
+            <div style="font-size: 24px; font-weight: 800; margin-top: 6px; color: #9A6A00;">+158%</div>
+          </div>
+          <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 16px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">SALARY TO MATCH</div>
+            <div style="font-size: 24px; font-weight: 800; margin-top: 6px;">AED 331,000</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 24px; border: 1px solid #EDEDEF; border-radius: 4px; overflow: hidden;">
+          <div style="display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); background: #F6F6F7; border-bottom: 1px solid #E7E7EA;">
+            <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75;">CATEGORY</div>
+            <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75; text-align: right;">GURUGRAM</div>
+            <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75; text-align: right;">DUBAI</div>
+            <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75; text-align: right;">CHANGE</div>
+          </div>
+          <sc-for list="{{ costRows }}" as="r" hint-placeholder-count="8">
+            <div style="display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); border-bottom: 1px solid #F4F4F5; background: {{ r.bg }};">
+              <div style="padding: 12px 14px; font-size: 12.5px; font-weight: {{ r.weight }};">{{ r.label }}</div>
+              <div style="padding: 12px 14px; font-size: 12.5px; text-align: right; font-family: 'IBM Plex Mono', monospace;">{{ r.a }}</div>
+              <div style="padding: 12px 14px; font-size: 12.5px; text-align: right; font-family: 'IBM Plex Mono', monospace;">{{ r.b }}</div>
+              <div style="padding: 12px 14px; font-size: 12.5px; text-align: right; font-family: 'IBM Plex Mono', monospace; color: {{ r.color }};">{{ r.delta }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="font-size: 11px; line-height: 1.6; color: #8C8F96; margin-top: 14px; max-width: 900px;">Estimates draw on employee-submitted expenses and public rent indices, refreshed quarterly. They are a planning aid, not an offer calculation — schooling and healthcare vary widely by provider.</div>
+      </section>
+
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 15px; font-weight: 600; flex: 1;">Quick links for <span style="color: #C07C05;">Dubai</span></div>
+          <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">‹</span>
+          <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">›</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 16px;">
+          <sc-for list="{{ quickLinks }}" as="q" hint-placeholder-count="5">
+            <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 18px 14px; display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;" style-hover="border-color: #D8D9DD; background: #FCFCFD;">
+              <span style="width: 30px; height: 34px; background: #FFF3D6; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); display: grid; place-items: center; font-size: 13px; color: #9A6A00;">{{ q.glyph }}</span>
+              <div style="font-size: 12.5px; font-weight: 500;">{{ q.label }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.06em;">{{ q.meta }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ HOME ══ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Home">
+  <sc-if value="{{ homeOverview }}" hint-placeholder-val="{{ true }}">
+    <div style="position: relative; min-height: 460px; background: #23262C; overflow: hidden; display: flex; align-items: flex-end;">
+      <image-slot id="wh-hero-home" style="position: absolute; inset: 0; width: 100%; height: 100%; color: #FFFFFF;" placeholder="Hero — people at work, wide crop" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=60" credit="Photo by Austin Distel on Unsplash" credit-href="https://unsplash.com/@thoughtcatalog"></image-slot>
+      <div style="position: absolute; inset: 0; background: linear-gradient(75deg, rgba(20,22,28,0.90) 0%, rgba(20,22,28,0.62) 46%, rgba(20,22,28,0.10) 100%); pointer-events: none;"></div>
+      <div style="position: relative; padding: 56px 28px 30px; width: 100%;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #FFC94D;">HIRING ON EVIDENCE, NOT ASSERTION</div>
+        <div style="font-size: 46px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.03em; line-height: 1.08; margin-top: 14px; max-width: 720px; text-wrap: pretty;">Someone you have worked with can say more in three questions than a CV says in two pages.</div>
+        <div style="font-size: 14.5px; line-height: 1.65; color: rgba(255,255,255,0.82); margin-top: 16px; max-width: 560px;">Work Hive turns your working history into endorsements: short, attributed statements from named colleagues, attached to the roles you apply for.</div>
+        <div style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr) 148px; background: #FFFDF6; border-radius: 4px; overflow: hidden; margin-top: 28px; max-width: 940px; box-shadow: 0 12px 32px rgba(0,0,0,0.28);">
+          <label style="display: flex; align-items: center; gap: 9px; padding: 15px 16px; border-right: 1px solid #EFE7D4;">
+            <span style="color: #B98A2E; font-size: 12px;">⌕</span>
+            <input placeholder="Job Title or Keyword" style="border: 0; outline: none; background: none; width: 100%; font-size: 13.5px;">
+          </label>
+          <label style="display: flex; align-items: center; gap: 9px; padding: 15px 16px; border-right: 1px solid #EFE7D4;">
+            <span style="color: #B98A2E; font-size: 12px;">⌕</span>
+            <input placeholder="State or Country" style="border: 0; outline: none; background: none; width: 100%; font-size: 13.5px;">
+          </label>
+          <label style="display: flex; align-items: center; gap: 9px; padding: 15px 16px; border-right: 1px solid #EFE7D4;">
+            <span style="color: #B98A2E; font-size: 12px;">⌕</span>
+            <input placeholder="Industry" style="border: 0; outline: none; background: none; width: 100%; font-size: 13.5px;">
+          </label>
+          <button onClick="{{ goSearch }}" style="border: 0; background: #F9AD16; color: #241A00; font-size: 13.5px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Search Jobs</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); border-bottom: 1px solid #E7E7EA; background: #FAFAFB;">
+      <sc-for list="{{ homeStats }}" as="st" hint-placeholder-count="4">
+        <div style="padding: 22px 24px; border-right: 1px solid #EFEFF1;">
+          <div style="font-size: 30px; font-weight: 800; letter-spacing: -0.02em;">{{ st.value }}</div>
+          <div style="font-size: 12px; line-height: 1.5; color: #5C5F66; margin-top: 6px;">{{ st.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="padding: 40px 28px 10px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; color: #8C8F96;">HOW AN ENDORSEMENT WORKS</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; margin-top: 18px;">
+        <sc-for list="{{ homeSteps }}" as="h" hint-placeholder-count="3">
+          <div style="border-top: 2px solid #23262C; padding-top: 14px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #C07C05; letter-spacing: 0.12em;">{{ h.n }}</div>
+            <div style="font-size: 17px; font-weight: 700; margin-top: 8px; letter-spacing: -0.01em;">{{ h.title }}</div>
+            <div style="font-size: 13px; line-height: 1.65; color: #5C5F66; margin-top: 8px;">{{ h.body }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="padding: 34px 28px 0;">
+      <div style="display: flex; align-items: baseline; gap: 14px;">
+        <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.01em; flex: 1;">Emerging talent hubs</div>
+        <a href="#0" onClick="{{ goSearch }}" style="font-size: 12.5px;">See all open roles</a>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px;">
+        <sc-for list="{{ homeHubs }}" as="hb" hint-placeholder-count="4">
+          <div onClick="{{ goSearch }}" style="border: 1px solid #E7E7EA; border-radius: 5px; overflow: hidden; cursor: pointer; background: #FFFFFF; display: flex; flex-direction: column;" style-hover="box-shadow: 0 10px 24px rgba(20,22,28,0.10); border-color: #DCDCE0;">
+            <image-slot id="{{ hb.slot }}" style="width: 100%; height: 150px; flex: none;" placeholder="City" src="{{ hb.photo }}" credit="{{ hb.credit }}" credit-href="{{ hb.creditHref }}"></image-slot>
+            <div style="padding: 14px 16px 16px; flex: 1;">
+              <div style="font-size: 15.5px; font-weight: 700;">{{ hb.city }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #C07C05; letter-spacing: 0.1em; margin-top: 5px;">{{ hb.meta }}</div>
+              <div style="font-size: 12.5px; color: #5C5F66; margin-top: 8px; line-height: 1.5;">{{ hb.note }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="padding: 34px 28px 44px;">
+      <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.01em;">Decide with the numbers</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 16px;">
+        <sc-for list="{{ homeTools }}" as="t" hint-placeholder-count="4">
+          <div onClick="{{ t.go }}" style="border: 1px solid #E7E7EA; border-radius: 5px; padding: 18px; cursor: pointer; background: #FFFFFF; display: flex; flex-direction: column; gap: 8px;" style-hover="background: #FFFBEF; border-color: #F0DFB0;">
+            <span style="width: 26px; height: 30px; background: #FFF3D6; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);"></span>
+            <div style="font-size: 15px; font-weight: 700; margin-top: 4px;">{{ t.title }}</div>
+            <div style="font-size: 12.5px; line-height: 1.6; color: #5C5F66;">{{ t.body }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="background: #23262C; padding: 36px 28px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 260px;">
+        <div style="font-size: 24px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em;">Ask your first endorsement this week.</div>
+        <div style="font-size: 13px; color: rgba(255,255,255,0.72); margin-top: 8px; max-width: 520px; line-height: 1.6;">Setting up a profile takes about ten minutes. The network does the rest.</div>
+      </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button onClick="{{ goProfile }}" style="border: 0; background: #F9AD16; color: #241A00; padding: 13px 24px; border-radius: 3px; font-size: 13.5px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Build your profile</button>
+        <button onClick="{{ goInsights }}" style="border: 1px solid rgba(255,255,255,0.3); background: transparent; color: #FFFFFF; padding: 13px 24px; border-radius: 3px; font-size: 13.5px; cursor: pointer;" style-hover="background: rgba(255,255,255,0.08);">Browse insights</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ homeWhy }}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 48px 28px; max-width: 880px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; color: #8C8F96;">WHY WORK HIVE</div>
+      <div style="font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-top: 10px; line-height: 1.2;">A resume tells you where someone worked. An endorsement tells you what they were like to work with.</div>
+      <div style="font-size: 14px; line-height: 1.7; color: #4B4E55; margin-top: 16px;">Most hiring still runs on self-reported history and a handful of reference calls at the very end. Work Hive moves attribution to the front: every claim on a candidate's profile is traceable to a named colleague and a shared project, visible before a recruiter ever picks up the phone.</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 30px;">
+        <sc-for list="{{ aboutValues }}" as="av" hint-placeholder-count="3">
+          <div style="border-top: 2px solid #23262C; padding-top: 12px;">
+            <div style="font-size: 15px; font-weight: 700;">{{ av.title }}</div>
+            <div style="font-size: 12.5px; line-height: 1.6; color: #5C5F66; margin-top: 8px;">{{ av.body }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ homeEmployers }}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 48px 28px; max-width: 880px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; color: #8C8F96;">FOR EMPLOYERS</div>
+      <div style="font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-top: 10px; line-height: 1.2;">Hire on evidence your own people already gave you.</div>
+      <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 28px;">
+        <sc-for list="{{ employerPoints }}" as="ep" hint-placeholder-count="3">
+          <div style="border: 1px solid #E7E7EA; border-radius: 5px; padding: 18px 20px; background: #FFFFFF;">
+            <div style="font-size: 15px; font-weight: 700;">{{ ep.title }}</div>
+            <div style="font-size: 13px; line-height: 1.6; color: #5C5F66; margin-top: 8px;">{{ ep.body }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <button style="margin-top: 24px; border: 0; background: #F9AD16; color: #241A00; padding: 13px 24px; border-radius: 3px; font-size: 13.5px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Talk to sales</button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ homePricing }}" hint-placeholder-val="{{ false }}">
+    <div style="padding: 48px 28px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.16em; color: #8C8F96;">PRICING</div>
+      <div style="font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin-top: 10px;">Free for candidates. Simple for employers.</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 28px;">
+        <sc-for list="{{ pricingTiers }}" as="pr" hint-placeholder-count="3">
+          <div style="border: 1px solid #E7E7EA; border-radius: 5px; padding: 22px 20px; background: #FFFFFF; display: flex; flex-direction: column; gap: 12px;">
+            <div style="font-size: 15px; font-weight: 700;">{{ pr.name }}</div>
+            <div style="font-size: 26px; font-weight: 800;">{{ pr.price }}</div>
+            <div style="font-size: 12.5px; color: #5C5F66; line-height: 1.6;">{{ pr.body }}</div>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px; border-top: 1px solid #F0F0F2; padding-top: 12px;">
+              <sc-for list="{{ pr.features }}" as="ft" hint-placeholder-count="3">
+                <div style="font-size: 12px; color: #4B4E55;">✓ {{ ft }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ DASHBOARD ══ -->
+  <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Dashboard" style="padding: 26px 28px 40px; background: #FAFAFB; display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 240px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #8C8F96;">CANDIDATE WORKSPACE</div>
+        <div style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-top: 6px;">Good morning, Meera</div>
+        <div style="font-size: 13px; color: #5C5F66; margin-top: 6px;">One endorsement came back overnight, and one request is still waiting on Daniel.</div>
+      </div>
+      <button onClick="{{ goSearch }}" style="border: 0; background: #F9AD16; color: #241A00; padding: 12px 22px; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Search jobs</button>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: start;">
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+        <div style="font-size: 15px; font-weight: 600;">Your Endorsement Score</div>
+        <div style="display: flex; align-items: flex-end; gap: 12px; margin-top: 12px;">
+          <div style="font-size: 44px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">712</div>
+          <div style="font-size: 13px; font-weight: 600; color: #2E7D53; padding-bottom: 6px;">+18 this month</div>
+        </div>
+        <div style="height: 10px; background: #F1F1F3; border-radius: 999px; margin-top: 16px; overflow: hidden;">
+          <div style="height: 100%; width: 71%; background: linear-gradient(90deg, #FFD782, #F9AD16);"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; margin-top: 8px; letter-spacing: 0.08em;">
+          <span>0</span><span>NEXT TIER AT 800</span><span>1000</span>
+        </div>
+        <div style="border-top: 1px solid #F0F0F2; margin-top: 18px; padding-top: 14px; display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ dashTasks }}" as="t" hint-placeholder-count="3">
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <span style="width: 9px; height: 10px; flex: none; margin-top: 4px; background: #F9AD16; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);"></span>
+              <div>
+                <div style="font-size: 12.5px; color: #2C2F35; line-height: 1.5;">{{ t.text }}</div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #8C8F96; letter-spacing: 0.1em; margin-top: 3px;">{{ t.meta }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 10px; grid-column: span 2; min-width: 0;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 15px; font-weight: 600; flex: 1;">Endorsement activity</div>
+          <a href="#0" style="font-size: 12px;">Full ledger</a>
+        </div>
+        <sc-for list="{{ dashActivity }}" as="a" hint-placeholder-count="5">
+          <div style="display: flex; align-items: center; gap: 14px; padding: 13px 0; border-top: 1px solid #F4F4F5;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: #EDEDEF; flex: none;"></div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="font-size: 13px;"><span style="font-weight: 600;">{{ a.who }}</span> {{ a.act }}</div>
+              <div style="font-size: 11.5px; color: #6B6E75; margin-top: 2px;">{{ a.detail }}</div>
+            </div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #9A9CA1; letter-spacing: 0.08em; flex: none;">{{ a.when }}</div>
+            <span style="font-size: 11px; font-weight: 600; color: {{ a.color }}; background: {{ a.bg }}; padding: 4px 10px; border-radius: 999px; flex: none;">{{ a.state }}</span>
+          </div>
+        </sc-for>
+      </section>
+    </div>
+
+    <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+      <div style="font-size: 15px; font-weight: 600;">Applications in flight</div>
+      <div style="margin-top: 14px; border: 1px solid #EDEDEF; border-radius: 4px; overflow: hidden;">
+        <div style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) 120px 130px; background: #F6F6F7; border-bottom: 1px solid #E7E7EA;">
+          <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75;">ROLE</div>
+          <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75;">STAGE</div>
+          <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75;">ROUTE</div>
+          <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75; text-align: right;">LIKELIHOOD</div>
+        </div>
+        <sc-for list="{{ dashApps }}" as="ap" hint-placeholder-count="4">
+          <div style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) 120px 130px; border-bottom: 1px solid #F4F4F5; align-items: center;">
+            <div style="padding: 12px 14px;">
+              <div style="font-size: 13px; font-weight: 600;">{{ ap.role }}</div>
+              <div style="font-size: 11.5px; color: #6B6E75; margin-top: 2px;">{{ ap.company }}</div>
+            </div>
+            <div style="padding: 12px 14px; font-size: 12.5px; color: #2C2F35;">{{ ap.stage }}</div>
+            <div style="padding: 12px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #6B6E75; letter-spacing: 0.06em;">{{ ap.route }}</div>
+            <div style="padding: 12px 14px; text-align: right; font-size: 13px; font-weight: 700; color: {{ ap.color }};">{{ ap.pct }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <!-- ══ PROFILE ══ -->
+  <sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Profile Page" style="background: #FAFAFB;">
+    <div style="position: relative; height: 150px; background: linear-gradient(100deg, #F58A0B 0%, #FDB515 46%, #FFCB3D 100%); overflow: hidden;">
+      <div style="position: absolute; inset: 0; opacity: 0.16; background-image: linear-gradient(60deg, transparent 49.6%, #FFFFFF 50%, transparent 50.4%), linear-gradient(-60deg, transparent 49.6%, #FFFFFF 50%, transparent 50.4%); background-size: 74px 128px;"></div>
+    </div>
+    <div style="padding: 0 28px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: start;">
+      <aside style="margin-top: -62px;">
+        <div style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 20px 22px;">
+          <image-slot id="wh-profile-photo" shape="circle" style="width: 96px; height: 96px;" placeholder="Photo" src="https://images.unsplash.com/photo-1580489944071-1ff2e46a4ee5?auto=format&amp;fit=crop&amp;w=300&amp;q=60" credit="Photo by LinkedIn Sales Solutions on Unsplash" credit-href="https://unsplash.com/@linkedinsalesnavigator"></image-slot>
+          <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.01em; margin-top: 14px;">Meera Iyer</div>
+          <div style="font-size: 13px; color: #5C5F66; margin-top: 4px;">Senior Product Designer, Aster Retail</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.1em; margin-top: 8px;">DUBAI, UAE · OPEN TO RELOCATION</div>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; border-top: 1px solid #F0F0F2; padding-top: 16px;">
+            <sc-for list="{{ profileStats }}" as="p" hint-placeholder-count="4">
+              <div>
+                <div style="font-size: 20px; font-weight: 800;">{{ p.value }}</div>
+                <div style="font-size: 11px; color: #6B6E75; margin-top: 2px;">{{ p.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <button style="width: 100%; margin-top: 18px; border: 0; background: #F9AD16; color: #241A00; padding: 11px; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Request a endorsement</button>
+          <button style="width: 100%; margin-top: 8px; border: 1px solid #D8D9DD; background: #FFFFFF; padding: 11px; border-radius: 3px; font-size: 13px; cursor: pointer;" style-hover="background: #F6F6F7;">Share profile</button>
+        </div>
+        <div style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 18px 20px 20px; margin-top: 16px;">
+          <div style="font-size: 13px; font-weight: 600;">Skills, endorsed</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;">
+            <sc-for list="{{ profileSkills }}" as="sk" hint-placeholder-count="8">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: #55585F; background: #F4F4F5; border: 1px solid #E7E7EA; padding: 5px 9px; border-radius: 2px;">{{ sk }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </aside>
+
+      <div style="grid-column: span 2; min-width: 0; display: flex; flex-direction: column; gap: 20px; margin-top: 24px;">
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+          <div style="font-size: 15px; font-weight: 600;">About</div>
+          <div style="font-size: 13px; line-height: 1.7; color: #5C5F66; margin-top: 10px; text-wrap: pretty;">Nine years designing commerce products, mostly in retail. I work best where research, service design and the front end all sit in the same room, and I have twice been the person who consolidated a pile of legacy tooling into something a team could maintain.</div>
+        </section>
+
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 8px;">
+          <div style="font-size: 15px; font-weight: 600;">Experience</div>
+          <sc-for list="{{ profileExp }}" as="e" hint-placeholder-count="3">
+            <div style="display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 14px; padding: 16px 0; border-top: 1px solid #F4F4F5;">
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <span style="width: 11px; height: 12px; background: #F9AD16; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);"></span>
+                <span style="flex: 1; width: 1px; background: #EDEDEF; margin-top: 6px;"></span>
+              </div>
+              <div>
+                <div style="font-size: 14.5px; font-weight: 700;">{{ e.role }}</div>
+                <div style="font-size: 12.5px; color: #5C5F66; margin-top: 2px;">{{ e.org }}</div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.1em; margin-top: 5px;">{{ e.when }}</div>
+                <div style="font-size: 12.5px; line-height: 1.65; color: #5C5F66; margin-top: 8px;">{{ e.body }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </section>
+
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+          <div style="font-size: 15px; font-weight: 600;">Endorsements received</div>
+          <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 14px;">
+            <sc-for list="{{ profileEndorsements }}" as="v" hint-placeholder-count="2">
+              <div style="border-left: 2px solid #F9AD16; padding: 4px 0 4px 16px;">
+                <div style="font-size: 14px; line-height: 1.65; color: #2C2F35;">{{ v.quote }}</div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                  <div style="width: 26px; height: 26px; border-radius: 50%; background: #EDEDEF; flex: none;"></div>
+                  <div>
+                    <div style="font-size: 12.5px; font-weight: 600;">{{ v.by }}</div>
+                    <div style="font-size: 11.5px; color: #6B6E75;">{{ v.role }}</div>
+                  </div>
+                </div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #8C8F96; letter-spacing: 0.1em; margin-top: 8px;">{{ v.basis }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+          <div style="font-size: 15px; font-weight: 600;">Work samples</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 14px;">
+            <image-slot id="wh-work-1" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Checkout rebuild"></image-slot>
+            <image-slot id="wh-work-2" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Fulfilment tooling"></image-slot>
+            <image-slot id="wh-work-3" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Component library"></image-slot>
+            <image-slot id="wh-work-4" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Research study"></image-slot>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ INSIGHTS HOME ══ -->
+  <sc-if value="{{ isInsights }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Insights Home">
+    <div style="position: relative; height: 240px; background: #2A2C31; overflow: hidden;">
+      <image-slot id="wh-hero-insights" style="position: absolute; inset: 0; width: 100%; height: 100%; color: #FFFFFF;" placeholder="Hero — city at dusk, wide crop" src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1600&q=60" credit="Photo by Nastuh Abootalebi on Unsplash" credit-href="https://unsplash.com/@rocinante_11"></image-slot>
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,22,28,0.80) 0%, rgba(20,22,28,0.44) 55%, rgba(20,22,28,0.10) 100%); pointer-events: none;"></div>
+      <div style="position: absolute; left: 28px; bottom: 30px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #FFC94D;">WORK HIVE INSIGHTS</div>
+        <div style="font-size: 34px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; margin-top: 8px;">What a job is actually worth</div>
+        <div style="font-size: 13.5px; color: rgba(255,255,255,0.8); margin-top: 8px; max-width: 520px; line-height: 1.6;">Ratings, pay and living costs, all submitted by people who work there and shown with their tenure attached.</div>
+      </div>
+    </div>
+
+    <div style="padding: 26px 28px 40px; background: #FAFAFB; display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px;">
+        <sc-for list="{{ homeTools }}" as="t" hint-placeholder-count="4">
+          <div onClick="{{ t.go }}" style="border: 1px solid #E7E7EA; border-radius: 5px; padding: 18px; cursor: pointer; background: #FFFFFF; display: flex; flex-direction: column; gap: 8px;" style-hover="background: #FFFBEF; border-color: #F0DFB0;">
+            <span style="width: 26px; height: 30px; background: #FFF3D6; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);"></span>
+            <div style="font-size: 15px; font-weight: 700; margin-top: 4px;">{{ t.title }}</div>
+            <div style="font-size: 12.5px; line-height: 1.6; color: #5C5F66;">{{ t.body }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 10px;">
+        <div style="display: flex; align-items: baseline; gap: 12px;">
+          <div style="font-size: 16px; font-weight: 700; flex: 1;">Best places to work, 2026</div>
+          <a href="#0" onClick="{{ goRatings }}" style="font-size: 12.5px;">Submit a rating</a>
+        </div>
+        <div style="font-size: 12.5px; color: #5C5F66; margin-top: 6px;">Ranked on 41,000 verified reviews across the Gulf, weighted by reviewer tenure.</div>
+        <sc-for list="{{ bestPlaces }}" as="b" hint-placeholder-count="5">
+          <div onClick="{{ goRatings }}" style="display: flex; align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid #F4F4F5; cursor: pointer;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #C07C05; width: 24px; flex: none;">{{ b.rank }}</div>
+            <div style="width: 34px; height: 34px; border-radius: 3px; background: #EDEDEF; flex: none;"></div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="font-size: 14px; font-weight: 600;">{{ b.name }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.1em; margin-top: 3px;">{{ b.sector }}</div>
+            </div>
+            <div style="font-size: 12.5px; color: #5C5F66; flex: none; text-align: right;">{{ b.note }}</div>
+            <div style="font-size: 18px; font-weight: 800; width: 54px; text-align: right; flex: none;">{{ b.score }}</div>
+          </div>
+        </sc-for>
+      </section>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ RELOCATION ══ -->
+  <sc-if value="{{ isRelocation }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Relocation">
+    <div style="position: relative; height: 250px; background: #2A2C31; overflow: hidden;">
+      <image-slot id="wh-hero-reloc" style="position: absolute; inset: 0; width: 100%; height: 100%; color: #FFFFFF;" placeholder="Hero — family arriving, wide crop" src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=60" credit="Photo by Erwan Hesry on Unsplash" credit-href="https://unsplash.com/@erwanhesry"></image-slot>
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,22,28,0.78) 0%, rgba(20,22,28,0.40) 55%, rgba(20,22,28,0.08) 100%); pointer-events: none;"></div>
+      <div style="position: absolute; left: 28px; bottom: 92px; font-size: 34px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; line-height: 1.15;">Estimate your<br>relocation costs</div>
+      <div style="position: absolute; left: 28px; right: 28px; bottom: 22px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 148px; background: rgba(255,255,255,0.96); border-radius: 4px; overflow: hidden;">
+        <label style="display: flex; align-items: center; gap: 9px; padding: 14px 16px; border-right: 1px solid #E7E7EA;">
+          <span style="color: #9A9CA1; font-size: 12px;">⌕</span>
+          <input placeholder="Relocating From" value="Gurugram, India" style="border: 0; outline: none; background: none; width: 100%; font-size: 13px;">
+        </label>
+        <label style="display: flex; align-items: center; gap: 9px; padding: 14px 16px; border-right: 1px solid #E7E7EA;">
+          <span style="color: #9A9CA1; font-size: 12px;">⌕</span>
+          <input placeholder="Relocating To" value="Dubai, UAE" style="border: 0; outline: none; background: none; width: 100%; font-size: 13px;">
+        </label>
+        <button style="border: 0; background: #23262C; color: #FFFFFF; font-size: 13px; font-weight: 600; cursor: pointer;">Quick Search</button>
+      </div>
+    </div>
+
+    <div style="padding: 26px 28px 40px; background: #FAFAFB; display: flex; flex-direction: column; gap: 20px;">
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+        <div style="font-size: 15px; font-weight: 600;">Detailed cost of relocation</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px 20px; margin-top: 18px;">
+          <sc-for list="{{ relocFields }}" as="f" hint-placeholder-count="6">
+            <label style="display: block;">
+              <span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">{{ f.label }}</span>
+              <input placeholder="{{ f.hint }}" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 10px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;">
+            </label>
+          </sc-for>
+        </div>
+        <button style="width: 100%; margin-top: 20px; border: 0; background: #33363C; color: #FFFFFF; padding: 13px; border-radius: 3px; font-size: 13.5px; font-weight: 600; cursor: pointer;" style-hover="background: #23262C;">Calculate</button>
+      </section>
+
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 24px;">
+        <div style="font-size: 16px; font-weight: 700;">One-off costs between <span style="color: #C07C05;">Gurugram, India</span> and <span style="color: #C07C05;">Dubai, UAE</span></div>
+        <div style="font-size: 12.5px; line-height: 1.65; color: #5C5F66; margin-top: 8px; max-width: 800px;">A household of three, moving on an employer-sponsored permit. What the employer usually covers is noted per line, because that is where offers differ most.</div>
+
+        <div style="display: flex; align-items: flex-end; gap: 22px; flex-wrap: wrap; margin: 20px 0 4px; padding-bottom: 18px; border-bottom: 1px solid #F0F0F2;">
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">TOTAL ONE-OFF COST</div>
+            <div style="font-size: 34px; font-weight: 800; letter-spacing: -0.02em; margin-top: 4px;">AED 67,200</div>
+          </div>
+          <div style="border-left: 1px solid #EDEDEF; padding-left: 22px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">TYPICALLY EMPLOYER-PAID</div>
+            <div style="font-size: 15px; font-weight: 600; margin-top: 6px; color: #2E7D53;">AED 19,400</div>
+          </div>
+          <div style="border-left: 1px solid #EDEDEF; padding-left: 22px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">LEFT WITH YOU</div>
+            <div style="font-size: 15px; font-weight: 600; margin-top: 6px;">AED 47,800</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; border: 1px solid #EDEDEF; border-radius: 4px; overflow: hidden;">
+          <sc-for list="{{ relocRows }}" as="r" hint-placeholder-count="7">
+            <div style="display: grid; grid-template-columns: minmax(0, 1fr) 130px 100px; align-items: center; border-bottom: 1px solid #F4F4F5;">
+              <div style="padding: 12px 14px;">
+                <div style="font-size: 12.5px; color: #2C2F35;">{{ r.label }}</div>
+                <div style="font-size: 11px; color: #8C8F96; margin-top: 3px;">{{ r.note }}</div>
+              </div>
+              <div style="padding: 12px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; text-align: right;">{{ r.a }}</div>
+              <div style="padding: 12px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #9A9CA1; letter-spacing: 0.1em; text-align: right;">{{ r.b }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="font-size: 11px; line-height: 1.6; color: #8C8F96; margin-top: 14px; max-width: 900px;">Figures come from 1,840 relocation reports submitted in the last two years and are medians, not quotes. Freight and school fees move the total the most.</div>
+      </section>
+
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+        <div style="font-size: 15px; font-weight: 600;">Sequence that works</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 16px;">
+          <sc-for list="{{ relocSteps }}" as="s" hint-placeholder-count="4">
+            <div style="border-top: 2px solid #23262C; padding-top: 12px;">
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #C07C05; letter-spacing: 0.12em;">{{ s.n }}</div>
+              <div style="font-size: 14px; font-weight: 700; margin-top: 7px;">{{ s.title }}</div>
+              <div style="font-size: 12.5px; line-height: 1.6; color: #5C5F66; margin-top: 7px;">{{ s.body }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+      <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 15px; font-weight: 600; flex: 1;">Quick links for <span style="color: #C07C05;">Dubai</span></div>
+          <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">‹</span>
+          <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">›</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 16px;">
+          <sc-for list="{{ quickLinks }}" as="q" hint-placeholder-count="5">
+            <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 18px 14px; display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;" style-hover="border-color: #D8D9DD; background: #FCFCFD;">
+              <span style="width: 30px; height: 34px; background: #FFF3D6; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); display: grid; place-items: center; font-size: 13px; color: #9A6A00;">{{ q.glyph }}</span>
+              <div style="font-size: 12.5px; font-weight: 500;">{{ q.label }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.06em;">{{ q.meta }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ JOB DETAIL ══ -->
+  <sc-if value="{{ isJobDetail }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Job Detail" style="background: #FAFAFB;">
+    <div style="position: relative; height: 210px; background: #2A2C31; overflow: hidden;">
+      <image-slot id="wh-hero-jobdetail" style="position: absolute; inset: 0; width: 100%; height: 100%; color: #FFFFFF;" placeholder="Hero — workspace, wide crop" src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&amp;fit=crop&amp;w=1600&amp;q=60" credit="Photo by Alex Kotliarskyi on Unsplash" credit-href="https://unsplash.com/@alexkotliarskyi"></image-slot>
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,22,28,0.82) 0%, rgba(20,22,28,0.5) 50%, rgba(20,22,28,0.12) 100%); pointer-events: none;"></div>
+      <div style="position: absolute; left: 28px; bottom: 24px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #FFC94D;">{{ job.posted }}</div>
+        <div style="font-size: 30px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; margin-top: 6px;">{{ job.title }}</div>
+        <div onClick="{{ goCompanyFromJob }}" style="font-size: 14px; color: rgba(255,255,255,0.85); margin-top: 6px; cursor: pointer;">{{ job.company }} · {{ job.location }}</div>
+      </div>
+    </div>
+
+    <div style="padding: 26px 28px 40px; display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 20px; min-width: 0;">
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <sc-for list="{{ job.skills }}" as="sk" hint-placeholder-count="3">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: #55585F; background: #F4F4F5; border: 1px solid #E7E7EA; padding: 5px 9px; border-radius: 2px;">{{ sk }}</span>
+            </sc-for>
+          </div>
+          <div style="font-size: 13px; line-height: 1.75; color: #4B4E55; margin-top: 16px; text-wrap: pretty;">{{ job.blurb }}</div>
+          <div style="border-top: 1px solid #F0F0F2; margin-top: 18px; padding-top: 16px;">
+            <div style="font-size: 14px; font-weight: 600;">What you'll do</div>
+            <ul style="margin: 10px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px;">
+              <sc-for list="{{ job.responsibilities }}" as="r" hint-placeholder-count="4">
+                <li style="font-size: 12.5px; line-height: 1.6; color: #4B4E55;">{{ r }}</li>
+              </sc-for>
+            </ul>
+          </div>
+          <div style="border-top: 1px solid #F0F0F2; margin-top: 18px; padding-top: 16px;">
+            <div style="font-size: 14px; font-weight: 600;">What you'll bring</div>
+            <ul style="margin: 10px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 8px;">
+              <sc-for list="{{ job.requirements }}" as="rq" hint-placeholder-count="4">
+                <li style="font-size: 12.5px; line-height: 1.6; color: #4B4E55;">{{ rq }}</li>
+              </sc-for>
+            </ul>
+          </div>
+        </section>
+
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+          <div style="font-size: 14px; font-weight: 600;">People who can speak to this team's work</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 14px;">
+            <sc-for list="{{ jobEndorsers }}" as="p" hint-placeholder-count="3">
+              <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 14px 12px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: #EDEDEF;"></div>
+                <div style="font-size: 12.5px; font-weight: 600; margin-top: 4px;">{{ p.name }}</div>
+                <div style="font-size: 11px; color: #6B6E75;">{{ p.role }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </div>
+
+      <aside style="display: flex; flex-direction: column; gap: 16px;">
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 18px 20px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #2E7D53; letter-spacing: 0.04em;">{{ job.match }}</div>
+          <div style="font-size: 12px; color: #8C8F96; margin-top: 4px;">{{ job.endorsers }}</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 16px;">
+            <button onClick="{{ openEndorsement }}" style="border: 0; background: #F9AD16; color: #241A00; padding: 12px; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Get Endorsed</button>
+            <button onClick="{{ goApplyForJob }}" style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 12px; border-radius: 3px; font-size: 13px; font-weight: 500; cursor: pointer;" style-hover="background: #F6F6F7;">Apply Direct</button>
+            <button onClick="{{ goConnections }}" style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 12px; border-radius: 3px; font-size: 13px; font-weight: 500; cursor: pointer;" style-hover="background: #F6F6F7;">Refer Someone</button>
+          </div>
+        </section>
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 18px 20px;">
+          <div style="font-size: 13px; font-weight: 600;">About {{ job.company }}</div>
+          <div style="font-size: 12px; line-height: 1.6; color: #5C5F66; margin-top: 10px;">{{ jobCompanyBlurb }}</div>
+          <a href="#0" onClick="{{ goCompanyFromJob }}" style="display: inline-block; margin-top: 10px; font-size: 12px;">View company profile →</a>
+        </section>
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 18px 20px;">
+          <div style="font-size: 13px; font-weight: 600;">More roles at {{ job.company }}</div>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px;">
+            <sc-for list="{{ sameCompanyJobs }}" as="oj" hint-placeholder-count="2">
+              <div onClick="{{ oj.openDetail }}" style="cursor: pointer; padding: 10px 0; border-top: 1px solid #F4F4F5;">
+                <div style="font-size: 12.5px; font-weight: 600;">{{ oj.title }}</div>
+                <div style="font-size: 11px; color: #8C8F96; margin-top: 2px;">{{ oj.location }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ COMPANY PROFILE ══ -->
+  <sc-if value="{{ isCompany }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Company Profile" style="background: #FAFAFB;">
+    <div style="position: relative; height: 230px; background: #2A2C31; overflow: hidden;">
+      <image-slot id="wh-hero-company" style="position: absolute; inset: 0; width: 100%; height: 100%; color: #FFFFFF;" placeholder="Hero — skyline, wide crop" src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&amp;fit=crop&amp;w=1600&amp;q=60" credit="Photo by Sean Pollock on Unsplash" credit-href="https://unsplash.com/@seanpollock"></image-slot>
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,22,28,0.8) 0%, rgba(20,22,28,0.42) 55%, rgba(20,22,28,0.1) 100%); pointer-events: none;"></div>
+      <div style="position: absolute; left: 28px; bottom: 24px; display: flex; align-items: center; gap: 16px;">
+        <div style="width: 58px; height: 58px; border-radius: 6px; background: #FFFFFF; display: grid; place-items: center; font-size: 20px; font-weight: 800; color: #23262C;">{{ companyInitial }}</div>
+        <div>
+          <div style="font-size: 28px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em;">{{ company.name }}</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: rgba(255,255,255,0.8); letter-spacing: 0.08em; margin-top: 6px;">{{ company.sector }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 0 28px;">
+      <div style="display: flex; gap: 2px; border-bottom: 1px solid #E7E7EA; overflow-x: auto; align-items: center;">
+        <sc-for list="{{ companyTabs }}" as="ct" hint-placeholder-count="3">
+          <button onClick="{{ ct.go }}" style="border: 0; background: {{ ct.bg }}; color: {{ ct.fg }}; font-size: 13px; font-weight: {{ ct.weight }}; padding: 14px 18px; cursor: pointer; white-space: nowrap;">{{ ct.label }}</button>
+        </sc-for>
+        <div style="flex: 1;"></div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="font-size: 20px; font-weight: 800;">{{ company.rating }}</div>
+          <a href="#0" onClick="{{ goRatings }}" style="font-size: 12px;">Full ratings →</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 22px 28px 40px; display: flex; flex-direction: column; gap: 20px;">
+      <sc-if value="{{ companyOverview }}" hint-placeholder-val="{{ true }}">
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+          <div style="font-size: 14px; font-weight: 600;">About</div>
+          <div style="font-size: 13px; line-height: 1.7; color: #5C5F66; margin-top: 10px; max-width: 820px; text-wrap: pretty;">{{ company.about }}</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 18px; margin-top: 20px;">
+            <sc-for list="{{ companyProfileFacts }}" as="c" hint-placeholder-count="4">
+              <div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">{{ c.label }}</div>
+                <div style="font-size: 13px; margin-top: 5px; color: #2C2F35;">{{ c.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+          <div style="font-size: 14px; font-weight: 600;">Life at {{ company.name }}</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 14px;">
+            <image-slot id="wh-company-1" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Office"></image-slot>
+            <image-slot id="wh-company-2" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Team"></image-slot>
+            <image-slot id="wh-company-3" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Event"></image-slot>
+            <image-slot id="wh-company-4" style="width: 100%; aspect-ratio: 4 / 3;" radius="3" placeholder="Campus"></image-slot>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ companyRoles }}" hint-placeholder-val="{{ false }}">
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+          <div style="font-size: 14px; font-weight: 600;">Open roles at {{ company.name }}</div>
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 14px;">
+            <sc-for list="{{ companyJobs }}" as="cj" hint-placeholder-count="3">
+              <div onClick="{{ cj.openDetail }}" style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 14px 16px; cursor: pointer; display: flex; align-items: center; gap: 12px;" style-hover="border-color: #D8D9DD; background: #FCFCFD;">
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 13.5px; font-weight: 700;">{{ cj.title }}</div>
+                  <div style="font-size: 11.5px; color: #6B6E75; margin-top: 3px;">{{ cj.location }}</div>
+                </div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #2E7D53;">{{ cj.match }}</div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ companyNoJobs }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size: 12.5px; color: #8C8F96; padding: 8px 0;">No open roles listed right now.</div>
+            </sc-if>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ companyPeople }}" hint-placeholder-val="{{ false }}">
+        <sc-for list="{{ endorsementGroups }}" as="v" hint-placeholder-count="2">
+          <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
+            <div style="font-size: 14px; font-weight: 600;">{{ v.title }}</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 14px;">
+              <sc-for list="{{ v.people }}" as="p" hint-placeholder-count="4">
+                <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 14px 12px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                  <div style="width: 38px; height: 38px; border-radius: 50%; background: #EDEDEF;"></div>
+                  <div style="font-size: 12px; font-weight: 600; margin-top: 4px;">{{ p.name }}</div>
+                  <div style="font-size: 10.5px; color: #6B6E75;">{{ p.role }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </section>
+        </sc-for>
+      </sc-if>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ MESSAGES ══ -->
+  <sc-if value="{{ isMessages }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Messages" style="display: grid; grid-template-columns: 320px minmax(0, 1fr); align-items: start; min-height: 640px;">
+    <aside style="border-right: 1px solid #E7E7EA;">
+      <div style="display: flex; border-bottom: 1px solid #E7E7EA;">
+        <sc-for list="{{ msgTabs }}" as="mt" hint-placeholder-count="2">
+          <button onClick="{{ mt.go }}" style="flex: 1; border: 0; background: {{ mt.bg }}; color: {{ mt.fg }}; font-size: 12.5px; font-weight: {{ mt.weight }}; padding: 14px 10px; cursor: pointer;">{{ mt.label }}</button>
+        </sc-for>
+      </div>
+      <sc-for list="{{ threads }}" as="th" hint-placeholder-count="5">
+        <div onClick="{{ th.go }}" style="display: flex; gap: 12px; align-items: flex-start; padding: 14px 18px; border-bottom: 1px solid #F4F4F5; cursor: pointer; background: {{ th.bg }};">
+          <div style="width: 34px; height: 34px; border-radius: 50%; background: #EDEDEF; flex: none;"></div>
+          <div style="flex: 1; min-width: 0;">
+            <div style="display: flex; justify-content: space-between; gap: 8px;">
+              <div style="font-size: 12.5px; font-weight: 600;">{{ th.name }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #9A9CA1;">{{ th.when }}</div>
+            </div>
+            <div style="font-size: 11.5px; color: #6B6E75; margin-top: 3px; line-height: 1.4;">{{ th.preview }}</div>
+          </div>
+          <sc-if value="{{ th.unread }}" hint-placeholder-val="{{ false }}">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: #F9AD16; flex: none; margin-top: 5px;"></span>
+          </sc-if>
+        </div>
+      </sc-for>
+    </aside>
+
+    <div style="padding: 0 0 30px; min-width: 0;">
+      <div style="padding: 20px 26px; border-bottom: 1px solid #E7E7EA; display: flex; align-items: center; gap: 12px;">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: #EDEDEF;"></div>
+        <div style="flex: 1;">
+          <div style="font-size: 15px; font-weight: 700;">{{ activeThread.name }}</div>
+          <div style="font-size: 11.5px; color: #6B6E75; margin-top: 2px;">{{ activeThread.subtitle }}</div>
+        </div>
+      </div>
+      <div style="padding: 22px 26px; display: flex; flex-direction: column; gap: 16px;">
+        <sc-for list="{{ activeThread.messages }}" as="m" hint-placeholder-count="3">
+          <div style="max-width: 520px; align-self: {{ m.align }};">
+            <div style="background: {{ m.bg }}; color: {{ m.fg }}; padding: 12px 14px; border-radius: 6px; font-size: 13px; line-height: 1.6;">{{ m.text }}</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #9A9CA1; margin-top: 4px; letter-spacing: 0.06em;">{{ m.when }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <sc-if value="{{ activeThread.isEndorsementRequest }}" hint-placeholder-val="{{ false }}">
+        <div style="margin: 0 26px; border: 1px solid #F0DFB0; background: #FFFBEF; border-radius: 5px; padding: 16px 18px;">
+          <div style="font-size: 13px; font-weight: 600; color: #9A6A00;">Endorsement request — {{ activeThread.subtitle }}</div>
+          <div style="font-size: 12.5px; color: #5C5F66; margin-top: 6px; line-height: 1.6;">Confirm you worked together and how, and it goes straight to the recruiter with your name on it.</div>
+          <div style="display: flex; gap: 10px; margin-top: 14px;">
+            <button style="border: 0; background: #F9AD16; color: #241A00; padding: 10px 20px; border-radius: 3px; font-size: 12.5px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Accept &amp; endorsement</button>
+            <button style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 10px 20px; border-radius: 3px; font-size: 12.5px; cursor: pointer;" style-hover="background: #F6F6F7;">Decline</button>
+          </div>
+        </div>
+      </sc-if>
+      <div style="padding: 16px 26px 0; margin-top: 16px; border-top: 1px solid #F0F0F2;">
+        <div style="display: flex; gap: 10px;">
+          <input placeholder="Write a reply" style="flex: 1; border: 1px solid #DDDDE1; border-radius: 20px; padding: 11px 16px; font-size: 13px; outline: none;">
+          <button style="border: 0; background: #23262C; color: #FFFFFF; padding: 11px 20px; border-radius: 20px; font-size: 12.5px; font-weight: 600; cursor: pointer;">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ ONBOARDING ══ -->
+  <sc-if value="{{ isOnboarding }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Onboarding" style="min-height: 640px; display: flex; align-items: center; justify-content: center; padding: 40px 24px; background: #FAFAFB;">
+    <div style="width: 100%; max-width: 640px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px;">
+        <sc-for list="{{ onboardSteps }}" as="ob" hint-placeholder-count="3">
+          <div style="flex: 1; height: 3px; background: {{ ob.bg }};"></div>
+        </sc-for>
+      </div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #8C8F96;">STEP {{ onboardStepLabel }} OF 3</div>
+
+      <sc-if value="{{ onboard1 }}" hint-placeholder-val="{{ true }}">
+        <div style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-top: 10px;">Tell us who you are</div>
+        <div style="font-size: 13px; color: #5C5F66; margin-top: 8px; line-height: 1.6;">This becomes the profile your network endorses.</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 24px;">
+          <label style="display: block;"><span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">Full name</span><input placeholder="Meera Iyer" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;"></label>
+          <label style="display: block;"><span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">Current title</span><input placeholder="Senior Product Designer" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;"></label>
+          <label style="display: block;"><span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">Company</span><input placeholder="Aster Retail" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;"></label>
+          <label style="display: block;"><span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">Location</span><input placeholder="Dubai, UAE" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;"></label>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ onboard2 }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-top: 10px;">Bring in your working history</div>
+        <div style="font-size: 13px; color: #5C5F66; margin-top: 8px; line-height: 1.6;">Work Hive checks your history against people already on the network, so you know who to ask first.</div>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px;">
+          <sc-for list="{{ onboardExpRows }}" as="e" hint-placeholder-count="2">
+            <div style="border: 1px solid #E7E7EA; border-radius: 4px; padding: 14px 16px; display: flex; align-items: center; gap: 14px;">
+              <div style="flex: 1;">
+                <div style="font-size: 13px; font-weight: 600;">{{ e.role }}</div>
+                <div style="font-size: 11.5px; color: #6B6E75; margin-top: 2px;">{{ e.org }} · {{ e.when }}</div>
+              </div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #2E7D53;">{{ e.overlap }}</div>
+            </div>
+          </sc-for>
+          <button style="border: 1px dashed #D8D9DD; background: #FFFFFF; padding: 12px; border-radius: 4px; font-size: 12.5px; color: #6B6E75; cursor: pointer;">+ Add another role</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ onboard3 }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin-top: 10px;">Ask your first endorsement</div>
+        <div style="font-size: 13px; color: #5C5F66; margin-top: 8px; line-height: 1.6;">We found 3 people from Vellum Sports already on Work Hive. Pick one to start.</div>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 24px;">
+          <sc-for list="{{ onboardSuggested }}" as="p" hint-placeholder-count="3">
+            <div style="border: 1px solid #E7E7EA; border-radius: 4px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;">
+              <div style="width: 36px; height: 36px; border-radius: 50%; background: #EDEDEF;"></div>
+              <div style="flex: 1;">
+                <div style="font-size: 13px; font-weight: 600;">{{ p.name }}</div>
+                <div style="font-size: 11.5px; color: #6B6E75;">{{ p.role }}</div>
+              </div>
+              <button style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 8px 14px; border-radius: 3px; font-size: 12px; cursor: pointer;" style-hover="background: #F6F6F7;">Ask to endorse</button>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+        <button onClick="{{ onboardBack }}" style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 11px 22px; border-radius: 3px; font-size: 13px; cursor: pointer; visibility: {{ onboardBackVis }};" style-hover="background: #F6F6F7;">Back</button>
+        <button onClick="{{ onboardNext }}" style="border: 0; background: #F9AD16; color: #241A00; padding: 11px 26px; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">{{ onboardNextLabel }}</button>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ SETTINGS ══ -->
+  <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Settings" style="display: grid; grid-template-columns: 220px minmax(0, 1fr); align-items: start; background: #FAFAFB; min-height: 640px;">
+    <aside style="border-right: 1px solid #E7E7EA; padding: 20px 0;">
+      <sc-for list="{{ settingsNav }}" as="sn" hint-placeholder-count="4">
+        <button onClick="{{ sn.go }}" style="width: 100%; border: 0; text-align: left; background: {{ sn.bg }}; color: {{ sn.fg }}; font-size: 13px; font-weight: {{ sn.weight }}; padding: 12px 22px; cursor: pointer;">{{ sn.label }}</button>
+      </sc-for>
+    </aside>
+    <div style="padding: 24px 28px 40px; max-width: 640px;">
+      <sc-if value="{{ settingsAccount }}" hint-placeholder-val="{{ true }}">
+        <div style="font-size: 18px; font-weight: 700;">Account</div>
+        <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 18px;">
+          <label style="display: block;"><span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">Full name</span><input value="Meera Iyer" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;"></label>
+          <label style="display: block;"><span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">Email</span><input value="meera.iyer@astret.com" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;"></label>
+          <label style="display: block;"><span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">Password</span><input type="password" value="••••••••••" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;"></label>
+          <button style="align-self: flex-start; border: 0; background: #33363C; color: #FFFFFF; padding: 11px 22px; border-radius: 3px; font-size: 13px; font-weight: 600; cursor: pointer;" style-hover="background: #23262C;">Save changes</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ settingsPrivacy }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size: 18px; font-weight: 700;">Privacy</div>
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 18px;">
+          <sc-for list="{{ privacyToggles }}" as="pt" hint-placeholder-count="3">
+            <div style="display: flex; align-items: center; gap: 14px; border: 1px solid #EDEDEF; border-radius: 4px; padding: 14px 16px;">
+              <div style="flex: 1;">
+                <div style="font-size: 13px; font-weight: 600;">{{ pt.label }}</div>
+                <div style="font-size: 11.5px; color: #6B6E75; margin-top: 3px;">{{ pt.body }}</div>
+              </div>
+              <span onClick="{{ pt.go }}" style="width: 38px; height: 20px; border-radius: 999px; background: {{ pt.track }}; position: relative; cursor: pointer; flex: none;">
+                <span style="position: absolute; top: 2px; left: {{ pt.knob }}; width: 16px; height: 16px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.25); transition: left 160ms;"></span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ settingsNotifs }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size: 18px; font-weight: 700;">Notifications</div>
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 18px;">
+          <sc-for list="{{ notifToggles }}" as="nt" hint-placeholder-count="3">
+            <div style="display: flex; align-items: center; gap: 14px; border: 1px solid #EDEDEF; border-radius: 4px; padding: 14px 16px;">
+              <div style="flex: 1;">
+                <div style="font-size: 13px; font-weight: 600;">{{ nt.label }}</div>
+                <div style="font-size: 11.5px; color: #6B6E75; margin-top: 3px;">{{ nt.body }}</div>
+              </div>
+              <span onClick="{{ nt.go }}" style="width: 38px; height: 20px; border-radius: 999px; background: {{ nt.track }}; position: relative; cursor: pointer; flex: none;">
+                <span style="position: absolute; top: 2px; left: {{ nt.knob }}; width: 16px; height: 16px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0,0,0,0.25); transition: left 160ms;"></span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ settingsBilling }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size: 18px; font-weight: 700;">Connected accounts</div>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 18px;">
+          <sc-for list="{{ connectedAccounts }}" as="ca" hint-placeholder-count="3">
+            <div style="display: flex; align-items: center; gap: 14px; border: 1px solid #EDEDEF; border-radius: 4px; padding: 14px 16px;">
+              <div style="flex: 1;">
+                <div style="font-size: 13px; font-weight: 600;">{{ ca.label }}</div>
+                <div style="font-size: 11.5px; color: #6B6E75; margin-top: 3px;">{{ ca.status }}</div>
+              </div>
+              <button style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 8px 16px; border-radius: 3px; font-size: 12px; cursor: pointer;" style-hover="background: #F6F6F7;">{{ ca.action }}</button>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ APPLY DIRECT ══ -->
+  <sc-if value="{{ isApply }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Apply Direct" style="background: #FAFAFB; min-height: 640px;">
+    <div style="padding: 30px 28px 10px; max-width: 720px; margin: 0 auto;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; color: #8C8F96;">APPLY DIRECT</div>
+      <div style="font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin-top: 8px;">{{ job.title }}</div>
+      <div style="font-size: 13px; color: #5C5F66; margin-top: 4px;">{{ job.company }} · {{ job.location }}</div>
+    </div>
+
+    <sc-if value="{{ applyStep1 }}" hint-placeholder-val="{{ true }}">
+      <div style="padding: 20px 28px 50px; max-width: 720px; margin: 0 auto;">
+        <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 22px;">
+          <div style="font-size: 14px; font-weight: 600;">Your details</div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px;">
+            <label style="display: block;"><span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">Full name</span><input value="Meera Iyer" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;"></label>
+            <label style="display: block;"><span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">Email</span><input value="meera.iyer@astret.com" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;"></label>
+            <label style="display: block;"><span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">Phone</span><input placeholder="+971 5X XXX XXXX" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;"></label>
+            <label style="display: block;"><span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">Portfolio / LinkedIn URL</span><input placeholder="https://" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;"></label>
+          </div>
+
+          <div style="border-top: 1px solid #F0F0F2; margin-top: 18px; padding-top: 16px;">
+            <div style="font-size: 13px; font-weight: 600; margin-bottom: 8px;">Resume</div>
+            <div style="border: 1px dashed #D8D9DD; border-radius: 4px; padding: 20px; text-align: center; color: #6B6E75; font-size: 12.5px; cursor: pointer;" style-hover="border-color: #F9AD16; color: #9A6A00;">Meera_Iyer_CV.pdf · click to replace</div>
+          </div>
+
+          <div style="border-top: 1px solid #F0F0F2; margin-top: 18px; padding-top: 16px;">
+            <div style="font-size: 13px; font-weight: 600; margin-bottom: 8px;">Cover note</div>
+            <textarea placeholder="Why this role, in a few sentences" style="width: 100%; min-height: 90px; border: 1px solid #DDDDE1; border-radius: 3px; padding: 11px 12px; font-size: 13px; outline: none; resize: vertical; font-family: inherit;" style-focus="border-color: #F9AD16;"></textarea>
+          </div>
+
+          <label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 18px; cursor: pointer;">
+            <input type="checkbox" checked style="margin-top: 3px;">
+            <span style="font-size: 12.5px; color: #4B4E55; line-height: 1.5;">Also request an endorsement from my network for this role — recommended, endorsed applications reach a first interview far more often.</span>
+          </label>
+
+          <button onClick="{{ submitApply }}" style="width: 100%; margin-top: 22px; border: 0; background: #F9AD16; color: #241A00; padding: 13px; border-radius: 3px; font-size: 13.5px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Submit application</button>
+        </section>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ applyStep2 }}" hint-placeholder-val="{{ false }}">
+      <div style="padding: 20px 28px 60px; max-width: 620px; margin: 0 auto; text-align: center;">
+        <div style="font-size: 22px; font-weight: 700;">Application sent</div>
+        <div style="font-size: 13px; line-height: 1.65; color: #5C5F66; margin-top: 10px;">{{ job.company }} will review your application for {{ job.title }}. You can track its status from your dashboard.</div>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 24px;">
+          <button onClick="{{ goDashboard }}" style="border: 0; background: #F9AD16; color: #241A00; padding: 12px 24px; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Go to dashboard</button>
+          <button onClick="{{ goSearch }}" style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 12px 24px; border-radius: 3px; font-size: 13px; cursor: pointer;" style-hover="background: #F6F6F7;">Keep browsing roles</button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <!-- ══ MENTORSHIP ══ -->
+  <sc-if value="{{ isMentorship }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Mentorship" style="background: #FAFAFB;">
+    <div style="padding: 40px 28px; background: #23262C;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #FFC94D;">MENTORSHIP</div>
+      <div style="font-size: 32px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; margin-top: 8px; max-width: 640px;">Learn from people who have already made the move you're planning.</div>
+    </div>
+    <div style="padding: 30px 28px 44px;">
+      <div style="font-size: 15px; font-weight: 600;">Mentors available this month</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px;">
+        <sc-for list="{{ mentors }}" as="m" hint-placeholder-count="3">
+          <div style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 18px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px;">
+            <image-slot shape="circle" style="width: 56px; height: 56px;" src="{{ m.photo }}" credit="{{ m.credit }}" credit-href="{{ m.creditHref }}" placeholder="Photo"></image-slot>
+            <div style="font-size: 14px; font-weight: 700; margin-top: 4px;">{{ m.name }}</div>
+            <div style="font-size: 11.5px; color: #6B6E75;">{{ m.role }}</div>
+            <div style="font-size: 12px; color: #4B4E55; margin-top: 6px; line-height: 1.5;">{{ m.focus }}</div>
+            <button style="margin-top: 10px; width: 100%; border: 1px solid #D8D9DD; background: #FFFFFF; padding: 9px; border-radius: 3px; font-size: 12.5px; cursor: pointer;" style-hover="background: #F6F6F7;">Request a session</button>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ ALUMNI ══ -->
+  <sc-if value="{{ isAlumni }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Alumni" style="background: #FAFAFB;">
+    <div style="padding: 40px 28px; background: #23262C;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #FFC94D;">ALUMNI</div>
+      <div style="font-size: 32px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; margin-top: 8px; max-width: 640px;">Where the network has moved recently.</div>
+    </div>
+    <div style="padding: 30px 28px 44px;">
+      <div style="font-size: 15px; font-weight: 600;">Recent moves</div>
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+        <sc-for list="{{ alumniMoves }}" as="am" hint-placeholder-count="4">
+          <div style="border: 1px solid #E7E7EA; border-radius: 4px; background: #FFFFFF; padding: 14px 18px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+            <div style="width: 34px; height: 34px; border-radius: 50%; background: #EDEDEF; flex: none;"></div>
+            <div style="flex: 1; min-width: 200px;">
+              <div style="font-size: 13.5px; font-weight: 700;">{{ am.name }}</div>
+              <div style="font-size: 12px; color: #6B6E75; margin-top: 3px;">{{ am.from }} → {{ am.to }}</div>
+            </div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8C8F96; letter-spacing: 0.08em;">{{ am.when }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ INTERNSHIPS ══ -->
+  <sc-if value="{{ isInternships }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Internships" style="background: #FAFAFB;">
+    <div style="padding: 40px 28px; background: #23262C;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #FFC94D;">INTERNSHIPS</div>
+      <div style="font-size: 32px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; margin-top: 8px; max-width: 640px;">Paid internships with named teams, not busywork.</div>
+    </div>
+    <div style="padding: 30px 28px 44px;">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <sc-for list="{{ internshipListings }}" as="il" hint-placeholder-count="3">
+          <div style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 18px 20px;">
+            <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;">
+              <div style="font-size: 15px; font-weight: 700; flex: 1;">{{ il.title }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #8C8F96; letter-spacing: 0.06em;">{{ il.term }}</div>
+            </div>
+            <div style="font-size: 12.5px; color: #5C5F66; margin-top: 4px;">{{ il.company }} · {{ il.location }}</div>
+            <div style="font-size: 12.5px; color: #4B4E55; margin-top: 8px; line-height: 1.5;">{{ il.note }}</div>
+            <button onClick="{{ goSearch }}" style="margin-top: 12px; border: 1px solid #D8D9DD; background: #FFFFFF; padding: 9px 16px; border-radius: 3px; font-size: 12.5px; cursor: pointer;" style-hover="background: #F6F6F7;">Apply</button>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ EVENTS ══ -->
+  <sc-if value="{{ isEvents }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Events" style="background: #FAFAFB;">
+    <div style="padding: 40px 28px; background: #23262C;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #FFC94D;">EVENTS</div>
+      <div style="font-size: 32px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; margin-top: 8px; max-width: 640px;">Talks and working sessions, in person and online.</div>
+    </div>
+    <div style="padding: 30px 28px 44px;">
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <sc-for list="{{ upcomingEvents }}" as="ev" hint-placeholder-count="3">
+          <div style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 18px 20px; display: flex; gap: 18px; flex-wrap: wrap;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #C07C05; letter-spacing: 0.08em; flex: none; width: 100px;">{{ ev.date }}</div>
+            <div style="flex: 1; min-width: 200px;">
+              <div style="font-size: 15px; font-weight: 700;">{{ ev.title }}</div>
+              <div style="font-size: 11.5px; color: #6B6E75; margin-top: 3px;">{{ ev.format }}</div>
+              <div style="font-size: 12.5px; color: #4B4E55; margin-top: 8px; line-height: 1.5;">{{ ev.body }}</div>
+            </div>
+            <button style="border: 1px solid #D8D9DD; background: #FFFFFF; padding: 9px 16px; border-radius: 3px; font-size: 12.5px; cursor: pointer; align-self: flex-start;" style-hover="background: #F6F6F7;">RSVP</button>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ══ ABOUT US ══ -->
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="About Us" style="background: #FAFAFB;">
+    <div style="padding: 40px 28px; background: #23262C;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #FFC94D;">ABOUT US</div>
+      <div style="font-size: 32px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; margin-top: 8px; max-width: 640px;">We think hiring works better when people endorse with their name attached.</div>
+    </div>
+    <div style="padding: 30px 28px 44px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF;">
+        <sc-for list="{{ aboutStats }}" as="as2" hint-placeholder-count="4">
+          <div style="padding: 20px; border-right: 1px solid #F0F0F2;">
+            <div style="font-size: 26px; font-weight: 800;">{{ as2.value }}</div>
+            <div style="font-size: 11.5px; color: #5C5F66; margin-top: 6px; line-height: 1.4;">{{ as2.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-size: 15px; font-weight: 600; margin-top: 30px;">What we believe</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 16px;">
+        <sc-for list="{{ aboutValues }}" as="av2" hint-placeholder-count="3">
+          <div style="border-top: 2px solid #23262C; padding-top: 12px;">
+            <div style="font-size: 15px; font-weight: 700;">{{ av2.title }}</div>
+            <div style="font-size: 12.5px; line-height: 1.6; color: #5C5F66; margin-top: 8px;">{{ av2.body }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- endorsement modal -->
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; background: rgba(20,22,28,0.52); display: flex; align-items: center; justify-content: center; padding: 24px; z-index: 40;">
+      <div style="width: 100%; max-width: 880px; background: #FFFFFF; border-radius: 4px; overflow: hidden; display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.3fr); box-shadow: 0 30px 70px rgba(0,0,0,0.35);">
+        <div style="position: relative; background: linear-gradient(165deg, #FDB515 0%, #F58A0B 100%); padding: 26px 24px; color: #241A00; overflow: hidden;">
+          <div style="position: absolute; inset: 0; opacity: 0.18; background-image: linear-gradient(60deg, transparent 49.6%, #FFFFFF 50%, transparent 50.4%), linear-gradient(-60deg, transparent 49.6%, #FFFFFF 50%, transparent 50.4%); background-size: 60px 104px;"></div>
+          <div style="position: relative; font-size: 14px; font-weight: 700; color: #FFFFFF;">Work Hive</div>
+          <div style="position: relative; margin-top: 90px; font-size: 22px; font-weight: 700; line-height: 1.25; color: #FFFFFF;">{{ modalHeadline }}</div>
+          <div style="position: relative; margin-top: 12px; font-size: 12.5px; line-height: 1.6; color: rgba(255,255,255,0.9);">{{ modalSub }}</div>
+        </div>
+        <div style="padding: 22px 24px 24px; display: flex; flex-direction: column;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="flex: 1; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: #8C8F96;">HAVING TROUBLE? <a href="#0">GET SUPPORT</a></div>
+            <button onClick="{{ closeEndorsement }}" style="border: 0; background: none; font-size: 15px; color: #8C8F96; cursor: pointer;">✕</button>
+          </div>
+
+          <sc-if value="{{ step1 }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top: 14px;">
+              <div style="font-size: 19px; font-weight: 700;">Screening questions</div>
+              <div style="font-size: 12px; color: #6B6E75; margin-top: 4px;">{{ job.title }} · {{ job.company }} · {{ job.location }}</div>
+              <div style="border: 1px solid #EDEDEF; border-radius: 4px; margin-top: 16px;">
+                <sc-for list="{{ questions }}" as="q" hint-placeholder-count="3">
+                  <div style="padding: 14px 16px; border-bottom: 1px solid #F4F4F5;">
+                    <div style="font-size: 12.5px; color: #2C2F35;">{{ q.text }}</div>
+                    <select style="width: 100%; margin-top: 8px; border: 1px solid #DDDDE1; border-radius: 3px; padding: 9px 12px; font-size: 12.5px; outline: none; background-color: #FFFFFF;">
+                      <option>{{ q.answer }}</option>
+                    </select>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="display: flex; justify-content: flex-end; margin-top: 18px;">
+                <button onClick="{{ submitEndorsement }}" style="border: 0; background: #F9AD16; color: #241A00; padding: 11px 26px; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Submit</button>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ step2 }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top: 40px;">
+              <div style="font-size: 19px; font-weight: 700;">Thank you for your submission</div>
+              <div style="font-size: 12.5px; line-height: 1.65; color: #5C5F66; margin-top: 10px;">Your request has gone to the two people in your network who worked with this team. You will see their response on your dashboard, and a completed endorsement adds to your Endorsement Score.</div>
+              <div style="display: flex; gap: 20px; margin-top: 22px; border-top: 1px solid #F0F0F2; padding-top: 18px;">
+                <div>
+                  <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">ENDORSEMENT SCORE</div>
+                  <div style="font-size: 22px; font-weight: 800; margin-top: 4px;">712 <span style="font-size: 12px; font-weight: 600; color: #2E7D53;">+18</span></div>
+                </div>
+                <div style="border-left: 1px solid #EDEDEF; padding-left: 20px;">
+                  <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">TYPICAL RESPONSE</div>
+                  <div style="font-size: 15px; font-weight: 600; margin-top: 8px;">2–3 days</div>
+                </div>
+              </div>
+              <div style="display: flex; justify-content: flex-end; margin-top: 24px;">
+                <button onClick="{{ closeEndorsement }}" style="border: 0; background: #F9AD16; color: #241A00; padding: 11px 30px; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Finish</button>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1480},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#F9AD16&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#F9AD16&quot;,&quot;#FFC02E&quot;,&quot;#EE7D0E&quot;,&quot;#33363C&quot;]},&quot;startScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;dashboard&quot;,&quot;profile&quot;,&quot;search&quot;,&quot;connections&quot;,&quot;insights&quot;,&quot;ratings&quot;,&quot;salaries&quot;,&quot;cost&quot;,&quot;relocation&quot;,&quot;jobDetail&quot;,&quot;company&quot;,&quot;messages&quot;,&quot;onboarding&quot;,&quot;settings&quot;],&quot;section&quot;:&quot;Behaviour&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: null,
+    facet: "Job Function",
+    ratingTab: "Overall",
+    assisted: false,
+    graphMode: true,
+    matches: { "Work Hive Exclusive": true, "Salary Match": true, "Profile Match": true, "Experience Match": false, "Education Match": false, "Skills Match": true },
+    modal: 0,
+    facetSelections: {}, facetOpen: null, savedJobs: [], dismissedJobs: [],
+    jobIndex: 0, company: "Halcyon Group", companyTab: "Overview",
+    messagesTab: "Endorsement Requests", activeThreadIdx: 0,
+    onboardStep: 1, settingsTab: "Account", homeTab: "Overview", applyStep: 1,
+    profilePublic: true, showSalary: true, searchable: false,
+    notifEmail: true, notifEndorsement: true, notifJobs: false
+  };
+
+  get accent() { return this.props.accent ?? "#F9AD16"; }
+  get screen() { return this.state.screen ?? this.props.startScreen ?? "search"; }
+
+  go = (screen) => () => this.setState({ screen, modal: 0 });
+  goJobDetail = (i) => () => this.setState({ screen: "jobDetail", jobIndex: i, modal: 0 });
+  goCompany = (name) => () => this.setState({ screen: "company", company: name, companyTab: "Overview", modal: 0 });
+  goConnections = () => this.setState({ screen: "connections", modal: 0 });
+  goApply = (i) => () => this.setState({ screen: "apply", jobIndex: i, applyStep: 1, modal: 0 });
+
+  ticks(pct, color) {
+    const out = [], n = 26, cx = 100, cy = 84, r = 62;
+    for (let i = 0; i < n; i++) {
+      const a = Math.PI - (i / (n - 1)) * Math.PI;
+      const on = i / (n - 1) <= pct / 100;
+      out.push({
+        x1: cx + Math.cos(a) * (r - 13), y1: cy - Math.sin(a) * (r - 13),
+        x2: cx + Math.cos(a) * r, y2: cy - Math.sin(a) * r,
+        c: on ? color : "#E9E9EC"
+      });
+    }
+    return out;
+  }
+
+  renderVals() {
+    const s = this.screen, A = this.accent;
+    const insightsScreens = ["insights", "ratings", "salaries", "cost", "relocation", "company"];
+    const directSections = { mentorship: "MENTORSHIP", alumni: "ALUMNI", internships: "INTERNSHIPS", events: "EVENTS", about: "ABOUT US" };
+    const topSection = s === "home" ? "HOME" : directSections[s] ? directSections[s] : insightsScreens.indexOf(s) >= 0 ? "INSIGHTS" : "CAREERS";
+    const topNav = ["HOME", "CAREERS", "INSIGHTS", "MENTORSHIP", "ALUMNI", "INTERNSHIPS", "EVENTS", "ABOUT US"].map(label => ({
+      label,
+      bg: label === topSection ? A : "transparent",
+      fg: label === topSection ? "#241A00" : "#6B6E75",
+      go: this.go(label === "HOME" ? "home" : label === "INSIGHTS" ? "insights" : label === "CAREERS" ? "dashboard" :
+        label === "MENTORSHIP" ? "mentorship" : label === "ALUMNI" ? "alumni" : label === "INTERNSHIPS" ? "internships" :
+        label === "EVENTS" ? "events" : "about")
+    }));
+
+    const homeTab = this.state.homeTab || "Overview";
+    const subs = topSection === "HOME"
+      ? [["Overview", "home"], ["Why Work Hive", "home"], ["For Employers", "home"], ["Pricing", "home"]]
+      : topSection === "CAREERS"
+      ? [["Dashboard", "dashboard"], ["Profile Page", "profile"], ["Search Jobs", "search"], ["Connections", "connections"], ["Messages", "messages"]]
+      : topSection === "INSIGHTS"
+      ? [["Home", "insights"], ["Ratings", "ratings"], ["Salaries", "salaries"], ["Cost of Living", "cost"], ["Relocation", "relocation"]]
+      : [[{ MENTORSHIP: "Mentorship", ALUMNI: "Alumni", INTERNSHIPS: "Internships", EVENTS: "Events", "ABOUT US": "About Us" }[topSection], s]];
+    const activeLabel = s === "home" ? homeTab :
+      { dashboard: "Dashboard", profile: "Profile Page", search: "Search Jobs", connections: "Connections", messages: "Messages", insights: "Home", ratings: "Ratings", salaries: "Salaries", cost: "Cost of Living", relocation: "Relocation",
+        mentorship: "Mentorship", alumni: "Alumni", internships: "Internships", events: "Events", about: "About Us" }[s];
+    const subNav = subs.map(([label, target]) => ({
+      label,
+      go: s === "home" ? (() => this.setState({ homeTab: label })) : this.go(target),
+      weight: label === activeLabel ? 700 : 500,
+      fg: label === activeLabel ? "#16181D" : "#6B6E75",
+      line: label === activeLabel ? "#16181D" : "transparent"
+    }));
+    const homeOverview = homeTab === "Overview", homeWhy = homeTab === "Why Work Hive", homeEmployers = homeTab === "For Employers", homePricing = homeTab === "Pricing";
+
+    const facetFieldMap = {
+      "Designation": "title", "Location": "location", "Date Posted": "dateBucket", "Industry": "industry",
+      "Job Type": "jobType", "Job Function": "jobFunction", "Seniority": "seniority", "Experience": "experience",
+      "Relocation": "relocation", "Company Name": "company", "Company Type": "companyType",
+      "Company Rating": "companyRatingBucket", "Company Size": "companySize"
+    };
+    const facetSelections = this.state.facetSelections || {};
+    const uniq = (arr) => Array.from(new Set(arr));
+    const hasAnyFacet = Object.keys(facetSelections).some(k => (facetSelections[k] || []).length > 0);
+    const clearFacets = () => this.setState({ facetSelections: {}, facetOpen: null });
+
+    const matchToggles = Object.keys(this.state.matches).map(label => ({
+      label,
+      go: () => this.setState(st => ({ matches: Object.assign({}, st.matches, { [label]: !st.matches[label] }) })),
+      track: this.state.matches[label] ? A : "#5A5D64",
+      knob: this.state.matches[label] ? "16px" : "2px"
+    }));
+
+    const jobs = [
+      { title: "Product Designer", company: "Halcyon Group", location: "Dubai, United Arab Emirates", posted: "POSTED 1 DAY AGO", blurb: "Own the checkout and returns journeys across web and app for a retail group operating 340 stores in the Gulf. You will work alongside two researchers and report to the Head of Design.", skills: ["Design systems", "Prototyping", "Retail commerce"], match: "87% MATCH", endorsers: "2 people can endorse you", jobType: "Full-time", seniority: "Mid (4–7 yrs)", experience: "4–7 years", relocation: "Visa sponsored", companyType: "Retail", companySize: "1,000+", dateBucket: "Last 7 days", jobFunction: "Design", industry: "Retail & Apparel", companyRatingBucket: "4.5 & up" },
+      { title: "Senior Product Designer", company: "Kestrel Retail", location: "Abu Dhabi, United Arab Emirates", posted: "POSTED 2 DAYS AGO", blurb: "Lead design for the loyalty programme rebuild, from the current 4 million member base through to a tiered scheme launching next year. Hybrid, three days on site.", skills: ["Loyalty", "Service design", "Figma"], match: "81% MATCH", endorsers: "1 person can endorse you", jobType: "Full-time", seniority: "Senior (8–12 yrs)", experience: "8–12 years", relocation: "Local candidates only", companyType: "Retail", companySize: "1,000+", dateBucket: "Last 7 days", jobFunction: "Design", industry: "Retail & Apparel", companyRatingBucket: "4.0–4.49" },
+      { title: "Design Lead, Platform", company: "Northwind Telecom", location: "Dubai, United Arab Emirates", posted: "POSTED 3 DAYS AGO", blurb: "Set the direction for internal tooling used by 6,000 field engineers. The role carries two direct reports and a mandate to consolidate four legacy consoles into one.", skills: ["Enterprise UX", "Team leadership", "Tooling"], match: "76% MATCH", endorsers: "3 people can endorse you", jobType: "Full-time", seniority: "Lead (12–16 yrs)", experience: "10+ years", relocation: "Visa sponsored", companyType: "Telecom", companySize: "10,000+", dateBucket: "Last 7 days", jobFunction: "Design", industry: "Telecommunications", companyRatingBucket: "4.0–4.49" },
+      { title: "Product Designer, Growth", company: "Meridian Pay", location: "Riyadh, Saudi Arabia", posted: "POSTED 4 DAYS AGO", blurb: "Run the onboarding and activation surface for a payments app with 1.2 million monthly users. Expect a fast experiment cadence and close work with data.", skills: ["Experimentation", "Fintech", "Onboarding"], match: "72% MATCH", endorsers: "1 person can endorse you", jobType: "Full-time", seniority: "Mid (4–7 yrs)", experience: "4–7 years", relocation: "Visa sponsored", companyType: "Fintech", companySize: "1,000+", dateBucket: "Last 7 days", jobFunction: "Design", industry: "Financial Services", companyRatingBucket: "4.0–4.49" },
+      { title: "UX Researcher", company: "Halcyon Group", location: "Dubai, United Arab Emirates", posted: "POSTED 5 DAYS AGO", blurb: "Own generative and evaluative research for the commerce pod, including a quarterly diary study with shoppers in three markets. Arabic is useful, not required.", skills: ["Mixed methods", "Diary studies", "Synthesis"], match: "69% MATCH", endorsers: "2 people can endorse you", jobType: "Full-time", seniority: "Mid (4–7 yrs)", experience: "4–7 years", relocation: "Visa sponsored", companyType: "Retail", companySize: "1,000+", dateBucket: "Last 30 days", jobFunction: "Research", industry: "Retail & Apparel", companyRatingBucket: "4.5 & up" },
+      { title: "Design Systems Engineer", company: "Kestrel Retail", location: "Remote, Gulf hours", posted: "POSTED 6 DAYS AGO", blurb: "Maintain the component library shared by nine product teams, and take the token pipeline from Figma through to production without hand-offs.", skills: ["React", "Tokens", "Documentation"], match: "64% MATCH", endorsers: "No endorsement route yet", jobType: "Remote", seniority: "Senior (8–12 yrs)", experience: "8–12 years", relocation: "Remote — no relocation", companyType: "Retail", companySize: "1,000+", dateBucket: "Last 30 days", jobFunction: "Engineering", industry: "Retail & Apparel", companyRatingBucket: "4.0–4.49" }
+    ].map(j => Object.assign({}, j, {
+      responsibilities: j.responsibilities || ["Partner with research to define the problem before any screens get drawn.", "Ship in weekly increments and hold a design review with engineering each cycle.", "Own the metrics your work is judged against, and report on them monthly.", "Mentor at least one other designer on the team."],
+      requirements: j.requirements || ["5+ years designing shipped consumer or commerce products.", "A portfolio that shows process, not just final screens.", "Comfortable working directly with engineers rather than through a handoff doc.", "Based in or willing to relocate to the Gulf."]
+    }));
+    const jobs2 = jobs.map((j, i) => Object.assign({}, j, { idx: i, openDetail: this.goJobDetail(i), openCompany: this.goCompany(j.company) }));
+    const job = jobs2[this.state.jobIndex] || jobs2[0];
+    const sameCompanyJobs = jobs2.filter(j => j.company === job.company && j !== job).slice(0, 3);
+    const goApplyForJob = this.goApply(job.idx);
+
+    const facets = Object.keys(facetFieldMap).map(label => {
+      const field = facetFieldMap[label];
+      const values = uniq(jobs2.map(j => j[field]));
+      const selected = facetSelections[label] || [];
+      const isOpen = this.state.facetOpen === label;
+      const hasSel = selected.length > 0;
+      return {
+        label,
+        go: () => this.setState(st => ({ facetOpen: st.facetOpen === label ? null : label })),
+        bg: hasSel ? "#493a1b" : "transparent",
+        fg: hasSel ? "#FFC94D" : "#D9DADD",
+        dot: hasSel ? A : "#7D8087",
+        open: isOpen,
+        arrow: isOpen ? "rotate(180deg)" : "none",
+        options: values.map(v => ({
+          label: v,
+          go: () => this.setState(st => {
+            const cur = (st.facetSelections && st.facetSelections[label]) || [];
+            const next = cur.indexOf(v) >= 0 ? cur.filter(x => x !== v) : cur.concat([v]);
+            return { facetSelections: Object.assign({}, st.facetSelections, { [label]: next }) };
+          }),
+          bg: selected.indexOf(v) >= 0 ? A : "transparent"
+        }))
+      };
+    });
+
+    const dismissedJobs = this.state.dismissedJobs || [];
+    const savedJobs = this.state.savedJobs || [];
+    const toggleSaved = (i) => this.setState(st => {
+      const cur = st.savedJobs || [];
+      return { savedJobs: cur.indexOf(i) >= 0 ? cur.filter(x => x !== i) : cur.concat([i]) };
+    });
+    const dismissJob = (i) => this.setState(st => ({ dismissedJobs: (st.dismissedJobs || []).concat([i]) }));
+    const filteredJobs = jobs2.filter(j => {
+      if (dismissedJobs.indexOf(j.idx) >= 0) return false;
+      return Object.keys(facetSelections).every(label => {
+        const sel = facetSelections[label];
+        if (!sel || sel.length === 0) return true;
+        return sel.indexOf(j[facetFieldMap[label]]) >= 0;
+      });
+    }).map(j => Object.assign({}, j, {
+      savedActive: savedJobs.indexOf(j.idx) >= 0 ? A : "#FFFFFF",
+      saveToggle: () => toggleSaved(j.idx),
+      dismiss: () => dismissJob(j.idx),
+      openEndorsementForJob: () => this.setState({ jobIndex: j.idx, modal: 1 })
+    }));
+    const noResults = filteredJobs.length === 0;
+    const resultsMeta = filteredJobs.length + (filteredJobs.length === 1 ? " RESULT · UAE, KSA, QATAR" : " RESULTS · UAE, KSA, QATAR") + " · UPDATED 2 HOURS AGO";
+    const goCompanyFromJob = this.goCompany(job.company);
+
+    const nodePos = [
+      { role: "Category Director", org: "Vellum Sports, Bengaluru", left: "22%", top: "22%", size: "96px", bg: "#F3EEE0" },
+      { role: "Merchandising Director", org: "Aster Retail, Dubai", left: "10%", top: "58%", size: "94px", bg: "#F3EEE0" },
+      { role: "Category Head", org: "Apparel Group", left: "31%", top: "88%", size: "88px", bg: "#F3EEE0" },
+      { role: "TGM", org: "", left: "62%", top: "16%", size: "44px", bg: "#E6E6E9" },
+      { role: "Asics", org: "", left: "83%", top: "13%", size: "48px", bg: "#E6E6E9" },
+      { role: "Reebok", org: "", left: "92%", top: "35%", size: "62px", bg: "#E1E1E5" },
+      { role: "Landmark Group", org: "", left: "89%", top: "62%", size: "72px", bg: "#E6E6E9" },
+      { role: "Puma", org: "", left: "70%", top: "78%", size: "56px", bg: "#E6E6E9" },
+      { role: "SW", org: "", left: "14%", top: "82%", size: "40px", bg: "#EDEDEF" }
+    ];
+    const links = nodePos.map(n => ({ x: 520 * parseFloat(n.left) / 100, y: 426 * parseFloat(n.top) / 100 }));
+
+    const gauges = [
+      { label: "Skills Match", value: "87%", caption: "MATCH", ticks: this.ticks(87, "#7FCB9B") },
+      { label: "Experience Match", value: "77%", caption: "MATCH", ticks: this.ticks(77, "#7FCB9B") },
+      { label: "Salary Match", value: "85%", caption: "MATCH", ticks: this.ticks(85, "#7FCB9B") }
+    ];
+
+    const ratingTabs = ["Overall", "Compensation", "Benefits", "Family Benefits", "Work Culture", "Career Progression"].map(label => ({
+      label, go: () => this.setState({ ratingTab: label }),
+      bg: label === this.state.ratingTab ? A : "transparent",
+      fg: label === this.state.ratingTab ? "#241A00" : "#6B6E75",
+      weight: label === this.state.ratingTab ? 700 : 500
+    }));
+
+    const stars = (n) => [1, 2, 3, 4, 5].map(i => ({ bg: i <= n ? "#4BA96C" : "#E4E4E7" }));
+    const distribution = [
+      { label: "5 ★", width: "46%", pct: "46%", color: "#4BA96C" },
+      { label: "4 ★", width: "27%", pct: "27%", color: "#6FBE86" },
+      { label: "3 ★", width: "14%", pct: "14%", color: A },
+      { label: "2 ★", width: "8%", pct: "8%", color: "#E9A24B" },
+      { label: "1 ★", width: "5%", pct: "5%", color: "#D96C58" }
+    ];
+    const companyFacts = [
+      { label: "NUMBER OF EMPLOYEES", value: "15,000 – 20,000" },
+      { label: "WEBSITE", value: "northwindtelecom.ae" },
+      { label: "CHIEF EXECUTIVE", value: "Mohammed Al-Sayed" },
+      { label: "HR HEAD", value: "Namitha Verma" }
+    ];
+    const endorsementGroups = [
+      { title: "Reach out and get endorsed insights from current employees", people: [
+        { name: "Samantha Smith", role: "Director, Corporate Wellness", org: "NORTHWIND TELECOM", slot: "wh-cur-1", photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=60", credit: "Photo by Christopher Campbell on Unsplash", creditHref: "https://unsplash.com/@chrisjoelcampbell" },
+        { name: "Aisha Rahman", role: "Head of Sales", org: "NORTHWIND STORES", slot: "wh-cur-2", photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=200&q=60", credit: "Photo by Christopher Campbell on Unsplash", creditHref: "https://unsplash.com/@chrisjoelcampbell" },
+        { name: "Daniel Okoye", role: "Brand Director", org: "NORTHWIND CUSTOMER CARE", slot: "wh-cur-3", photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=60", credit: "Photo by Christopher Campbell on Unsplash", creditHref: "https://unsplash.com/@chrisjoelcampbell" },
+        { name: "Priya Nair", role: "Commercial Director", org: "NORTHWIND TELECOM", slot: "wh-cur-4" },
+        { name: "Omar Haddad", role: "Network Programme Lead", org: "NORTHWIND ENTERPRISE", slot: "wh-cur-5" }
+      ]},
+      { title: "Reach out and get endorsed insights from former employees", people: [
+        { name: "Lena Fischer", role: "Director, Corporate Wellness", org: "ETISALAT", slot: "wh-fmr-1", photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=60", credit: "Photo by Christopher Campbell on Unsplash", creditHref: "https://unsplash.com/@chrisjoelcampbell" },
+        { name: "Rahul Menon", role: "Head of Sales", org: "VIRGIN MOBILE", slot: "wh-fmr-2", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=60", credit: "Photo by Christopher Campbell on Unsplash", creditHref: "https://unsplash.com/@chrisjoelcampbell" },
+        { name: "Fatima Al-Zahra", role: "Brand Director", org: "MINISTRY OF ECONOMIC AFFAIRS", slot: "wh-fmr-3", photo: "https://images.unsplash.com/photo-1580489944071-1ff2e46a4ee5?auto=format&fit=crop&w=200&q=60", credit: "Photo by LinkedIn Sales Solutions on Unsplash", creditHref: "https://unsplash.com/@linkedinsalesnavigator" },
+        { name: "James Whitaker", role: "Commercial Director", org: "RTA DUBAI", slot: "wh-fmr-4" },
+        { name: "Nadia Kamal", role: "Talent Partner", org: "SEHA", slot: "wh-fmr-5" }
+      ]}
+    ];
+
+    const salaryFields = [
+      { label: "Company Name", hint: "eg. Northwind Telecom" },
+      { label: "Location", hint: "eg. City, State or Country" },
+      { label: "Industry", hint: "eg. Telecommunications" },
+      { label: "Job Title / Designation", hint: "eg. Solution Architect" },
+      { label: "Total Work Experience", hint: "eg. 10 – 15 years" },
+      { label: "Seniority Level", hint: "eg. Director" }
+    ];
+    const salaryBands = [
+      { label: "Associate (0–3 yrs)", left: "4%", width: "16%", median: "12%", range: "168 – 232" },
+      { label: "Mid (4–7 yrs)", left: "16%", width: "22%", median: "27%", range: "252 – 366" },
+      { label: "Senior (8–12 yrs)", left: "30%", width: "26%", median: "44%", range: "384 – 528" },
+      { label: "Lead (12–16 yrs)", left: "46%", width: "27%", median: "60%", range: "512 – 690" },
+      { label: "Principal (16+ yrs)", left: "60%", width: "32%", median: "78%", range: "648 – 905" }
+    ];
+    const benefits = [
+      { pct: "92%", label: "Family medical cover for spouse and children" },
+      { pct: "78%", label: "Annual home-country flight allowance" },
+      { pct: "61%", label: "School fee support, capped per child" },
+      { pct: "44%", label: "Performance bonus of 15% or more" }
+    ];
+    const comparable = [
+      { title: "Programme Manager", sample: "186 REPORTS", median: "AED 432,000", delta: "−7.7% vs role", deltaColor: "#B4483A" },
+      { title: "Technical Director", sample: "94 REPORTS", median: "AED 540,000", delta: "+15.4% vs role", deltaColor: "#2E7D53" },
+      { title: "Senior Manager", sample: "241 REPORTS", median: "AED 396,000", delta: "−15.4% vs role", deltaColor: "#B4483A" },
+      { title: "Head of IT", sample: "58 REPORTS", median: "AED 612,000", delta: "+30.8% vs role", deltaColor: "#2E7D53" }
+    ];
+
+    const costFields = [
+      { label: "City, State and Country", hint: "eg. Dubai, UAE" },
+      { label: "Job Title", hint: "eg. Chief Operating Officer" },
+      { label: "Years of Experience", hint: "eg. 10 – 15 years" },
+      { label: "Family Size", hint: "eg. With spouse and one child" },
+      { label: "Current Salary", hint: "eg. INR 6,000,000" },
+      { label: "Current Monthly Expenses", hint: "eg. INR 140,000" }
+    ];
+    const costRows = [
+      { label: "Rent, two bedrooms", a: "1,980", b: "7,400", delta: "+274%", color: "#B4483A" },
+      { label: "Utilities and internet", a: "290", b: "760", delta: "+162%", color: "#B4483A" },
+      { label: "Groceries", a: "980", b: "2,150", delta: "+119%", color: "#B4483A" },
+      { label: "Transport", a: "420", b: "890", delta: "+112%", color: "#B4483A" },
+      { label: "Schooling, one child", a: "1,240", b: "2,600", delta: "+110%", color: "#B4483A" },
+      { label: "Healthcare premiums", a: "410", b: "690", delta: "+68%", color: "#B4483A" },
+      { label: "Dining and leisure", a: "580", b: "1,120", delta: "+93%", color: "#B4483A" },
+      { label: "Household help", a: "290", b: "330", delta: "+14%", color: "#6B6E75" }
+    ].map(r => ({ ...r, bg: "#FFFFFF", weight: 400 }));
+    costRows.push({ label: "Monthly total", a: "6,190", b: "15,940", delta: "+158%", color: "#9A6A00", bg: "#FBFBFC", weight: 700 });
+
+    const quickLinks = [
+      { label: "Housing", glyph: "⌂", meta: "412 LISTINGS" },
+      { label: "Schools", glyph: "✦", meta: "86 SCHOOLS" },
+      { label: "Transportation", glyph: "➤", meta: "METRO + BUS" },
+      { label: "Talent Firms", glyph: "◈", meta: "34 AGENCIES" },
+      { label: "Residential Areas", glyph: "◉", meta: "19 DISTRICTS" }
+    ];
+
+    const questions = [
+      { text: "1. How many years of product design experience do you have?", answer: "Over 10 years" },
+      { text: "2. Are you legally eligible to work in the United Arab Emirates?", answer: "Yes" },
+      { text: "3. Would you require support with your residency permit?", answer: "Yes" }
+    ];
+
+    const homeStats = [
+      { value: "128k", label: "Verified professionals in the Gulf and South Asia" },
+      { value: "4,200", label: "Companies with employee-submitted ratings" },
+      { value: "61%", label: "Of endorsed applications reach a first interview" },
+      { value: "2.3 days", label: "Median time for an endorsement to come back" }
+    ];
+    const homeSteps = [
+      { n: "01", title: "Ask someone who knows the work", body: "Pick a role, and Work Hive shows who in your network has worked with that team. You ask them, not a stranger." },
+      { n: "02", title: "They answer three questions", body: "An endorsement is short and specific: what you worked on together, over what period, and what they would trust you with next." },
+      { n: "03", title: "The recruiter sees the source", body: "Every claim on your profile is attributed to a named person and a shared project, so it can be weighed rather than assumed." }
+    ];
+    const homeHubs = [
+      { city: "Dubai", meta: "3,140 OPEN ROLES", note: "Retail, telecom and logistics hiring hardest.", slot: "wh-hub-1", photo: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=60", credit: "Photo by Emmanuel Ikwuegbu on Unsplash", creditHref: "https://unsplash.com/@emmanuelphotos" },
+      { city: "Riyadh", meta: "2,480 OPEN ROLES", note: "Giga-project programme and delivery roles.", slot: "wh-hub-2", photo: "https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?auto=format&fit=crop&w=800&q=60", credit: "Photo by Abdulrahman Alkhalaf on Unsplash", creditHref: "https://unsplash.com/@alkalarhman" },
+      { city: "Bengaluru", meta: "5,910 OPEN ROLES", note: "Platform engineering and design systems.", slot: "wh-hub-3", photo: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=60", credit: "Photo by Aditya Vyas on Unsplash", creditHref: "https://unsplash.com/@adityav" },
+      { city: "Singapore", meta: "1,760 OPEN ROLES", note: "Regional commercial and finance leadership.", slot: "wh-hub-4", photo: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=800&q=60", credit: "Photo by Victor Garcia on Unsplash", creditHref: "https://unsplash.com/@vmxjr" }
+    ];
+    const homeTools = [
+      { title: "Company Ratings", body: "Scores from verified current and former employees, with tenure attached.", go: this.go("ratings") },
+      { title: "Salaries", body: "Self-reported total cash by seniority, refreshed every quarter.", go: this.go("salaries") },
+      { title: "Cost of Living", body: "What a move actually costs, category by category.", go: this.go("cost") },
+      { title: "Relocation", body: "One-off costs and a checklist for the first ninety days.", go: this.go("relocation") }
+    ];
+
+    const dashActivity = [
+      { who: "Aisha Rahman", act: "endorsed you", detail: "Product Designer · Halcyon Group", when: "2 HOURS AGO", state: "Complete", color: "#2E7D53", bg: "#EAF6EF" },
+      { who: "Daniel Okoye", act: "was asked to endorse", detail: "Design Lead, Platform · Northwind", when: "YESTERDAY", state: "Waiting", color: "#9A6A00", bg: "#FFF6E2" },
+      { who: "You", act: "referred Priya Nair", detail: "UX Researcher · Halcyon Group", when: "3 DAYS AGO", state: "Sent", color: "#4B4E55", bg: "#F2F2F4" },
+      { who: "Kestrel Retail", act: "viewed your profile", detail: "Senior Product Designer", when: "4 DAYS AGO", state: "Viewed", color: "#4B4E55", bg: "#F2F2F4" },
+      { who: "Lena Fischer", act: "declined to endorse", detail: "Not enough overlap on the project", when: "LAST WEEK", state: "Closed", color: "#B4483A", bg: "#FBEDEB" }
+    ];
+    const dashApps = [
+      { role: "Product Designer", company: "Halcyon Group", stage: "First interview", route: "Endorsed", pct: "62%", color: "#2E7D53" },
+      { role: "Senior Product Designer", company: "Kestrel Retail", stage: "Screening", route: "Endorsed", pct: "38%", color: "#9A6A00" },
+      { role: "Design Lead, Platform", company: "Northwind Telecom", stage: "Applied direct", route: "Direct", pct: "12%", color: "#6B6E75" },
+      { role: "Product Designer, Growth", company: "Meridian Pay", stage: "Offer discussion", route: "Referred", pct: "84%", color: "#2E7D53" }
+    ];
+    const dashTasks = [
+      { text: "Add the loyalty rebuild to your work samples", meta: "RAISES PROFILE MATCH BY ~6 POINTS" },
+      { text: "Confirm your salary expectation for Dubai roles", meta: "UNLOCKS SALARY MATCH FILTERING" },
+      { text: "Endorse Omar Haddad — he asked 5 days ago", meta: "OUTSTANDING REQUEST" }
+    ];
+
+    const profileStats = [
+      { value: "712", label: "Endorsement Score" },
+      { value: "14", label: "Endorsements received" },
+      { value: "9", label: "Endorsements given" },
+      { value: "6 yrs", label: "In the network" }
+    ];
+    const profileExp = [
+      { role: "Senior Product Designer", org: "Aster Retail", when: "2022 — PRESENT · DUBAI", body: "Own the commerce journeys across web and app. Led the checkout rebuild that moved completion from 61% to 74% across three markets." },
+      { role: "Product Designer", org: "Vellum Sports", when: "2019 — 2022 · BENGALURU", body: "Designed the in-store fulfilment tooling used by 900 staff, and set up the first shared component library." },
+      { role: "Designer", org: "Studio Kite", when: "2017 — 2019 · BENGALURU", body: "Client work across banking and travel, mostly research-led redesigns of existing products." }
+    ];
+    const profileEndorsements = [
+      { quote: "She ran the checkout rebuild end to end and held the line on scope when the deadline moved. I would hand her a platform team tomorrow.", by: "Aisha Rahman", role: "Head of Sales, Northwind Stores", basis: "WORKED TOGETHER 2022–2024 · CHECKOUT REBUILD" },
+      { quote: "Best research-to-decision translator I have worked with. Our merchandising team still uses her segmentation.", by: "Rahul Menon", role: "Category Director, Vellum Sports", basis: "WORKED TOGETHER 2019–2022 · STORE FULFILMENT" }
+    ];
+    const profileSkills = ["Design systems", "Commerce and checkout", "Service design", "Mixed-methods research", "Prototyping", "Team leadership", "Arabic (basic)", "Figma"];
+
+    const bestPlaces = [
+      { rank: "01", name: "Halcyon Group", sector: "RETAIL · DUBAI", score: "4.61", note: "Strongest on family benefits" },
+      { rank: "02", name: "Meridian Pay", sector: "FINTECH · RIYADH", score: "4.48", note: "Strongest on career progression" },
+      { rank: "03", name: "Kestrel Retail", sector: "RETAIL · ABU DHABI", score: "4.32", note: "Strongest on work culture" },
+      { rank: "04", name: "Northwind Telecom", sector: "TELECOM · DUBAI", score: "4.13", note: "Strongest on compensation" },
+      { rank: "05", name: "Aster Retail", sector: "RETAIL · DUBAI", score: "4.05", note: "Strongest on flexibility" }
+    ];
+
+    const relocFields = [
+      { label: "Relocating From", hint: "eg. Gurugram, India" },
+      { label: "Relocating To", hint: "eg. Dubai, UAE" },
+      { label: "Family Size", hint: "eg. Spouse and one child" },
+      { label: "Number of Bedrooms (current)", hint: "eg. 3" },
+      { label: "Current Salary", hint: "eg. INR 6,000,000" },
+      { label: "Current Monthly Expenses", hint: "eg. INR 140,000" }
+    ];
+    const relocRows = [
+      { label: "Visa and medical, per adult", a: "AED 3,800", b: "ONE-OFF", note: "Employer covers in 78% of reports" },
+      { label: "Shipping, 20ft container", a: "AED 11,400", b: "ONE-OFF", note: "Sea freight, 4–6 weeks door to door" },
+      { label: "Flights for the household", a: "AED 4,200", b: "ONE-OFF", note: "Three one-way economy tickets" },
+      { label: "Rent deposit and agency fee", a: "AED 14,800", b: "ONE-OFF", note: "5% agency plus one cheque deposit" },
+      { label: "School admission and deposits", a: "AED 9,600", b: "ONE-OFF", note: "Per child, non-refundable in most schools" },
+      { label: "Car deposit or first lease", a: "AED 5,400", b: "ONE-OFF", note: "Lease is more common in year one" },
+      { label: "Furnishing a two-bedroom", a: "AED 18,000", b: "ONE-OFF", note: "Mid-range, excluding appliances" }
+    ];
+    const relocSteps = [
+      { n: "90 DAYS OUT", title: "Offer, contract and salary certificate", body: "Ask for the relocation clause in writing. It determines whether a third of the table above is yours to pay." },
+      { n: "60 DAYS OUT", title: "Entry permit and medical", body: "The employer files the permit. Medical and Emirates ID follow within two weeks of landing." },
+      { n: "30 DAYS OUT", title: "Schooling and shipping", body: "School places move faster than leases. Book assessments before you book freight." },
+      { n: "FIRST 30 DAYS", title: "Lease, bank and car", body: "Most landlords want post-dated cheques, which need a salary transfer letter first." }
+    ];
+
+    const companies = {
+      "Halcyon Group": { name: "Halcyon Group", sector: "RETAIL · DUBAI, UAE", rating: "4.61", about: "Halcyon Group runs 340 stores and a fast-growing e-commerce arm across the Gulf. Design and product sit together under one VP, with a mandate to unify the checkout experience across brands by 2027.", facts: [
+        { label: "NUMBER OF EMPLOYEES", value: "8,000 – 12,000" }, { label: "WEBSITE", value: "halcyongroup.ae" },
+        { label: "CHIEF EXECUTIVE", value: "Fatima Al Nuaimi" }, { label: "HR HEAD", value: "Karan Bhatia" }
+      ]},
+      "Northwind Telecom": { name: "Northwind Telecom", sector: "TELECOM · DUBAI, UAE", rating: "4.13", about: "Northwind Telecom operates fixed-line, mobile and enterprise networks across the Gulf, with roughly 8.6 million subscribers. Most current hiring sits in its enterprise cloud arm, built out since 2021.", facts: companyFacts },
+      "Kestrel Retail": { name: "Kestrel Retail", sector: "RETAIL · ABU DHABI, UAE", rating: "4.32", about: "Kestrel Retail is rebuilding its loyalty programme end to end, moving a 4 million member base onto a tiered scheme launching next year. Design, engineering and merchandising co-locate three days a week.", facts: [
+        { label: "NUMBER OF EMPLOYEES", value: "5,000 – 8,000" }, { label: "WEBSITE", value: "kestrelretail.ae" },
+        { label: "CHIEF EXECUTIVE", value: "Yusuf Al Mansoori" }, { label: "HR HEAD", value: "Divya Krishnan" }
+      ]},
+      "Meridian Pay": { name: "Meridian Pay", sector: "FINTECH · RIYADH, KSA", rating: "4.48", about: "Meridian Pay runs a consumer payments app with 1.2 million monthly users and a fast experiment cadence. Product, data and design ship in the same two-week cycle.", facts: [
+        { label: "NUMBER OF EMPLOYEES", value: "1,200 – 2,000" }, { label: "WEBSITE", value: "meridianpay.sa" },
+        { label: "CHIEF EXECUTIVE", value: "Abdullah Al Qahtani" }, { label: "HR HEAD", value: "Sara Othman" }
+      ]}
+    };
+    const company = companies[this.state.company] || companies["Halcyon Group"];
+    const companyInitial = company.name.charAt(0);
+    const companyTab = this.state.companyTab || "Overview";
+    const companyTabs = ["Overview", "Open Roles", "People"].map(label => ({
+      label, go: () => this.setState({ companyTab: label }),
+      bg: label === companyTab ? A : "transparent", fg: label === companyTab ? "#241A00" : "#6B6E75",
+      weight: label === companyTab ? 700 : 500
+    }));
+    const companyOverview = companyTab === "Overview";
+    const companyRoles = companyTab === "Open Roles";
+    const companyPeople = companyTab === "People";
+    const companyJobs = jobs2.filter(j => j.company === company.name);
+    const companyNoJobs = companyJobs.length === 0;
+
+    const allThreads = [
+      { type: "endorsement", name: "Daniel Okoye", subtitle: "Design Lead, Platform · Northwind Telecom", preview: "Can you endorsement for my work on the fulfilment console?", when: "2H AGO", unread: true, isEndorsementRequest: true, messages: [
+        { text: "Hi Meera — Northwind asked if you could speak to the fulfilment console rebuild we shipped together.", when: "2:14 PM", align: "flex-start", bg: "#F2F2F4", fg: "#16181D" }
+      ]},
+      { type: "endorsement", name: "Omar Haddad", subtitle: "Network Programme Lead · Northwind Enterprise", preview: "Following up on the endorsement request from last week.", when: "1D AGO", unread: true, isEndorsementRequest: true, messages: [
+        { text: "Hey — following up on the endorsement request. No rush, just don't want it to get lost.", when: "Yesterday", align: "flex-start", bg: "#F2F2F4", fg: "#16181D" }
+      ]},
+      { type: "message", name: "Aisha Rahman", subtitle: "Head of Sales, Northwind Stores", preview: "Thanks for endorsing — means a lot.", when: "2D AGO", unread: false, isEndorsementRequest: false, messages: [
+        { text: "Just saw your endorsement went through — thank you, means a lot.", when: "Monday", align: "flex-start", bg: "#F2F2F4", fg: "#16181D" },
+        { text: "Anytime. The checkout rebuild was genuinely a team effort.", when: "Monday", align: "flex-end", bg: "#F9AD16", fg: "#241A00" }
+      ]},
+      { type: "message", name: "Kestrel Retail Recruiting", subtitle: "Talent Acquisition", preview: "We'd like to move you to a first interview.", when: "4D AGO", unread: false, isEndorsementRequest: false, messages: [
+        { text: "Hi Meera, we'd like to move you to a first interview for Senior Product Designer. Does Thursday 3pm work?", when: "Last week", align: "flex-start", bg: "#F2F2F4", fg: "#16181D" }
+      ]},
+      { type: "message", name: "Priya Nair", subtitle: "UX Researcher · referred by you", preview: "Just applied — thank you for the referral!", when: "1W AGO", unread: false, isEndorsementRequest: false, messages: [
+        { text: "Just applied to the UX Researcher role — thank you for the referral!", when: "Last week", align: "flex-start", bg: "#F2F2F4", fg: "#16181D" }
+      ]}
+    ];
+    const messagesTab = this.state.messagesTab || "Endorsement Requests";
+    const msgTabs = ["Endorsement Requests", "Messages"].map(label => ({
+      label, go: () => this.setState({ messagesTab: label, activeThreadIdx: 0 }),
+      bg: label === messagesTab ? A : "transparent", fg: label === messagesTab ? "#241A00" : "#6B6E75",
+      weight: label === messagesTab ? 700 : 500
+    }));
+    const activeThreadIdx = this.state.activeThreadIdx || 0;
+    const threads = allThreads.filter(t => messagesTab === "Endorsement Requests" ? t.type === "endorsement" : t.type === "message")
+      .map((t, i) => ({ ...t, go: () => this.setState({ activeThreadIdx: i }), bg: i === activeThreadIdx ? "#FCFAF3" : "#FFFFFF" }));
+    const activeThread = threads[activeThreadIdx] || threads[0] || { name: "", subtitle: "", messages: [], isEndorsementRequest: false };
+
+    const onboardStep = this.state.onboardStep || 1;
+    const onboardSteps = [1, 2, 3].map(n => ({ bg: n <= onboardStep ? A : "#EDEDEF" }));
+    const onboardExpRows = [
+      { role: "Senior Product Designer", org: "Aster Retail", when: "2022 — Present", overlap: "4 CONNECTIONS OVERLAP" },
+      { role: "Product Designer", org: "Vellum Sports", when: "2019 — 2022", overlap: "7 CONNECTIONS OVERLAP" }
+    ];
+    const onboardSuggested = [
+      { name: "Rahul Menon", role: "Category Director, Vellum Sports" },
+      { name: "Samantha Smith", role: "Director, Corporate Wellness" },
+      { name: "Lena Fischer", role: "Formerly Etisalat" }
+    ];
+    const onboardBack = () => this.setState(st => ({ onboardStep: Math.max(1, (st.onboardStep || 1) - 1) }));
+    const onboardNext = () => {
+      if (onboardStep >= 3) this.setState({ screen: "dashboard", onboardStep: 1 });
+      else this.setState(st => ({ onboardStep: (st.onboardStep || 1) + 1 }));
+    };
+    const onboardBackVis = onboardStep === 1 ? "hidden" : "visible";
+    const onboardNextLabel = onboardStep >= 3 ? "Finish and go to dashboard" : "Continue";
+    const onboardStepLabel = String(onboardStep);
+    const onboard1 = onboardStep === 1, onboard2 = onboardStep === 2, onboard3 = onboardStep === 3;
+
+    const settingsTab = this.state.settingsTab || "Account";
+    const settingsNav = ["Account", "Privacy", "Notifications", "Connected Accounts"].map(label => ({
+      label, go: () => this.setState({ settingsTab: label }),
+      bg: label === settingsTab ? "#F4F4F5" : "transparent", fg: label === settingsTab ? "#16181D" : "#6B6E75",
+      weight: label === settingsTab ? 700 : 500
+    }));
+    const settingsAccount = settingsTab === "Account";
+    const settingsPrivacy = settingsTab === "Privacy";
+    const settingsNotifs = settingsTab === "Notifications";
+    const settingsBilling = settingsTab === "Connected Accounts";
+    const privacyToggles = [
+      { key: "profilePublic", label: "Public profile", body: "Anyone can view your profile and endorsements without signing in." },
+      { key: "showSalary", label: "Show salary expectation", body: "Recruiters see your stated range when filtering by Salary Match." },
+      { key: "searchable", label: "Appear in candidate search", body: "Recruiters can find you by skill and location even without applying." }
+    ].map(t => ({ label: t.label, body: t.body, go: () => this.setState(st => ({ [t.key]: !st[t.key] })), track: this.state[t.key] ? A : "#D5D5D9", knob: this.state[t.key] ? "20px" : "2px" }));
+    const notifToggles = [
+      { key: "notifEmail", label: "Email notifications", body: "Endorsement responses, application updates and weekly digest." },
+      { key: "notifEndorsement", label: "Endorsement request alerts", body: "Get notified the moment someone asks you to endorsement for them." },
+      { key: "notifJobs", label: "New matching roles", body: "Roles that clear your Skills and Salary Match thresholds." }
+    ].map(t => ({ label: t.label, body: t.body, go: () => this.setState(st => ({ [t.key]: !st[t.key] })), track: this.state[t.key] ? A : "#D5D5D9", knob: this.state[t.key] ? "20px" : "2px" }));
+    const connectedAccounts = [
+      { label: "LinkedIn", status: "Connected · synced 3 days ago", action: "Disconnect" },
+      { label: "Google Calendar", status: "Not connected", action: "Connect" },
+      { label: "Resume / CV", status: "Meera_Iyer_CV.pdf uploaded", action: "Replace" }
+    ];
+
+    const applyStep = this.state.applyStep || 1;
+    const applyStep1 = applyStep === 1, applyStep2 = applyStep === 2;
+    const submitApply = () => this.setState({ applyStep: 2 });
+
+    const mentors = [
+      { name: "Aisha Rahman", role: "Head of Sales, Northwind Stores", focus: "Career transitions into commercial leadership", photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=60", credit: "Photo by Brooke Cagle on Unsplash", creditHref: "https://unsplash.com/@brookecagle" },
+      { name: "Karan Bhatia", role: "HR Director, Halcyon Group", focus: "Building a design career in retail", photo: "https://images.unsplash.com/photo-1580489944071-1ff2e46a4ee5?auto=format&fit=crop&w=300&q=60", credit: "Photo by LinkedIn Sales Solutions on Unsplash", creditHref: "https://unsplash.com/@linkedinsalesnavigator" },
+      { name: "Rahul Menon", role: "Category Director, Vellum Sports", focus: "Moving from IC to people management", photo: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=crop&w=300&q=60", credit: "Photo by LinkedIn Sales Solutions on Unsplash", creditHref: "https://unsplash.com/@linkedinsalesnavigator" }
+    ];
+
+    const alumniMoves = [
+      { name: "Priya Nair", from: "UX Researcher, Studio Kite", to: "Senior Researcher, Halcyon Group", when: "2025" },
+      { name: "Daniel Okoye", from: "Design Lead, Etisalat", to: "Design Lead, Platform, Northwind Telecom", when: "2024" },
+      { name: "Lena Fischer", from: "Talent Partner, Virgin Mobile", to: "Head of Talent, Meridian Pay", when: "2024" },
+      { name: "James Whitaker", from: "Programme Lead, RTA Dubai", to: "Director of Operations, Kestrel Retail", when: "2023" }
+    ];
+
+    const internshipListings = [
+      { title: "Product Design Intern", company: "Halcyon Group", location: "Dubai, UAE", term: "6 months · Paid", note: "Works directly on the checkout rebuild squad." },
+      { title: "Research Intern", company: "Aster Retail", location: "Dubai, UAE", term: "3 months · Paid", note: "Supports the quarterly shopper diary study." },
+      { title: "Data Analyst Intern", company: "Meridian Pay", location: "Riyadh, KSA", term: "6 months · Paid", note: "Embedded with the growth and experimentation team." }
+    ];
+
+    const upcomingEvents = [
+      { title: "Endorsement Networks in Practice", date: "SEP 24, 2026", format: "In person · Dubai", body: "A panel on how attributed references are changing Gulf hiring, with talent leads from three retailers." },
+      { title: "Design Systems at Scale", date: "OCT 08, 2026", format: "Virtual", body: "Kestrel Retail's design systems team walks through their token pipeline." },
+      { title: "Relocating for a Role: What It Actually Costs", date: "OCT 21, 2026", format: "Virtual", body: "A working session using live Work Hive relocation data." }
+    ];
+
+    const aboutStats = [
+      { value: "2021", label: "Founded, in Dubai" },
+      { value: "128k", label: "Verified professionals" },
+      { value: "4,200", label: "Companies rated" },
+      { value: "6", label: "Markets across the Gulf and South Asia" }
+    ];
+    const aboutValues = [
+      { title: "Evidence over assertion", body: "A claim on a profile is only as good as who is willing to put their name behind it." },
+      { title: "Attribution, always", body: "Every rating, salary figure and endorsement carries who gave it and when." },
+      { title: "Built for the region", body: "Relocation, cost of living and visa mechanics are modelled for the Gulf and South Asia specifically, not bolted on from a US product." }
+    ];
+
+    const employerPoints = [
+      { title: "See past the resume", body: "Every candidate arrives with named, attributed endorsements from people who worked with them — not just a list of past titles." },
+      { title: "Faster first interviews", body: "Endorsed applications reach a first interview 61% of the time, against a market average closer to 18%." },
+      { title: "Transparent by design", body: "Your company's ratings and salary data are visible to candidates whether you engage with them or not — most employers choose to." }
+    ];
+    const pricingTiers = [
+      { name: "Candidate", price: "Free", body: "Full access to search, ratings, salaries and your endorsement network.", features: ["Unlimited applications", "Unlimited endorsement requests", "Full insights access"] },
+      { name: "Recruiter Starter", price: "AED 1,200/mo", body: "For a single hiring team getting started with endorsed candidates.", features: ["Up to 10 active roles", "Candidate search", "Standard support"] },
+      { name: "Recruiter Growth", price: "AED 4,500/mo", body: "For talent teams hiring across multiple markets.", features: ["Unlimited active roles", "Advanced candidate search", "Dedicated account manager"] }
+    ];
+
+    return {
+      topNav, subNav, facets, matchToggles, filteredJobs, noResults, resultsMeta, hasAnyFacet, clearFacets, goConnections: this.goConnections, nodes: nodePos, links, gauges,
+      homeStats, homeSteps, homeHubs, homeTools, dashActivity, dashApps, dashTasks,
+      profileStats, profileExp, profileEndorsements, profileSkills, bestPlaces, relocFields, relocRows, relocSteps,
+      isHome: s === "home", isDashboard: s === "dashboard", isProfile: s === "profile",
+      isInsights: s === "insights", isRelocation: s === "relocation",
+      goSearch: this.go("search"), goRatings: this.go("ratings"), goSalaries: this.go("salaries"),
+      goCost: this.go("cost"), goProfile: this.go("profile"), goDashboard: this.go("dashboard"),
+      goRelocation: this.go("relocation"), goHome: this.go("home"), goInsights: this.go("insights"),
+      ratingTabs, starsEndorsed: stars(4), starsExternal: stars(4), distribution, companyFacts, endorsementGroups,
+      salaryFields, salaryBands, benefits, comparable, costFields, costRows, quickLinks, questions,
+      isSearch: s === "search", isConnections: s === "connections", isRatings: s === "ratings",
+      isSalaries: s === "salaries", isCost: s === "cost",
+      assisted: this.state.assisted,
+      assistedTrack: this.state.assisted ? A : "#D5D5D9",
+      assistedKnob: this.state.assisted ? "20px" : "2px",
+      toggleAssisted: () => this.setState(st => ({ assisted: !st.assisted })),
+      graphMode: this.state.graphMode,
+      graphToggleLabel: this.state.graphMode ? "Show normal mode" : "Show network mode",
+      graphTrack: this.state.graphMode ? A : "#D5D5D9",
+      graphKnob: this.state.graphMode ? "20px" : "2px",
+      toggleGraph: () => this.setState(st => ({ graphMode: !st.graphMode })),
+      modalOpen: this.state.modal > 0,
+      step1: this.state.modal === 1,
+      step2: this.state.modal === 2,
+      modalHeadline: this.state.modal === 2 ? "An endorsement carries more weight than an application." : "Three questions before we ask your network.",
+      modalSub: this.state.modal === 2 ? "Referrals you complete for others raise your own standing in the network." : "Your answers go to the recruiter with the endorsement, so nothing is asked twice.",
+      openEndorsement: () => this.setState({ modal: 1 }),
+      submitEndorsement: () => this.setState({ modal: 2 }),
+      closeEndorsement: () => this.setState({ modal: 0 }),
+      job, jobEndorsers: (endorsementGroups[0] && endorsementGroups[0].people.slice(0, 3)) || [],
+      jobCompanyBlurb: (companies[job.company] && companies[job.company].about) || "",
+      sameCompanyJobs, goCompanyFromJob: this.goCompany(job.company), goApplyForJob,
+      company, companyInitial, companyTabs, companyOverview, companyRoles, companyPeople,
+      companyJobs, companyNoJobs, companyProfileFacts: company.facts,
+      isJobDetail: s === "jobDetail", isCompany: s === "company",
+      isMessages: s === "messages", isOnboarding: s === "onboarding", isSettings: s === "settings",
+      msgTabs, threads, activeThread,
+      onboardSteps, onboardStepLabel, onboard1, onboard2, onboard3, onboardExpRows, onboardSuggested,
+      onboardBack, onboardNext, onboardBackVis, onboardNextLabel,
+      settingsNav, settingsAccount, settingsPrivacy, settingsNotifs, settingsBilling,
+      privacyToggles, notifToggles, connectedAccounts,
+      goMessages: this.go("messages"), goOnboarding: this.go("onboarding"), goSettings: this.go("settings"),
+      homeOverview, homeWhy, homeEmployers, homePricing, employerPoints, pricingTiers,
+      isApply: s === "apply", applyStep1, applyStep2, submitApply,
+      isMentorship: s === "mentorship", isAlumni: s === "alumni", isInternships: s === "internships",
+      isEvents: s === "events", isAbout: s === "about",
+      mentors, alumniMoves, internshipListings, upcomingEvents, aboutStats, aboutValues,
+      goMentorship: this.go("mentorship"), goAlumni: this.go("alumni"), goInternships: this.go("internships"),
+      goEvents: this.go("events"), goAbout: this.go("about")
+    };
+  }
+}
+
+</script>
+</body>
+</html>
