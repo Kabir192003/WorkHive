@@ -658,17 +658,29 @@
       <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
         <div style="display: flex; align-items: center; gap: 12px;">
           <div style="font-size: 15px; font-weight: 600; flex: 1;">Quick links for <span style="color: #C07C05;">{{ costToCityShort }}</span></div>
-          <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">‹</span>
-          <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">›</span>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 16px;">
           <sc-for list="{{ quickLinks }}" as="q" hint-placeholder-count="5">
-            <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 18px 14px; display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;" style-hover="border-color: #D8D9DD; background: #FCFCFD;">
+            <div onClick="{{ q.go }}" style="border: 1px solid {{ q.border }}; background: {{ q.bg }}; border-radius: 4px; padding: 18px 14px; display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;" style-hover="border-color: #D8D9DD;">
               <span style="width: 30px; height: 34px; background: #FFF3D6; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); display: grid; place-items: center; font-size: 13px; color: #9A6A00;">{{ q.glyph }}</span>
               <div style="font-size: 12.5px; font-weight: 500;">{{ q.label }}</div>
               <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.06em;">{{ q.meta }}</div>
             </div>
           </sc-for>
+        </div>
+        <div style="margin-top: 18px; border-top: 1px solid #F0F0F2; padding-top: 16px;">
+          <div style="font-size: 13px; font-weight: 600;">{{ quickLinkListingsTitle }}</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+            <sc-for list="{{ quickLinkListings }}" as="ql" hint-placeholder-count="5">
+              <div style="display: flex; align-items: center; gap: 12px; border: 1px solid #F0F0F2; border-radius: 4px; padding: 10px 14px;">
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 12.5px; font-weight: 600;">{{ ql.title }}</div>
+                  <div style="font-size: 11px; color: #8C8F96; margin-top: 2px;">{{ ql.sub }}</div>
+                </div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #9A6A00; flex: none;">{{ ql.meta }}</div>
+              </div>
+            </sc-for>
+          </div>
         </div>
       </section>
     </div>
@@ -1176,18 +1188,30 @@
 
       <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
         <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="font-size: 15px; font-weight: 600; flex: 1;">Quick links for <span style="color: #C07C05;">Dubai</span></div>
-          <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">‹</span>
-          <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">›</span>
+          <div style="font-size: 15px; font-weight: 600; flex: 1;">Quick links for <span style="color: #C07C05;">{{ costToCityShort }}</span></div>
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 16px;">
           <sc-for list="{{ quickLinks }}" as="q" hint-placeholder-count="5">
-            <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 18px 14px; display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;" style-hover="border-color: #D8D9DD; background: #FCFCFD;">
+            <div onClick="{{ q.go }}" style="border: 1px solid {{ q.border }}; background: {{ q.bg }}; border-radius: 4px; padding: 18px 14px; display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer;" style-hover="border-color: #D8D9DD;">
               <span style="width: 30px; height: 34px; background: #FFF3D6; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); display: grid; place-items: center; font-size: 13px; color: #9A6A00;">{{ q.glyph }}</span>
               <div style="font-size: 12.5px; font-weight: 500;">{{ q.label }}</div>
               <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.06em;">{{ q.meta }}</div>
             </div>
           </sc-for>
+        </div>
+        <div style="margin-top: 18px; border-top: 1px solid #F0F0F2; padding-top: 16px;">
+          <div style="font-size: 13px; font-weight: 600;">{{ quickLinkListingsTitle }}</div>
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+            <sc-for list="{{ quickLinkListings }}" as="ql" hint-placeholder-count="5">
+              <div style="display: flex; align-items: center; gap: 12px; border: 1px solid #F0F0F2; border-radius: 4px; padding: 10px 14px;">
+                <div style="flex: 1; min-width: 0;">
+                  <div style="font-size: 12.5px; font-weight: 600;">{{ ql.title }}</div>
+                  <div style="font-size: 11px; color: #8C8F96; margin-top: 2px;">{{ ql.sub }}</div>
+                </div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #9A6A00; flex: none;">{{ ql.meta }}</div>
+              </div>
+            </sc-for>
+          </div>
         </div>
       </section>
     </div>
@@ -1863,7 +1887,8 @@ class Component extends DCLogic {
       { role: "Product Designer", org: "Vellum Sports", when: "2019 — 2022 · BENGALURU", body: "Designed the in-store fulfilment tooling used by 900 staff, and set up the first shared component library." },
       { role: "Designer", org: "Studio Kite", when: "2017 — 2019 · BENGALURU", body: "Client work across banking and travel, mostly research-led redesigns of existing products." }
     ],
-    costFromCity: "Bengaluru, India", costToCity: "Dubai, United Arab Emirates", costCurrency: "AED"
+    costFromCity: "Bengaluru, India", costToCity: "Dubai, United Arab Emirates", costCurrency: "AED",
+    quickLinkOpen: "Housing"
   };
 
   get accent() { return this.props.accent ?? "#F9AD16"; }
@@ -1979,6 +2004,37 @@ class Component extends DCLogic {
       { label: "Talent Firms", glyph: "◈", meta: (10 + seed % 50) + " AGENCIES" },
       { label: "Residential Areas", glyph: "◉", meta: (8 + seed % 30) + " DISTRICTS" }
     ];
+  }
+
+  cityQuickLinkListings(cityName, category) {
+    const seed = this.hashStr(cityName + "|" + category);
+    const rnd = (n, salt) => (this.hashStr(cityName + category + salt) % n);
+    const cityShort = cityName.split(",")[0];
+    const streets = ["Palm Avenue", "Marina Walk", "Garden Road", "Union Square", "Lakeview Lane", "Central Boulevard", "Harbour Street", "Hilltop Drive", "Riverside Close", "Market Street"];
+    const buildings = ["Skyline Residences", "The Pearl Tower", "Greenview Apartments", "Meridian Court", "Sunrise Heights", "Oasis Gardens", "The Beacon", "Willow Park Homes"];
+    if (category === "Housing") {
+      return Array.from({ length: 5 }, (_, i) => {
+        const beds = 1 + rnd(3, "b" + i);
+        const priceBase = 800 + rnd(2200, "p" + i);
+        return { title: buildings[(seed + i) % buildings.length] + ", " + cityShort, sub: beds + " bed · " + streets[(seed + i * 3) % streets.length], meta: "$" + priceBase.toLocaleString("en-US") + "/mo" };
+      });
+    }
+    if (category === "Schools") {
+      const names = ["International Academy", "Global Grammar School", "Riverside School", "The British School", "Cambridge College", "Heritage International", "St. Andrew's School", "Newton International"];
+      const boards = ["IB", "British Curriculum", "American Curriculum", "CBSE", "Local Board"];
+      return Array.from({ length: 5 }, (_, i) => ({ title: cityShort + " " + names[(seed + i) % names.length], sub: boards[(seed + i * 2) % boards.length] + " · Ages 4–18", meta: "$" + (300 + rnd(900, "s" + i)) + "/mo fees" }));
+    }
+    if (category === "Transportation") {
+      const modes = ["Metro Line", "Bus Route", "Tram Line", "Rail Link", "Ferry Route"];
+      return Array.from({ length: 5 }, (_, i) => ({ title: modes[(seed + i) % modes.length] + " " + (i + 1), sub: "Connects downtown to suburbs", meta: (10 + rnd(40, "t" + i)) + " min avg" }));
+    }
+    if (category === "Talent Firms") {
+      const names = ["Meridian Search", "Pinnacle Talent", "Northbridge Recruiting", "Anchor Partners", "Beacon HR Solutions", "Clearpath Staffing", "Kestrel Talent Group"];
+      return Array.from({ length: 5 }, (_, i) => ({ title: names[(seed + i) % names.length], sub: cityShort + " · Specialist recruiter", meta: (2 + rnd(18, "a" + i)) + " yrs active" }));
+    }
+    // Residential Areas
+    const districts = ["Old Town", "Marina District", "Business Bay", "Garden Quarter", "Riverside", "The Hills", "Downtown Core", "Lakeside", "Uptown", "Harbourfront"];
+    return Array.from({ length: 5 }, (_, i) => ({ title: districts[(seed + i) % districts.length], sub: cityShort + " · Popular with relocating professionals", meta: (rnd(30, "r" + i) + 5) + " min to CBD" }));
   }
 
   ratingsBreakdown(company, tab) {
@@ -2388,7 +2444,16 @@ class Component extends DCLogic {
       { label: "Family Size", hint: "eg. With spouse and one child", isSelect: false, isText: true }
     ];
 
-    const quickLinks = this.cityQuickLinks(costToCity);
+    const quickLinkOpen = this.state.quickLinkOpen || "Housing";
+    const quickLinks = this.cityQuickLinks(costToCity).map(q => ({
+      ...q,
+      active: q.label === quickLinkOpen,
+      bg: q.label === quickLinkOpen ? "#FFF8E6" : "#FFFFFF",
+      border: q.label === quickLinkOpen ? "#F0DFB0" : "#EDEDEF",
+      go: () => this.setState({ quickLinkOpen: q.label })
+    }));
+    const quickLinkListings = this.cityQuickLinkListings(costToCity, quickLinkOpen);
+    const quickLinkListingsTitle = quickLinkOpen + " in " + costToCityShort;
 
     const questions = [
       { text: "1. How many years of product design experience do you have?", answer: "Over 10 years" },
@@ -3424,6 +3489,7 @@ class Component extends DCLogic {
       ratingsCompanyName: company.name, ratingsCompanySector: company.sector,
       salaryFields, salaryBands, benefits, comparable, costFields, costRows, quickLinks, questions,
       costFromCityShort, costToCityShort, costFromTotal, costToTotal, costDeltaPct, costSalaryToMatch, costCurrency,
+      quickLinkListings, quickLinkListingsTitle,
       isSearch: s === "search", isConnections: s === "connections", isRatings: s === "ratings",
       isSalaries: s === "salaries", isCost: s === "cost",
       assisted: this.state.assisted,
