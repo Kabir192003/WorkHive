@@ -582,11 +582,11 @@
       <div style="position: absolute; left: 28px; right: 28px; bottom: 44px; display: grid; grid-template-columns: minmax(0, 1fr) 148px; background: rgba(255,255,255,0.96); border-radius: 4px; overflow: hidden;">
         <label style="display: flex; align-items: center; gap: 9px; padding: 14px 16px;">
           <span style="color: #9A9CA1; font-size: 12px;">⌕</span>
-          <input placeholder="City, State and Country" value="Dubai, UAE" style="border: 0; outline: none; background: none; width: 100%; font-size: 13px;">
+          <input placeholder="City, State and Country" value="{{ costToCityShort }}" readonly style="border: 0; outline: none; background: none; width: 100%; font-size: 13px; color: #4B4E55;">
         </label>
         <button onClick="{{ quickSearchScroll }}" style="border: 0; background: #23262C; color: #FFFFFF; font-size: 13px; font-weight: 600; cursor: pointer;">Quick Search</button>
       </div>
-      <div style="position: absolute; left: 28px; bottom: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.72); letter-spacing: 0.08em;">POPULAR: DUBAI · ABU DHABI · RIYADH · SINGAPORE</div>
+      <div style="position: absolute; left: 28px; bottom: 18px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.72); letter-spacing: 0.08em;">POPULAR: DUBAI · SINGAPORE · MUMBAI · LONDON · NEW YORK</div>
     </div>
 
     <div style="padding: 26px 28px 40px; display: flex; flex-direction: column; gap: 20px; background: #FAFAFB;">
@@ -596,7 +596,16 @@
           <sc-for list="{{ costFields }}" as="f" hint-placeholder-count="6">
             <label style="display: block;">
               <span style="display: block; font-size: 11.5px; color: #6B6E75; margin-bottom: 6px;">{{ f.label }}</span>
-              <input placeholder="{{ f.hint }}" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 10px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;">
+              <sc-if value="{{ f.isSelect }}" hint-placeholder-val="{{ false }}">
+                <select value="{{ f.value }}" onchange="{{ f.go }}" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 10px 12px; font-size: 13px; outline: none; background: #FFFFFF;" style-focus="border-color: #F9AD16;">
+                  <sc-for list="{{ f.options }}" as="o" hint-placeholder-count="6">
+                    <option value="{{ o.value }}">{{ o.label }}</option>
+                  </sc-for>
+                </select>
+              </sc-if>
+              <sc-if value="{{ f.isText }}" hint-placeholder-val="{{ false }}">
+                <input placeholder="{{ f.hint }}" style="width: 100%; border: 1px solid #DDDDE1; border-radius: 3px; padding: 10px 12px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;">
+              </sc-if>
             </label>
           </sc-for>
         </div>
@@ -604,33 +613,33 @@
       </section>
 
       <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 24px;">
-        <div style="font-size: 16px; font-weight: 700;">Detailed cost of living between <span style="color: #C07C05;">Gurugram, India</span> and <span style="color: #C07C05;">Dubai, UAE</span></div>
-        <div style="font-size: 12.5px; line-height: 1.65; color: #5C5F66; margin-top: 8px; max-width: 800px;">Monthly figures for a household of three, converted at 0.044 AED to the rupee. Housing assumes a two-bedroom lease within 30 minutes of the business district.</div>
+        <div style="font-size: 16px; font-weight: 700;">Detailed cost of living between <span style="color: #C07C05;">{{ costFromCityShort }}</span> and <span style="color: #C07C05;">{{ costToCityShort }}</span></div>
+        <div style="font-size: 12.5px; line-height: 1.65; color: #5C5F66; margin-top: 8px; max-width: 800px;">Monthly figures for a household of three, shown in {{ costCurrency }}. Housing assumes a two-bedroom lease within 30 minutes of the business district.</div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 20px;">
           <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 16px;">
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">MONTHLY, GURUGRAM</div>
-            <div style="font-size: 24px; font-weight: 800; margin-top: 6px;">AED 6,190</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">MONTHLY, {{ costFromCityShort }}</div>
+            <div style="font-size: 24px; font-weight: 800; margin-top: 6px;">{{ costFromTotal }}</div>
           </div>
           <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 16px;">
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">MONTHLY, DUBAI</div>
-            <div style="font-size: 24px; font-weight: 800; margin-top: 6px;">AED 15,940</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">MONTHLY, {{ costToCityShort }}</div>
+            <div style="font-size: 24px; font-weight: 800; margin-top: 6px;">{{ costToTotal }}</div>
           </div>
           <div style="border: 1px solid #F0DFB0; background: #FFFBEF; border-radius: 4px; padding: 16px;">
             <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #9A6A00;">DIFFERENCE</div>
-            <div style="font-size: 24px; font-weight: 800; margin-top: 6px; color: #9A6A00;">+158%</div>
+            <div style="font-size: 24px; font-weight: 800; margin-top: 6px; color: #9A6A00;">{{ costDeltaPct }}</div>
           </div>
           <div style="border: 1px solid #EDEDEF; border-radius: 4px; padding: 16px;">
             <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #8C8F96;">SALARY TO MATCH</div>
-            <div style="font-size: 24px; font-weight: 800; margin-top: 6px;">AED 331,000</div>
+            <div style="font-size: 24px; font-weight: 800; margin-top: 6px;">{{ costSalaryToMatch }}</div>
           </div>
         </div>
 
         <div style="margin-top: 24px; border: 1px solid #EDEDEF; border-radius: 4px; overflow: hidden;">
           <div style="display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr)); background: #F6F6F7; border-bottom: 1px solid #E7E7EA;">
             <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75;">CATEGORY</div>
-            <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75; text-align: right;">GURUGRAM</div>
-            <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75; text-align: right;">DUBAI</div>
+            <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75; text-align: right;">{{ costFromCityShort }}</div>
+            <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75; text-align: right;">{{ costToCityShort }}</div>
             <div style="padding: 11px 14px; font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.12em; color: #6B6E75; text-align: right;">CHANGE</div>
           </div>
           <sc-for list="{{ costRows }}" as="r" hint-placeholder-count="8">
@@ -648,7 +657,7 @@
 
       <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
         <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="font-size: 15px; font-weight: 600; flex: 1;">Quick links for <span style="color: #C07C05;">Dubai</span></div>
+          <div style="font-size: 15px; font-weight: 600; flex: 1;">Quick links for <span style="color: #C07C05;">{{ costToCityShort }}</span></div>
           <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">‹</span>
           <span style="width: 26px; height: 26px; border-radius: 50%; background: #F9AD16; color: #241A00; display: grid; place-items: center; font-size: 11px; cursor: pointer;">›</span>
         </div>
@@ -1853,7 +1862,8 @@ class Component extends DCLogic {
       { role: "Senior Product Designer", org: "Aster Retail", when: "2022 — PRESENT · DUBAI", body: "Own the commerce journeys across web and app. Led the checkout rebuild that moved completion from 61% to 74% across three markets." },
       { role: "Product Designer", org: "Vellum Sports", when: "2019 — 2022 · BENGALURU", body: "Designed the in-store fulfilment tooling used by 900 staff, and set up the first shared component library." },
       { role: "Designer", org: "Studio Kite", when: "2017 — 2019 · BENGALURU", body: "Client work across banking and travel, mostly research-led redesigns of existing products." }
-    ]
+    ],
+    costFromCity: "Bengaluru, India", costToCity: "Dubai, United Arab Emirates", costCurrency: "AED"
   };
 
   get accent() { return this.props.accent ?? "#F9AD16"; }
@@ -1886,6 +1896,90 @@ class Component extends DCLogic {
   }
 
   hashStr(str) { let h = 0; for (let i = 0; i < str.length; i++) { h = (h * 31 + str.charCodeAt(i)) | 0; } return Math.abs(h); }
+
+  get cityCostData() {
+    // Monthly figures in USD, household of three: rent(2BR), utilities, groceries, transport, schooling(1 child), healthcare, dining, household help
+    return {
+      "Dubai, United Arab Emirates":      { country: "United Arab Emirates", currency: "AED", rent: 2000, utilities: 210, groceries: 550, transport: 230, schooling: 1200, healthcare: 190, dining: 420, help: 140 },
+      "Abu Dhabi, United Arab Emirates":  { country: "United Arab Emirates", currency: "AED", rent: 1800, utilities: 200, groceries: 520, transport: 220, schooling: 1100, healthcare: 180, dining: 400, help: 130 },
+      "Riyadh, Saudi Arabia":             { country: "Saudi Arabia", currency: "SAR", rent: 1400, utilities: 180, groceries: 480, transport: 190, schooling: 900,  healthcare: 150, dining: 350, help: 110 },
+      "Doha, Qatar":                      { country: "Qatar", currency: "QAR", rent: 1900, utilities: 190, groceries: 500, transport: 200, schooling: 1050, healthcare: 170, dining: 380, help: 120 },
+      "Kuwait City, Kuwait":              { country: "Kuwait", currency: "USD", rent: 1300, utilities: 170, groceries: 460, transport: 180, schooling: 850,  healthcare: 140, dining: 340, help: 100 },
+      "Manama, Bahrain":                  { country: "Bahrain", currency: "USD", rent: 1100, utilities: 150, groceries: 430, transport: 160, schooling: 800,  healthcare: 130, dining: 320, help: 90 },
+      "Singapore, Singapore":             { country: "Singapore", currency: "SGD", rent: 2600, utilities: 180, groceries: 600, transport: 150, schooling: 1400, healthcare: 220, dining: 450, help: 90 },
+      "Bengaluru, India":                 { country: "India", currency: "INR", rent: 500,  utilities: 60,  groceries: 250, transport: 70,  schooling: 400,  healthcare: 80,  dining: 150, help: 120 },
+      "Mumbai, India":                    { country: "India", currency: "INR", rent: 700,  utilities: 70,  groceries: 280, transport: 90,  schooling: 500,  healthcare: 90,  dining: 180, help: 130 },
+      "Delhi, India":                     { country: "India", currency: "INR", rent: 600,  utilities: 65,  groceries: 260, transport: 80,  schooling: 450,  healthcare: 85,  dining: 160, help: 125 },
+      "Hyderabad, India":                 { country: "India", currency: "INR", rent: 450,  utilities: 55,  groceries: 230, transport: 65,  schooling: 380,  healthcare: 75,  dining: 140, help: 110 },
+      "London, United Kingdom":           { country: "United Kingdom", currency: "GBP", rent: 2800, utilities: 240, groceries: 600, transport: 220, schooling: 1600, healthcare: 60,  dining: 480, help: 100 },
+      "New York, United States":          { country: "United States", currency: "USD", rent: 3800, utilities: 260, groceries: 700, transport: 180, schooling: 1800, healthcare: 250, dining: 600, help: 80 },
+      "Toronto, Canada":                  { country: "Canada", currency: "CAD", rent: 2100, utilities: 190, groceries: 520, transport: 150, schooling: 1200, healthcare: 50,  dining: 420, help: 70 },
+      "Sydney, Australia":                { country: "Australia", currency: "AUD", rent: 2400, utilities: 220, groceries: 560, transport: 170, schooling: 1300, healthcare: 120, dining: 440, help: 75 }
+    };
+  }
+
+  get currencyFx() {
+    // units of currency per 1 USD (approximate, for illustrative estimates)
+    return {
+      USD: { symbol: "$", rate: 1 },
+      EUR: { symbol: "€", rate: 0.92 },
+      GBP: { symbol: "£", rate: 0.79 },
+      AED: { symbol: "AED ", rate: 3.67 },
+      SAR: { symbol: "SAR ", rate: 3.75 },
+      QAR: { symbol: "QAR ", rate: 3.64 },
+      INR: { symbol: "₹", rate: 83 },
+      SGD: { symbol: "S$", rate: 1.34 },
+      AUD: { symbol: "A$", rate: 1.53 },
+      CAD: { symbol: "C$", rate: 1.36 }
+    };
+  }
+
+  fmtMoney(usdValue, currencyCode) {
+    const fx = this.currencyFx[currencyCode] || this.currencyFx.USD;
+    const v = Math.round(usdValue * fx.rate);
+    return fx.symbol + v.toLocaleString("en-US");
+  }
+
+  costCompare(fromCity, toCity, currencyCode) {
+    const cities = this.cityCostData;
+    const from = cities[fromCity] || cities["Bengaluru, India"];
+    const to = cities[toCity] || cities["Dubai, United Arab Emirates"];
+    const rowDefs = [
+      { key: "rent", label: "Rent, two bedrooms" },
+      { key: "utilities", label: "Utilities and internet" },
+      { key: "groceries", label: "Groceries" },
+      { key: "transport", label: "Transport" },
+      { key: "schooling", label: "Schooling, one child" },
+      { key: "healthcare", label: "Healthcare premiums" },
+      { key: "dining", label: "Dining and leisure" },
+      { key: "help", label: "Household help" }
+    ];
+    const pct = (a, b) => a === 0 ? "—" : (((b - a) / a) * 100 >= 0 ? "+" : "") + Math.round(((b - a) / a) * 100) + "%";
+    const deltaColor = (a, b) => b >= a ? "#B4483A" : "#2E7D53";
+    const rows = rowDefs.map(rd => ({
+      label: rd.label,
+      a: this.fmtMoney(from[rd.key], currencyCode),
+      b: this.fmtMoney(to[rd.key], currencyCode),
+      delta: pct(from[rd.key], to[rd.key]),
+      color: deltaColor(from[rd.key], to[rd.key]),
+      bg: "#FFFFFF", weight: 400
+    }));
+    const fromTotal = rowDefs.reduce((s, rd) => s + from[rd.key], 0);
+    const toTotal = rowDefs.reduce((s, rd) => s + to[rd.key], 0);
+    rows.push({ label: "Monthly total", a: this.fmtMoney(fromTotal, currencyCode), b: this.fmtMoney(toTotal, currencyCode), delta: pct(fromTotal, toTotal), color: "#9A6A00", bg: "#FBFBFC", weight: 700 });
+    return { rows, fromTotal: this.fmtMoney(fromTotal, currencyCode), toTotal: this.fmtMoney(toTotal, currencyCode), deltaPct: pct(fromTotal, toTotal), salaryToMatch: this.fmtMoney(toTotal * 12 * 1.15, currencyCode) };
+  }
+
+  cityQuickLinks(cityName) {
+    const seed = this.hashStr(cityName);
+    return [
+      { label: "Housing", glyph: "⌂", meta: (150 + seed % 500) + " LISTINGS" },
+      { label: "Schools", glyph: "✦", meta: (20 + seed % 90) + " SCHOOLS" },
+      { label: "Transportation", glyph: "➤", meta: seed % 3 === 0 ? "METRO + BUS" : seed % 3 === 1 ? "BUS + RAIL" : "METRO + TRAM" },
+      { label: "Talent Firms", glyph: "◈", meta: (10 + seed % 50) + " AGENCIES" },
+      { label: "Residential Areas", glyph: "◉", meta: (8 + seed % 30) + " DISTRICTS" }
+    ];
+  }
 
   ratingsBreakdown(company, tab) {
     const seed = this.hashStr(company.name + "|" + tab);
@@ -2268,33 +2362,33 @@ class Component extends DCLogic {
       { title: "Head of IT", sample: "58 REPORTS", median: "AED 612,000", delta: "+30.8% vs role", deltaColor: "#2E7D53" }
     ];
 
+    // ── Cost of Living: real city/currency-driven calculator ──
+    const cityNames = Object.keys(this.cityCostData);
+    const currencyCodes = Object.keys(this.currencyFx);
+    const costFromCity = this.state.costFromCity || "Bengaluru, India";
+    const costToCity = this.state.costToCity || "Dubai, United Arab Emirates";
+    const costCurrency = this.state.costCurrency || "AED";
+    const setCostFromCity = (e) => this.setState({ costFromCity: e.target.value });
+    const setCostToCity = (e) => this.setState({ costToCity: e.target.value });
+    const setCostCurrency = (e) => this.setState({ costCurrency: e.target.value });
+    const cityOptions = cityNames.map(c => ({ value: c, label: c }));
+    const currencyOptions = currencyCodes.map(c => ({ value: c, label: c + " — " + this.currencyFx[c].symbol.trim() }));
+    const costCompareResult = this.costCompare(costFromCity, costToCity, costCurrency);
+    const costRows = costCompareResult.rows;
+    const costFromCityShort = costFromCity.split(",")[0];
+    const costToCityShort = costToCity.split(",")[0];
+    const costFromTotal = costCompareResult.fromTotal;
+    const costToTotal = costCompareResult.toTotal;
+    const costDeltaPct = costCompareResult.deltaPct;
+    const costSalaryToMatch = costCompareResult.salaryToMatch;
     const costFields = [
-      { label: "City, State and Country", hint: "eg. Dubai, UAE" },
-      { label: "Job Title", hint: "eg. Chief Operating Officer" },
-      { label: "Years of Experience", hint: "eg. 10 – 15 years" },
-      { label: "Family Size", hint: "eg. With spouse and one child" },
-      { label: "Current Salary", hint: "eg. INR 6,000,000" },
-      { label: "Current Monthly Expenses", hint: "eg. INR 140,000" }
+      { label: "Comparing from", isSelect: true, isText: false, options: cityOptions, value: costFromCity, go: setCostFromCity },
+      { label: "Comparing to", isSelect: true, isText: false, options: cityOptions, value: costToCity, go: setCostToCity },
+      { label: "Show amounts in", isSelect: true, isText: false, options: currencyOptions, value: costCurrency, go: setCostCurrency },
+      { label: "Family Size", hint: "eg. With spouse and one child", isSelect: false, isText: true }
     ];
-    const costRows = [
-      { label: "Rent, two bedrooms", a: "1,980", b: "7,400", delta: "+274%", color: "#B4483A" },
-      { label: "Utilities and internet", a: "290", b: "760", delta: "+162%", color: "#B4483A" },
-      { label: "Groceries", a: "980", b: "2,150", delta: "+119%", color: "#B4483A" },
-      { label: "Transport", a: "420", b: "890", delta: "+112%", color: "#B4483A" },
-      { label: "Schooling, one child", a: "1,240", b: "2,600", delta: "+110%", color: "#B4483A" },
-      { label: "Healthcare premiums", a: "410", b: "690", delta: "+68%", color: "#B4483A" },
-      { label: "Dining and leisure", a: "580", b: "1,120", delta: "+93%", color: "#B4483A" },
-      { label: "Household help", a: "290", b: "330", delta: "+14%", color: "#6B6E75" }
-    ].map(r => ({ ...r, bg: "#FFFFFF", weight: 400 }));
-    costRows.push({ label: "Monthly total", a: "6,190", b: "15,940", delta: "+158%", color: "#9A6A00", bg: "#FBFBFC", weight: 700 });
 
-    const quickLinks = [
-      { label: "Housing", glyph: "⌂", meta: "412 LISTINGS" },
-      { label: "Schools", glyph: "✦", meta: "86 SCHOOLS" },
-      { label: "Transportation", glyph: "➤", meta: "METRO + BUS" },
-      { label: "Talent Firms", glyph: "◈", meta: "34 AGENCIES" },
-      { label: "Residential Areas", glyph: "◉", meta: "19 DISTRICTS" }
-    ];
+    const quickLinks = this.cityQuickLinks(costToCity);
 
     const questions = [
       { text: "1. How many years of product design experience do you have?", answer: "Over 10 years" },
@@ -3295,8 +3389,8 @@ class Component extends DCLogic {
     ];
     const pricingTiers = [
       { name: "Candidate", price: "Free", body: "Full access to search, ratings, salaries and your endorsement network.", features: ["Unlimited applications", "Unlimited endorsement requests", "Full insights access"] },
-      { name: "Recruiter Starter", price: "€299/mo", body: "For a single hiring team getting started with endorsed candidates.", features: ["Up to 10 active roles", "Candidate search", "Standard support"] },
-      { name: "Recruiter Growth", price: "€1,199/mo", body: "For talent teams hiring across multiple markets.", features: ["Unlimited active roles", "Advanced candidate search", "Dedicated account manager"] }
+      { name: "Recruiter Starter", price: "€19/mo", body: "For a single hiring team getting started with endorsed candidates.", features: ["Up to 10 active roles", "Candidate search", "Standard support"] },
+      { name: "Recruiter Growth", price: "€29/mo", body: "For talent teams hiring across multiple markets.", features: ["Unlimited active roles", "Advanced candidate search", "Dedicated account manager"] }
     ];
 
     // ── misc previously-dead buttons, now wired ──
@@ -3329,6 +3423,7 @@ class Component extends DCLogic {
       ratingsQuery, ratingsSuggestions, hasRatingsSuggestions, setRatingsQuery, submitRatingsSearch, ratingsSearchKeyDown,
       ratingsCompanyName: company.name, ratingsCompanySector: company.sector,
       salaryFields, salaryBands, benefits, comparable, costFields, costRows, quickLinks, questions,
+      costFromCityShort, costToCityShort, costFromTotal, costToTotal, costDeltaPct, costSalaryToMatch, costCurrency,
       isSearch: s === "search", isConnections: s === "connections", isRatings: s === "ratings",
       isSalaries: s === "salaries", isCost: s === "cost",
       assisted: this.state.assisted,
