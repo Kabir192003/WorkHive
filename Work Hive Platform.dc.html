@@ -32,12 +32,24 @@
   <!-- utility bar -->
   <div style="display: flex; align-items: stretch; background: #F2F2F3; border-bottom: 1px solid #E3E3E6; min-height: 46px;">
     <div style="width: 128px; flex: none;"></div>
-    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 2px; overflow-x: auto; scrollbar-width: none; mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%);">
-      <sc-for list="{{ topNav }}" as="t" hint-placeholder-count="7">
+    <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 2px;">
+      <sc-for list="{{ topNav }}" as="t" hint-placeholder-count="3">
         <button onClick="{{ t.go }}" style="border: 0; background: {{ t.bg }}; color: {{ t.fg }}; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; font-weight: 500; padding: 15px 16px; cursor: pointer; white-space: nowrap;">{{ t.label }}</button>
       </sc-for>
+      <div style="position: relative;">
+        <button onClick="{{ toggleMore }}" style="border: 0; background: {{ moreBg }}; color: {{ moreFg }}; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; font-weight: 500; padding: 15px 14px; cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 5px;">{{ moreLabel }} <span style="font-size: 8px; opacity: 0.75;">▾</span></button>
+        <sc-if value="{{ moreOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="position: absolute; top: 100%; left: 0; margin-top: 2px; background: #FFFFFF; border: 1px solid #E3E3E6; border-radius: 4px; box-shadow: 0 12px 28px rgba(20,22,28,0.16); min-width: 168px; z-index: 20; overflow: hidden;">
+            <sc-for list="{{ moreItems }}" as="mi" hint-placeholder-count="5">
+              <div onClick="{{ mi.go }}" style="padding: 11px 16px; font-size: 12.5px; font-weight: 500; color: #2C2F35; cursor: pointer; border-top: 1px solid #F0F0F2;" style-hover="background: #FAFAFB;">{{ mi.label }}</div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
     </div>
-    <div style="display: flex; align-items: center; gap: 6px; padding: 0 14px; flex: none;">
+    <div style="display: flex; align-items: center; gap: 10px; padding: 0 14px; flex: none;">
+      <button onClick="{{ goSearchCTA }}" title="Search open roles" style="border: 0; background: #F9AD16; color: #241A00; font-size: 11.5px; font-weight: 700; padding: 8px 16px; border-radius: 999px; cursor: pointer; white-space: nowrap;" style-hover="background: #EA9E08;">Search Jobs</button>
+      <div style="width: 1px; height: 20px; background: #DCDCDF; flex: none;"></div>
       <div onClick="{{ goProfile }}" title="Your profile" style="display: flex; align-items: center; gap: 6px; padding: 5px 10px 5px 5px; border-radius: 999px; cursor: pointer;" style-hover="background: #E7E7EA;">
         <span style="width: 22px; height: 22px; border-radius: 50%; background: #F9AD16; color: #241A00; font-size: 10.5px; font-weight: 700; display: grid; place-items: center; flex: none;">M</span>
         <span style="font-size: 11px; color: #4B4E55; font-weight: 500; white-space: nowrap;">Profile</span>
@@ -895,9 +907,18 @@
       <aside style="margin-top: -62px;">
         <div style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 20px 22px;">
           <image-slot id="wh-profile-photo" shape="circle" style="width: 96px; height: 96px;" placeholder="Photo" src="https://images.unsplash.com/photo-1580489944071-1ff2e46a4ee5?auto=format&amp;fit=crop&amp;w=300&amp;q=60" credit="Photo by LinkedIn Sales Solutions on Unsplash" credit-href="https://unsplash.com/@linkedinsalesnavigator"></image-slot>
-          <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.01em; margin-top: 14px;">Meera Iyer</div>
-          <div style="font-size: 13px; color: #5C5F66; margin-top: 4px;">Senior Product Designer, Aster Retail</div>
-          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.1em; margin-top: 8px;">DUBAI, UAE · OPEN TO RELOCATION</div>
+
+          <sc-if value="{{ profileEdit }}" hint-placeholder-val="{{ false }}">
+            <input value="{{ profileHeader.name }}" oninput="{{ setProfileName }}" style="display: block; width: 100%; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-top: 14px; border: 1px solid #DDDDE1; border-radius: 3px; padding: 7px 9px; outline: none;" style-focus="border-color: #F9AD16;">
+            <input value="{{ profileHeader.headline }}" oninput="{{ setProfileHeadline }}" style="display: block; width: 100%; font-size: 12.5px; color: #4B4E55; margin-top: 8px; border: 1px solid #DDDDE1; border-radius: 3px; padding: 7px 9px; outline: none;" style-focus="border-color: #F9AD16;">
+            <input value="{{ profileHeader.location }}" oninput="{{ setProfileLocation }}" style="display: block; width: 100%; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #4B4E55; margin-top: 8px; border: 1px solid #DDDDE1; border-radius: 3px; padding: 7px 9px; outline: none;" style-focus="border-color: #F9AD16;">
+          </sc-if>
+          <sc-if value="{{ profileView }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size: 20px; font-weight: 700; letter-spacing: -0.01em; margin-top: 14px;">{{ profileHeader.name }}</div>
+            <div style="font-size: 13px; color: #5C5F66; margin-top: 4px;">{{ profileHeader.headline }}</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.1em; margin-top: 8px;">{{ profileHeader.location }}</div>
+          </sc-if>
+
           <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; border-top: 1px solid #F0F0F2; padding-top: 16px;">
             <sc-for list="{{ profileStats }}" as="p" hint-placeholder-count="4">
               <div>
@@ -906,41 +927,81 @@
               </div>
             </sc-for>
           </div>
-          <button onClick="{{ requestEndorsementProfile }}" style="width: 100%; margin-top: 18px; border: 0; background: #F9AD16; color: #241A00; padding: 11px; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Request a endorsement</button>
-          <button onClick="{{ shareProfile }}" style="width: 100%; margin-top: 8px; border: 1px solid #D8D9DD; background: #FFFFFF; padding: 11px; border-radius: 3px; font-size: 13px; cursor: pointer;" style-hover="background: #F6F6F7;">Share profile</button>
+          <button onClick="{{ toggleProfileEdit }}" style="width: 100%; margin-top: 18px; border: 1px solid #D8D9DD; background: #FFFFFF; padding: 11px; border-radius: 3px; font-size: 13px; font-weight: 600; cursor: pointer;" style-hover="background: #F6F6F7;">{{ editLabel }}</button>
+          <sc-if value="{{ profileEdit }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ saveProfile }}" style="width: 100%; margin-top: 8px; border: 0; background: #F9AD16; color: #241A00; padding: 11px; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Save profile</button>
+          </sc-if>
+          <sc-if value="{{ profileView }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ requestEndorsementProfile }}" style="width: 100%; margin-top: 8px; border: 0; background: #F9AD16; color: #241A00; padding: 11px; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer;" style-hover="background: #EA9E08;">Request an endorsement</button>
+            <button onClick="{{ shareProfile }}" style="width: 100%; margin-top: 8px; border: 1px solid #D8D9DD; background: #FFFFFF; padding: 11px; border-radius: 3px; font-size: 13px; cursor: pointer;" style-hover="background: #F6F6F7;">Share profile</button>
+          </sc-if>
         </div>
         <div style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 18px 20px 20px; margin-top: 16px;">
           <div style="font-size: 13px; font-weight: 600;">Skills, endorsed</div>
           <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;">
             <sc-for list="{{ profileSkills }}" as="sk" hint-placeholder-count="8">
-              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: #55585F; background: #F4F4F5; border: 1px solid #E7E7EA; padding: 5px 9px; border-radius: 2px;">{{ sk }}</span>
+              <span style="display: inline-flex; align-items: center; gap: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: #55585F; background: #F4F4F5; border: 1px solid #E7E7EA; padding: 5px 9px; border-radius: 2px;">
+                {{ sk.label }}
+                <sc-if value="{{ profileEdit }}" hint-placeholder-val="{{ false }}">
+                  <span onClick="{{ sk.removeSkill }}" style="cursor: pointer; color: #B4483A; font-weight: 700;">×</span>
+                </sc-if>
+              </span>
             </sc-for>
           </div>
+          <sc-if value="{{ profileEdit }}" hint-placeholder-val="{{ false }}">
+            <div style="display: flex; gap: 6px; margin-top: 10px;">
+              <input placeholder="Add a skill" value="{{ newSkillDraft }}" oninput="{{ setNewSkillDraft }}" onkeydown="{{ addSkillKeyDown }}" style="flex: 1; min-width: 0; border: 1px solid #DDDDE1; border-radius: 3px; padding: 7px 9px; font-size: 12px; outline: none;" style-focus="border-color: #F9AD16;">
+              <button onClick="{{ addSkill }}" style="border: 0; background: #33363C; color: #FFFFFF; padding: 7px 12px; border-radius: 3px; font-size: 12px; cursor: pointer;">Add</button>
+            </div>
+          </sc-if>
         </div>
       </aside>
 
       <div style="grid-column: span 2; min-width: 0; display: flex; flex-direction: column; gap: 20px; margin-top: 24px;">
         <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
           <div style="font-size: 15px; font-weight: 600;">About</div>
-          <div style="font-size: 13px; line-height: 1.7; color: #5C5F66; margin-top: 10px; text-wrap: pretty;">Nine years designing commerce products, mostly in retail. I work best where research, service design and the front end all sit in the same room, and I have twice been the person who consolidated a pile of legacy tooling into something a team could maintain.</div>
+          <sc-if value="{{ profileEdit }}" hint-placeholder-val="{{ false }}">
+            <textarea value="{{ profileHeader.about }}" oninput="{{ setProfileAbout }}" style="width: 100%; min-height: 100px; margin-top: 10px; border: 1px solid #DDDDE1; border-radius: 3px; padding: 10px 12px; font-size: 13px; line-height: 1.7; outline: none; font-family: inherit; resize: vertical;" style-focus="border-color: #F9AD16;"></textarea>
+          </sc-if>
+          <sc-if value="{{ profileView }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size: 13px; line-height: 1.7; color: #5C5F66; margin-top: 10px; text-wrap: pretty;">{{ profileHeader.about }}</div>
+          </sc-if>
         </section>
 
         <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 8px;">
-          <div style="font-size: 15px; font-weight: 600;">Experience</div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="font-size: 15px; font-weight: 600; flex: 1;">Experience</div>
+          </div>
           <sc-for list="{{ profileExp }}" as="e" hint-placeholder-count="3">
             <div style="display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 14px; padding: 16px 0; border-top: 1px solid #F4F4F5;">
               <div style="display: flex; flex-direction: column; align-items: center;">
-                <span style="width: 11px; height: 12px; background: #F9AD16; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);"></span>
+                <span style="width: 11px; height: 12px; background: #F9AD16; clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%); flex: none;"></span>
                 <span style="flex: 1; width: 1px; background: #EDEDEF; margin-top: 6px;"></span>
               </div>
-              <div>
-                <div style="font-size: 14.5px; font-weight: 700;">{{ e.role }}</div>
-                <div style="font-size: 12.5px; color: #5C5F66; margin-top: 2px;">{{ e.org }}</div>
-                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.1em; margin-top: 5px;">{{ e.when }}</div>
-                <div style="font-size: 12.5px; line-height: 1.65; color: #5C5F66; margin-top: 8px;">{{ e.body }}</div>
-              </div>
+              <sc-if value="{{ profileEdit }}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; flex-direction: column; gap: 8px; padding-bottom: 8px;">
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px;">
+                    <input value="{{ e.role }}" oninput="{{ e.setRole }}" placeholder="Role" style="border: 1px solid #DDDDE1; border-radius: 3px; padding: 7px 9px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;">
+                    <input value="{{ e.org }}" oninput="{{ e.setOrg }}" placeholder="Company" style="border: 1px solid #DDDDE1; border-radius: 3px; padding: 7px 9px; font-size: 13px; outline: none;" style-focus="border-color: #F9AD16;">
+                  </div>
+                  <input value="{{ e.when }}" oninput="{{ e.setWhen }}" placeholder="e.g. 2022 — PRESENT · DUBAI" style="border: 1px solid #DDDDE1; border-radius: 3px; padding: 7px 9px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; outline: none;" style-focus="border-color: #F9AD16;">
+                  <textarea value="{{ e.body }}" oninput="{{ e.setBody }}" placeholder="What did you own in this role?" style="border: 1px solid #DDDDE1; border-radius: 3px; padding: 7px 9px; font-size: 12.5px; outline: none; min-height: 60px; font-family: inherit; resize: vertical;" style-focus="border-color: #F9AD16;"></textarea>
+                  <a href="#0" onClick="{{ e.removeExp }}" style="font-size: 11.5px; color: #B4483A; align-self: flex-start;">Remove this role</a>
+                </div>
+              </sc-if>
+              <sc-if value="{{ profileView }}" hint-placeholder-val="{{ true }}">
+                <div>
+                  <div style="font-size: 14.5px; font-weight: 700;">{{ e.role }}</div>
+                  <div style="font-size: 12.5px; color: #5C5F66; margin-top: 2px;">{{ e.org }}</div>
+                  <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; color: #8C8F96; letter-spacing: 0.1em; margin-top: 5px;">{{ e.when }}</div>
+                  <div style="font-size: 12.5px; line-height: 1.65; color: #5C5F66; margin-top: 8px;">{{ e.body }}</div>
+                </div>
+              </sc-if>
             </div>
           </sc-for>
+          <sc-if value="{{ profileEdit }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ addExp }}" style="width: 100%; margin: 4px 0 16px; border: 1px dashed #D8D9DD; background: #FFFFFF; padding: 12px; border-radius: 4px; font-size: 12.5px; color: #6B6E75; cursor: pointer;" style-hover="border-color: #F9AD16; color: #9A6A00;">+ Add another role</button>
+          </sc-if>
         </section>
 
         <section style="border: 1px solid #E7E7EA; border-radius: 5px; background: #FFFFFF; padding: 20px 22px 22px;">
@@ -1784,7 +1845,15 @@ class Component extends DCLogic {
     threadStatus: {}, threadExtraMessages: {}, composeText: "",
     onboardExtraRoles: [], onboardAsked: [],
     connectedAccountsState: { "LinkedIn": true, "Google Calendar": false },
-    eventRsvp: {}, mentorRequested: {}, calcNote: {}
+    eventRsvp: {}, mentorRequested: {}, calcNote: {},
+    profileEdit: false, newSkillDraft: "",
+    profileHeader: { name: "Meera Iyer", headline: "Senior Product Designer, Aster Retail", location: "Dubai, UAE · Open to relocation", about: "Nine years designing commerce products, mostly in retail. I work best where research, service design and the front end all sit in the same room, and I have twice been the person who consolidated a pile of legacy tooling into something a team could maintain." },
+    profileSkillsList: ["Design systems", "Commerce and checkout", "Service design", "Mixed-methods research", "Prototyping", "Team leadership", "Arabic (basic)", "Figma"],
+    profileExpList: [
+      { role: "Senior Product Designer", org: "Aster Retail", when: "2022 — PRESENT · DUBAI", body: "Own the commerce journeys across web and app. Led the checkout rebuild that moved completion from 61% to 74% across three markets." },
+      { role: "Product Designer", org: "Vellum Sports", when: "2019 — 2022 · BENGALURU", body: "Designed the in-store fulfilment tooling used by 900 staff, and set up the first shared component library." },
+      { role: "Designer", org: "Studio Kite", when: "2017 — 2019 · BENGALURU", body: "Client work across banking and travel, mostly research-led redesigns of existing products." }
+    ]
   };
 
   get accent() { return this.props.accent ?? "#F9AD16"; }
@@ -1868,15 +1937,25 @@ class Component extends DCLogic {
     const s = this.screen, A = this.accent;
     const insightsScreens = ["insights", "ratings", "salaries", "cost", "relocation", "company"];
     const directSections = { mentorship: "MENTORSHIP", alumni: "ALUMNI", internships: "INTERNSHIPS", events: "EVENTS", about: "ABOUT US" };
+    const moreLabels = ["MENTORSHIP", "ALUMNI", "INTERNSHIPS", "EVENTS", "ABOUT US"];
     const topSection = s === "home" ? "HOME" : directSections[s] ? directSections[s] : insightsScreens.indexOf(s) >= 0 ? "INSIGHTS" : "CAREERS";
-    const topNav = ["HOME", "CAREERS", "INSIGHTS", "MENTORSHIP", "ALUMNI", "INTERNSHIPS", "EVENTS", "ABOUT US"].map(label => ({
+    const primaryTargets = { HOME: "home", INSIGHTS: "insights", CAREERS: "dashboard" };
+    const topNav = ["HOME", "CAREERS", "INSIGHTS"].map(label => ({
       label,
       bg: label === topSection ? A : "transparent",
       fg: label === topSection ? "#241A00" : "#6B6E75",
-      go: this.go(label === "HOME" ? "home" : label === "INSIGHTS" ? "insights" : label === "CAREERS" ? "dashboard" :
-        label === "MENTORSHIP" ? "mentorship" : label === "ALUMNI" ? "alumni" : label === "INTERNSHIPS" ? "internships" :
-        label === "EVENTS" ? "events" : "about")
+      go: this.go(primaryTargets[label])
     }));
+    const moreActive = moreLabels.indexOf(topSection) >= 0;
+    const moreOpen = !!this.state.moreOpen;
+    const toggleMore = () => this.setState(st => ({ moreOpen: !st.moreOpen }));
+    const moreLabel = moreActive ? topSection.charAt(0) + topSection.slice(1).toLowerCase() : "More";
+    const moreItems = moreLabels.map(label => ({
+      label: label.charAt(0) + label.slice(1).toLowerCase(),
+      active: label === topSection,
+      go: () => { this.setState({ moreOpen: false }); this.go(label === "MENTORSHIP" ? "mentorship" : label === "ALUMNI" ? "alumni" : label === "INTERNSHIPS" ? "internships" : label === "EVENTS" ? "events" : "about")(); }
+    }));
+    const goSearchCTA = () => { this.setState({ moreOpen: false }); this.go("search")(); };
 
     const homeTab = this.state.homeTab || "Overview";
     const subs = topSection === "HOME"
@@ -2272,16 +2351,48 @@ class Component extends DCLogic {
       { value: "9", label: "Endorsements given" },
       { value: "6 yrs", label: "In the network" }
     ];
-    const profileExp = [
-      { role: "Senior Product Designer", org: "Aster Retail", when: "2022 — PRESENT · DUBAI", body: "Own the commerce journeys across web and app. Led the checkout rebuild that moved completion from 61% to 74% across three markets." },
-      { role: "Product Designer", org: "Vellum Sports", when: "2019 — 2022 · BENGALURU", body: "Designed the in-store fulfilment tooling used by 900 staff, and set up the first shared component library." },
-      { role: "Designer", org: "Studio Kite", when: "2017 — 2019 · BENGALURU", body: "Client work across banking and travel, mostly research-led redesigns of existing products." }
-    ];
     const profileEndorsements = [
       { quote: "She ran the checkout rebuild end to end and held the line on scope when the deadline moved. I would hand her a platform team tomorrow.", by: "Aisha Rahman", role: "Head of Sales, Northwind Stores", basis: "WORKED TOGETHER 2022–2024 · CHECKOUT REBUILD" },
       { quote: "Best research-to-decision translator I have worked with. Our merchandising team still uses her segmentation.", by: "Rahul Menon", role: "Category Director, Vellum Sports", basis: "WORKED TOGETHER 2019–2022 · STORE FULFILMENT" }
     ];
-    const profileSkills = ["Design systems", "Commerce and checkout", "Service design", "Mixed-methods research", "Prototyping", "Team leadership", "Arabic (basic)", "Figma"];
+
+    // ── Editable profile ──
+    const profileEdit = !!this.state.profileEdit;
+    const profileView = !profileEdit;
+    const profileHeader = this.state.profileHeader;
+    const toggleProfileEdit = () => this.setState(st => ({ profileEdit: !st.profileEdit }));
+    const saveProfile = () => { this.setState({ profileEdit: false }); this.showToast("Profile saved."); };
+    const setProfileField = (field) => (e) => this.setState(st => ({ profileHeader: { ...st.profileHeader, [field]: e.target.value } }));
+    const setProfileName = setProfileField("name");
+    const setProfileHeadline = setProfileField("headline");
+    const setProfileLocation = setProfileField("location");
+    const setProfileAbout = setProfileField("about");
+    const editLabel = profileEdit ? "Done editing" : "Edit profile";
+
+    const profileSkillsList = this.state.profileSkillsList || [];
+    const profileSkills = profileSkillsList.map((sk, i) => ({
+      label: sk,
+      removeSkill: () => this.setState(st => ({ profileSkillsList: st.profileSkillsList.filter((_, j) => j !== i) }))
+    }));
+    const newSkillDraft = this.state.newSkillDraft || "";
+    const setNewSkillDraft = (e) => this.setState({ newSkillDraft: e.target.value });
+    const addSkill = () => {
+      const v = (this.state.newSkillDraft || "").trim();
+      if (!v) return;
+      this.setState(st => ({ profileSkillsList: (st.profileSkillsList || []).concat([v]), newSkillDraft: "" }));
+    };
+    const addSkillKeyDown = (e) => { if (e.key === "Enter") addSkill(); };
+
+    const profileExpList = this.state.profileExpList || [];
+    const profileExp = profileExpList.map((e, i) => ({
+      ...e,
+      setRole: (ev) => this.setState(st => ({ profileExpList: st.profileExpList.map((x, j) => j === i ? { ...x, role: ev.target.value } : x) })),
+      setOrg: (ev) => this.setState(st => ({ profileExpList: st.profileExpList.map((x, j) => j === i ? { ...x, org: ev.target.value } : x) })),
+      setWhen: (ev) => this.setState(st => ({ profileExpList: st.profileExpList.map((x, j) => j === i ? { ...x, when: ev.target.value } : x) })),
+      setBody: (ev) => this.setState(st => ({ profileExpList: st.profileExpList.map((x, j) => j === i ? { ...x, body: ev.target.value } : x) })),
+      removeExp: () => this.setState(st => ({ profileExpList: st.profileExpList.filter((_, j) => j !== i) }))
+    }));
+    const addExp = () => this.setState(st => ({ profileExpList: (st.profileExpList || []).concat([{ role: "New role", org: "Company name", when: "PRESENT", body: "Describe what you owned in this role." }]) }));
 
     const bestPlaces = [
       { rank: "01", name: "Halcyon Group", sector: "RETAIL · DUBAI", score: "4.61", note: "Strongest on family benefits" },
@@ -3198,11 +3309,16 @@ class Component extends DCLogic {
 
     return {
       topNav, subNav, facets, matchToggles, filteredJobs, noResults, resultsMeta, hasAnyFacet, clearFacets, goConnections: this.goConnections, nodes: nodePos, links, gauges,
+      moreActive, moreOpen, toggleMore, moreLabel, moreItems, goSearchCTA,
+      moreBg: moreActive ? A : "transparent", moreFg: moreActive ? "#241A00" : "#6B6E75",
       connQuery, setConnRole, setConnLocation, setConnIndustry, runConnSearch, connResultsLabel, connNoResults,
       connTargetRole: connTarget.role, connTargetOrg: connTarget.org, connTargetLocation: connTarget.location, connTargetMatch: connTargetMatch + "% Match",
       goConnRefer, goConnApply,
       homeStats, homeSteps, homeHubs, homeTools, dashActivity, dashApps, dashTasks,
       profileStats, profileExp, profileEndorsements, profileSkills, bestPlaces, relocFields, relocRows, relocSteps,
+      profileEdit, profileView, profileHeader, toggleProfileEdit, saveProfile, editLabel,
+      setProfileName, setProfileHeadline, setProfileLocation, setProfileAbout,
+      newSkillDraft, setNewSkillDraft, addSkill, addSkillKeyDown, addExp,
       isHome: s === "home", isDashboard: s === "dashboard", isProfile: s === "profile",
       isInsights: s === "insights", isRelocation: s === "relocation",
       goSearch: this.go("search"), goRatings: this.go("ratings"), goSalaries: this.go("salaries"),
