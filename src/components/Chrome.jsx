@@ -19,8 +19,7 @@ const Chrome = () => {
     const initial = (profile?.name || user?.email || '?').charAt(0).toUpperCase();
 
     return (
-        <div style={{ minHeight: '100vh', padding: '22px 22px 60px', display: 'flex', justifyContent: 'center' }}>
-            <div style={{ width: '100%', maxWidth: 1480, background: '#FFFFFF', borderRadius: 6, overflow: 'visible', boxShadow: '0 18px 50px rgba(20,22,28,0.16)', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ minHeight: '100vh', background: '#FFFFFF', display: 'flex', flexDirection: 'column' }}>
 
                 {/* utility bar */}
                 <div style={{ display: 'flex', alignItems: 'stretch', background: '#F2F2F3', borderBottom: '1px solid #E3E3E6', minHeight: 46 }}>
@@ -109,7 +108,6 @@ const Chrome = () => {
                 </div>
 
                 <Outlet />
-            </div>
         </div>
     );
 };
