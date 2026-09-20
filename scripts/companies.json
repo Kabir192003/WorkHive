@@ -1,0 +1,2902 @@
+{
+  "Halcyon Group": {
+    "name": "Halcyon Group",
+    "sector": "RETAIL & APPAREL · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Retail & Apparel",
+    "companyType": "Retail",
+    "location": "Dubai, United Arab Emirates",
+    "size": "8,000 – 12,000",
+    "rating": "4.61",
+    "ratingBucket": "4.5 & up",
+    "about": "Halcyon Group runs 340 stores and a fast-growing e-commerce arm across the Gulf. Design and product sit together under one VP, with a mandate to unify the checkout experience across brands by 2027.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "8,000 – 12,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "halcyongroup.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Fatima Al Nuaimi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Karan Bhatia"
+      }
+    ]
+  },
+  "Northwind Telecom": {
+    "name": "Northwind Telecom",
+    "sector": "TELECOMMUNICATIONS · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Telecommunications",
+    "companyType": "Telecom",
+    "location": "Dubai, United Arab Emirates",
+    "size": "15,000 – 20,000",
+    "rating": "4.13",
+    "ratingBucket": "4.0–4.49",
+    "about": "Northwind Telecom operates fixed-line, mobile and enterprise networks across the Gulf, with roughly 8.6 million subscribers. Most current hiring sits in its enterprise cloud arm, built out since 2021.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "15,000 – 20,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "northwindtelecom.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Mohammed Al-Sayed"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Namitha Verma"
+      }
+    ]
+  },
+  "Kestrel Retail": {
+    "name": "Kestrel Retail",
+    "sector": "RETAIL & APPAREL · ABU DHABI, UNITED ARAB EMIRATES",
+    "industry": "Retail & Apparel",
+    "companyType": "Retail",
+    "location": "Abu Dhabi, United Arab Emirates",
+    "size": "5,000 – 8,000",
+    "rating": "4.32",
+    "ratingBucket": "4.0–4.49",
+    "about": "Kestrel Retail is rebuilding its loyalty programme end to end, moving a 4 million member base onto a tiered scheme launching next year. Design, engineering and merchandising co-locate three days a week.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 8,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "kestrelretail.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Yusuf Al Mansoori"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Divya Krishnan"
+      }
+    ]
+  },
+  "Meridian Pay": {
+    "name": "Meridian Pay",
+    "sector": "FINANCIAL SERVICES · RIYADH, SAUDI ARABIA",
+    "industry": "Financial Services",
+    "companyType": "Fintech",
+    "location": "Riyadh, Saudi Arabia",
+    "size": "1,200 – 2,000",
+    "rating": "4.48",
+    "ratingBucket": "4.0–4.49",
+    "about": "Meridian Pay runs a consumer payments app with 1.2 million monthly users and a fast experiment cadence. Product, data and design ship in the same two-week cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,200 – 2,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "meridianpay.sa"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Abdullah Al Qahtani"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Sara Othman"
+      }
+    ]
+  },
+  "Larkspur Group": {
+    "name": "Larkspur Group",
+    "sector": "RETAIL & APPAREL · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Retail & Apparel",
+    "companyType": "Retail",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "4.21",
+    "ratingBucket": "4.0–4.49",
+    "about": "Larkspur Group is a retail & apparel organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "larkspurgroup.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Vikram Bhatia"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Kavya Al Mansoori"
+      }
+    ]
+  },
+  "Granite Capital": {
+    "name": "Granite Capital",
+    "sector": "FINANCIAL SERVICES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Financial Services",
+    "companyType": "Fintech",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "4.17",
+    "ratingBucket": "4.0–4.49",
+    "about": "Granite Capital is a financial services organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "granitecapital.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Mohammed D'Souza"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Reem Whitaker"
+      }
+    ]
+  },
+  "Amaranth Mobile": {
+    "name": "Amaranth Mobile",
+    "sector": "TELECOMMUNICATIONS · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Telecommunications",
+    "companyType": "Telecom",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "4.13",
+    "ratingBucket": "4.0–4.49",
+    "about": "Amaranth Mobile is a telecommunications organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "amaranthmobile.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Yusuf Al-Sayed"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Divya Verma"
+      }
+    ]
+  },
+  "Vellum Labs": {
+    "name": "Vellum Labs",
+    "sector": "TECHNOLOGY & SOFTWARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Technology & Software",
+    "companyType": "Technology",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "4.08",
+    "ratingBucket": "4.0–4.49",
+    "about": "Vellum Labs is a technology & software organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "vellumlabs.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Priya Okoye"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Abdullah Sharma"
+      }
+    ]
+  },
+  "Halcyon Medical": {
+    "name": "Halcyon Medical",
+    "sector": "HEALTHCARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Healthcare",
+    "companyType": "Healthcare",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "4.04",
+    "ratingBucket": "4.0–4.49",
+    "about": "Halcyon Medical is a healthcare organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "halcyonmedical.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Rahul Al Nuaimi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Rahul Khan"
+      }
+    ]
+  },
+  "Yarrow Properties": {
+    "name": "Yarrow Properties",
+    "sector": "CONSTRUCTION & REAL ESTATE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Construction & Real Estate",
+    "companyType": "Construction",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "4.00",
+    "ratingBucket": "4.0–4.49",
+    "about": "Yarrow Properties is a construction & real estate organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "yarrowproperties.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Aisha Al Falasi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Aisha Al Suwaidi"
+      }
+    ]
+  },
+  "Tenfold Power": {
+    "name": "Tenfold Power",
+    "sector": "ENERGY & UTILITIES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Energy & Utilities",
+    "companyType": "Energy",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.96",
+    "ratingBucket": "3.5–3.99",
+    "about": "Tenfold Power is a energy & utilities organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "tenfoldpower.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Layla Haddad"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Layla Krishnan"
+      }
+    ]
+  },
+  "Orbis Freight": {
+    "name": "Orbis Freight",
+    "sector": "LOGISTICS & TRANSPORTATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Logistics & Transportation",
+    "companyType": "Logistics",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "3.92",
+    "ratingBucket": "3.5–3.99",
+    "about": "Orbis Freight is a logistics & transportation organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "orbisfreight.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Hassan Rahman"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Hassan Rahman"
+      }
+    ]
+  },
+  "Ironwood Hospitality": {
+    "name": "Ironwood Hospitality",
+    "sector": "HOSPITALITY & TOURISM · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Hospitality & Tourism",
+    "companyType": "Hospitality",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "3.87",
+    "ratingBucket": "3.5–3.99",
+    "about": "Ironwood Hospitality is a hospitality & tourism organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "ironwoodhospitality.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Zainab Al Suwaidi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Faisal Fischer"
+      }
+    ]
+  },
+  "Delta Industries": {
+    "name": "Delta Industries",
+    "sector": "MANUFACTURING · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Manufacturing",
+    "companyType": "Manufacturing",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.83",
+    "ratingBucket": "3.5–3.99",
+    "about": "Delta Industries is a manufacturing organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "deltaindustries.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Tariq Sharma"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Alia Haddad"
+      }
+    ]
+  },
+  "Cinder Media": {
+    "name": "Cinder Media",
+    "sector": "MEDIA & ENTERTAINMENT · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Media & Entertainment",
+    "companyType": "Media",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "3.79",
+    "ratingBucket": "3.5–3.99",
+    "about": "Cinder Media is a media & entertainment organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "cindermedia.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Reem Nair"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Mohammed Iyer"
+      }
+    ]
+  },
+  "Kestrel Academy": {
+    "name": "Kestrel Academy",
+    "sector": "EDUCATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Education",
+    "companyType": "Education",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "3.75",
+    "ratingBucket": "3.5–3.99",
+    "about": "Kestrel Academy is a education organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "kestrelacademy.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Karan Othman"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Yusuf D'Souza"
+      }
+    ]
+  },
+  "Bramble Retail": {
+    "name": "Bramble Retail",
+    "sector": "RETAIL & APPAREL · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Retail & Apparel",
+    "companyType": "Retail",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "3.71",
+    "ratingBucket": "3.5–3.99",
+    "about": "Bramble Retail is a retail & apparel organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "brambleretail.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Sara Pillai"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Omar Al Zaabi"
+      }
+    ]
+  },
+  "Westmere Pay": {
+    "name": "Westmere Pay",
+    "sector": "FINANCIAL SERVICES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Financial Services",
+    "companyType": "Fintech",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.67",
+    "ratingBucket": "3.5–3.99",
+    "about": "Westmere Pay is a financial services organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "westmerepay.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Omar Kamal"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Lena Al Nuaimi"
+      }
+    ]
+  },
+  "Questra Telecom": {
+    "name": "Questra Telecom",
+    "sector": "TELECOMMUNICATIONS · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Telecommunications",
+    "companyType": "Telecom",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "3.62",
+    "ratingBucket": "3.5–3.99",
+    "about": "Questra Telecom is a telecommunications organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "questratelecom.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Lena Whitaker"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Samantha Othman"
+      }
+    ]
+  },
+  "Larkspur Technologies": {
+    "name": "Larkspur Technologies",
+    "sector": "TECHNOLOGY & SOFTWARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Technology & Software",
+    "companyType": "Technology",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "3.58",
+    "ratingBucket": "3.5–3.99",
+    "about": "Larkspur Technologies is a technology & software organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "larkspurtechnologies.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Daniel Al Qahtani"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Meera Al Mansoori"
+      }
+    ]
+  },
+  "Granite Clinics": {
+    "name": "Granite Clinics",
+    "sector": "HEALTHCARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Healthcare",
+    "companyType": "Healthcare",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.54",
+    "ratingBucket": "3.5–3.99",
+    "about": "Granite Clinics is a healthcare organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "graniteclinics.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Layla Al Zaabi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Arjun Whitaker"
+      }
+    ]
+  },
+  "Beacon Realty": {
+    "name": "Beacon Realty",
+    "sector": "CONSTRUCTION & REAL ESTATE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Construction & Real Estate",
+    "companyType": "Construction",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "3.50",
+    "ratingBucket": "3.5–3.99",
+    "about": "Beacon Realty is a construction & real estate organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "beaconrealty.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Hassan Iyer"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Tariq Verma"
+      }
+    ]
+  },
+  "Vellum Resources": {
+    "name": "Vellum Resources",
+    "sector": "ENERGY & UTILITIES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Energy & Utilities",
+    "companyType": "Energy",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "3.46",
+    "ratingBucket": "Under 3.5",
+    "about": "Vellum Resources is a energy & utilities organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "vellumresources.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Zainab Fischer"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Reem Sharma"
+      }
+    ]
+  },
+  "Halcyon Supply Co.": {
+    "name": "Halcyon Supply Co.",
+    "sector": "LOGISTICS & TRANSPORTATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Logistics & Transportation",
+    "companyType": "Logistics",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "3.41",
+    "ratingBucket": "Under 3.5",
+    "about": "Halcyon Supply Co. is a logistics & transportation organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "halcyonsupplyco.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Tariq Krishnan"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Divya Reddy"
+      }
+    ]
+  },
+  "Zenith Leisure": {
+    "name": "Zenith Leisure",
+    "sector": "HOSPITALITY & TOURISM · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Hospitality & Tourism",
+    "companyType": "Hospitality",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.37",
+    "ratingBucket": "Under 3.5",
+    "about": "Zenith Leisure is a hospitality & tourism organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "zenithleisure.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Reem Reddy"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Abdullah Al Suwaidi"
+      }
+    ]
+  },
+  "Tenfold Works": {
+    "name": "Tenfold Works",
+    "sector": "MANUFACTURING · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Manufacturing",
+    "companyType": "Manufacturing",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "3.33",
+    "ratingBucket": "Under 3.5",
+    "about": "Tenfold Works is a manufacturing organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "tenfoldworks.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Karan Verma"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Rahul Krishnan"
+      }
+    ]
+  },
+  "Orbis Broadcasting": {
+    "name": "Orbis Broadcasting",
+    "sector": "MEDIA & ENTERTAINMENT · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Media & Entertainment",
+    "companyType": "Media",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "4.69",
+    "ratingBucket": "4.5 & up",
+    "about": "Orbis Broadcasting is a media & entertainment organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "orbisbroadcasting.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Sara Menon"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Aisha Okoye"
+      }
+    ]
+  },
+  "Juniper Institute": {
+    "name": "Juniper Institute",
+    "sector": "EDUCATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Education",
+    "companyType": "Education",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "4.65",
+    "ratingBucket": "4.5 & up",
+    "about": "Juniper Institute is a education organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "juniperinstitute.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Omar Bhatia"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Layla Fischer"
+      }
+    ]
+  },
+  "Delta Group": {
+    "name": "Delta Group",
+    "sector": "RETAIL & APPAREL · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Retail & Apparel",
+    "companyType": "Retail",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "4.60",
+    "ratingBucket": "4.5 & up",
+    "about": "Delta Group is a retail & apparel organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "deltagroup.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Lena Khan"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Hassan Haddad"
+      }
+    ]
+  },
+  "Cinder Capital": {
+    "name": "Cinder Capital",
+    "sector": "FINANCIAL SERVICES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Financial Services",
+    "companyType": "Fintech",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "4.56",
+    "ratingBucket": "4.5 & up",
+    "about": "Cinder Capital is a financial services organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "cindercapital.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Daniel Verma"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Faisal Kamal"
+      }
+    ]
+  },
+  "Meridian Networks": {
+    "name": "Meridian Networks",
+    "sector": "TELECOMMUNICATIONS · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Telecommunications",
+    "companyType": "Telecom",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "4.52",
+    "ratingBucket": "4.5 & up",
+    "about": "Meridian Networks is a telecommunications organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "meridiannetworks.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Layla Al Mansoori"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Alia D'Souza"
+      }
+    ]
+  },
+  "Bramble Labs": {
+    "name": "Bramble Labs",
+    "sector": "TECHNOLOGY & SOFTWARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Technology & Software",
+    "companyType": "Technology",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "4.48",
+    "ratingBucket": "4.0–4.49",
+    "about": "Bramble Labs is a technology & software organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "bramblelabs.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Hassan Bhatia"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Mohammed Al Zaabi"
+      }
+    ]
+  },
+  "Westmere Medical": {
+    "name": "Westmere Medical",
+    "sector": "HEALTHCARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Healthcare",
+    "companyType": "Healthcare",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "4.44",
+    "ratingBucket": "4.0–4.49",
+    "about": "Westmere Medical is a healthcare organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "westmeremedical.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Faisal D'Souza"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Sara Bhatia"
+      }
+    ]
+  },
+  "Ridgeline Properties": {
+    "name": "Ridgeline Properties",
+    "sector": "CONSTRUCTION & REAL ESTATE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Construction & Real Estate",
+    "companyType": "Construction",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "4.39",
+    "ratingBucket": "4.0–4.49",
+    "about": "Ridgeline Properties is a construction & real estate organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "ridgelineproperties.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Alia Al-Sayed"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Omar Othman"
+      }
+    ]
+  },
+  "Larkspur Power": {
+    "name": "Larkspur Power",
+    "sector": "ENERGY & UTILITIES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Energy & Utilities",
+    "companyType": "Energy",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "4.35",
+    "ratingBucket": "4.0–4.49",
+    "about": "Larkspur Power is a energy & utilities organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "larkspurpower.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Fatima Okoye"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "James Al Mansoori"
+      }
+    ]
+  },
+  "Granite Freight": {
+    "name": "Granite Freight",
+    "sector": "LOGISTICS & TRANSPORTATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Logistics & Transportation",
+    "companyType": "Logistics",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "4.31",
+    "ratingBucket": "4.0–4.49",
+    "about": "Granite Freight is a logistics & transportation organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "granitefreight.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Divya Al Nuaimi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Samantha Nair"
+      }
+    ]
+  },
+  "Beacon Hotels": {
+    "name": "Beacon Hotels",
+    "sector": "HOSPITALITY & TOURISM · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Hospitality & Tourism",
+    "companyType": "Hospitality",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "4.27",
+    "ratingBucket": "4.0–4.49",
+    "about": "Beacon Hotels is a hospitality & tourism organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "beaconhotels.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Abdullah Al Falasi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Meera Verma"
+      }
+    ]
+  },
+  "Vellum Industries": {
+    "name": "Vellum Industries",
+    "sector": "MANUFACTURING · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Manufacturing",
+    "companyType": "Manufacturing",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "4.23",
+    "ratingBucket": "4.0–4.49",
+    "about": "Vellum Industries is a manufacturing organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "vellumindustries.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Nadia Haddad"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Arjun Sharma"
+      }
+    ]
+  },
+  "Halcyon Media": {
+    "name": "Halcyon Media",
+    "sector": "MEDIA & ENTERTAINMENT · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Media & Entertainment",
+    "companyType": "Media",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "4.18",
+    "ratingBucket": "4.0–4.49",
+    "about": "Halcyon Media is a media & entertainment organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "halcyonmedia.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "James Rahman"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Tariq Reddy"
+      }
+    ]
+  },
+  "Zenith Academy": {
+    "name": "Zenith Academy",
+    "sector": "EDUCATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Education",
+    "companyType": "Education",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "4.14",
+    "ratingBucket": "4.0–4.49",
+    "about": "Zenith Academy is a education organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "zenithacademy.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Samantha Al Suwaidi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Reem Al Suwaidi"
+      }
+    ]
+  },
+  "Tenfold Retail": {
+    "name": "Tenfold Retail",
+    "sector": "RETAIL & APPAREL · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Retail & Apparel",
+    "companyType": "Retail",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "4.10",
+    "ratingBucket": "4.0–4.49",
+    "about": "Tenfold Retail is a retail & apparel organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "tenfoldretail.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Rohan Sharma"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Divya Krishnan"
+      }
+    ]
+  },
+  "Orbis Pay": {
+    "name": "Orbis Pay",
+    "sector": "FINANCIAL SERVICES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Financial Services",
+    "companyType": "Fintech",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "4.06",
+    "ratingBucket": "4.0–4.49",
+    "about": "Orbis Pay is a financial services organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "orbispay.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Noor Nair"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Abdullah Okoye"
+      }
+    ]
+  },
+  "Juniper Connect": {
+    "name": "Juniper Connect",
+    "sector": "TELECOMMUNICATIONS · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Telecommunications",
+    "companyType": "Telecom",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "4.02",
+    "ratingBucket": "4.0–4.49",
+    "about": "Juniper Connect is a telecommunications organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "juniperconnect.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Faisal Othman"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Rahul Fischer"
+      }
+    ]
+  },
+  "Delta Technologies": {
+    "name": "Delta Technologies",
+    "sector": "TECHNOLOGY & SOFTWARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Technology & Software",
+    "companyType": "Technology",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "3.98",
+    "ratingBucket": "3.5–3.99",
+    "about": "Delta Technologies is a technology & software organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "deltatechnologies.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Alia Pillai"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Aisha Al-Sayed"
+      }
+    ]
+  },
+  "Cinder Clinics": {
+    "name": "Cinder Clinics",
+    "sector": "HEALTHCARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Healthcare",
+    "companyType": "Healthcare",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "3.93",
+    "ratingBucket": "3.5–3.99",
+    "about": "Cinder Clinics is a healthcare organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "cinderclinics.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Fatima Kamal"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Layla Kamal"
+      }
+    ]
+  },
+  "Meridian Realty": {
+    "name": "Meridian Realty",
+    "sector": "CONSTRUCTION & REAL ESTATE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Construction & Real Estate",
+    "companyType": "Construction",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "3.89",
+    "ratingBucket": "3.5–3.99",
+    "about": "Meridian Realty is a construction & real estate organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "meridianrealty.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Divya Whitaker"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Noor D'Souza"
+      }
+    ]
+  },
+  "Bramble Resources": {
+    "name": "Bramble Resources",
+    "sector": "ENERGY & UTILITIES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Energy & Utilities",
+    "companyType": "Energy",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "3.85",
+    "ratingBucket": "3.5–3.99",
+    "about": "Bramble Resources is a energy & utilities organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "brambleresources.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Abdullah Al Qahtani"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Faisal Pillai"
+      }
+    ]
+  },
+  "Westmere Supply Co.": {
+    "name": "Westmere Supply Co.",
+    "sector": "LOGISTICS & TRANSPORTATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Logistics & Transportation",
+    "companyType": "Logistics",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "3.81",
+    "ratingBucket": "3.5–3.99",
+    "about": "Westmere Supply Co. is a logistics & transportation organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "westmeresupplyco.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Nadia Al Zaabi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Vikram Bhatia"
+      }
+    ]
+  },
+  "Ridgeline Resorts": {
+    "name": "Ridgeline Resorts",
+    "sector": "HOSPITALITY & TOURISM · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Hospitality & Tourism",
+    "companyType": "Hospitality",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.77",
+    "ratingBucket": "3.5–3.99",
+    "about": "Ridgeline Resorts is a hospitality & tourism organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "ridgelineresorts.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "James Iyer"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Mohammed Othman"
+      }
+    ]
+  },
+  "Larkspur Works": {
+    "name": "Larkspur Works",
+    "sector": "MANUFACTURING · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Manufacturing",
+    "companyType": "Manufacturing",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "3.72",
+    "ratingBucket": "3.5–3.99",
+    "about": "Larkspur Works is a manufacturing organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "larkspurworks.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Samantha Fischer"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Sara Menon"
+      }
+    ]
+  },
+  "Granite Broadcasting": {
+    "name": "Granite Broadcasting",
+    "sector": "MEDIA & ENTERTAINMENT · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Media & Entertainment",
+    "companyType": "Media",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "3.68",
+    "ratingBucket": "3.5–3.99",
+    "about": "Granite Broadcasting is a media & entertainment organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "granitebroadcasting.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Rohan Krishnan"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Omar Nair"
+      }
+    ]
+  },
+  "Beacon Institute": {
+    "name": "Beacon Institute",
+    "sector": "EDUCATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Education",
+    "companyType": "Education",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "3.64",
+    "ratingBucket": "3.5–3.99",
+    "about": "Beacon Institute is a education organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "beaconinstitute.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Noor Reddy"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "James Verma"
+      }
+    ]
+  },
+  "Vellum Group": {
+    "name": "Vellum Group",
+    "sector": "RETAIL & APPAREL · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Retail & Apparel",
+    "companyType": "Retail",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "3.60",
+    "ratingBucket": "3.5–3.99",
+    "about": "Vellum Group is a retail & apparel organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "vellumgroup.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Faisal Verma"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Samantha Al Falasi"
+      }
+    ]
+  },
+  "Halcyon Capital": {
+    "name": "Halcyon Capital",
+    "sector": "FINANCIAL SERVICES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Financial Services",
+    "companyType": "Fintech",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "3.56",
+    "ratingBucket": "3.5–3.99",
+    "about": "Halcyon Capital is a financial services organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "halcyoncapital.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Alia Menon"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Meera Reddy"
+      }
+    ]
+  },
+  "Zenith Networks": {
+    "name": "Zenith Networks",
+    "sector": "TELECOMMUNICATIONS · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Telecommunications",
+    "companyType": "Telecom",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "3.51",
+    "ratingBucket": "3.5–3.99",
+    "about": "Zenith Networks is a telecommunications organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "zenithnetworks.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Mohammed Bhatia"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Arjun Al Suwaidi"
+      }
+    ]
+  },
+  "Tenfold Labs": {
+    "name": "Tenfold Labs",
+    "sector": "TECHNOLOGY & SOFTWARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Technology & Software",
+    "companyType": "Technology",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.47",
+    "ratingBucket": "Under 3.5",
+    "about": "Tenfold Labs is a technology & software organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "tenfoldlabs.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Yusuf Khan"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Tariq Al Qahtani"
+      }
+    ]
+  },
+  "Orbis Medical": {
+    "name": "Orbis Medical",
+    "sector": "HEALTHCARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Healthcare",
+    "companyType": "Healthcare",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "3.43",
+    "ratingBucket": "Under 3.5",
+    "about": "Orbis Medical is a healthcare organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "orbismedical.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Priya Al-Sayed"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Fatima Okoye"
+      }
+    ]
+  },
+  "Juniper Properties": {
+    "name": "Juniper Properties",
+    "sector": "CONSTRUCTION & REAL ESTATE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Construction & Real Estate",
+    "companyType": "Construction",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "3.39",
+    "ratingBucket": "Under 3.5",
+    "about": "Juniper Properties is a construction & real estate organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "juniperproperties.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Rahul Al Mansoori"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Divya Fischer"
+      }
+    ]
+  },
+  "Everline Power": {
+    "name": "Everline Power",
+    "sector": "ENERGY & UTILITIES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Energy & Utilities",
+    "companyType": "Energy",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "3.35",
+    "ratingBucket": "Under 3.5",
+    "about": "Everline Power is a energy & utilities organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "everlinepower.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Aisha Al Nuaimi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Priya Al-Sayed"
+      }
+    ]
+  },
+  "Cinder Freight": {
+    "name": "Cinder Freight",
+    "sector": "LOGISTICS & TRANSPORTATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Logistics & Transportation",
+    "companyType": "Logistics",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "3.30",
+    "ratingBucket": "Under 3.5",
+    "about": "Cinder Freight is a logistics & transportation organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "cinderfreight.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Ahmed D'Souza"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Rahul Kamal"
+      }
+    ]
+  },
+  "Meridian Hotels": {
+    "name": "Meridian Hotels",
+    "sector": "HOSPITALITY & TOURISM · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Hospitality & Tourism",
+    "companyType": "Hospitality",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "4.66",
+    "ratingBucket": "4.5 & up",
+    "about": "Meridian Hotels is a hospitality & tourism organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "meridianhotels.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Meera Al-Sayed"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Daniel D'Souza"
+      }
+    ]
+  },
+  "Clearwater Industries": {
+    "name": "Clearwater Industries",
+    "sector": "MANUFACTURING · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Manufacturing",
+    "companyType": "Manufacturing",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "4.62",
+    "ratingBucket": "4.5 & up",
+    "about": "Clearwater Industries is a manufacturing organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "clearwaterindustries.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Arjun Okoye"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Layla Pillai"
+      }
+    ]
+  },
+  "Westmere Media": {
+    "name": "Westmere Media",
+    "sector": "MEDIA & ENTERTAINMENT · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Media & Entertainment",
+    "companyType": "Media",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "4.58",
+    "ratingBucket": "4.5 & up",
+    "about": "Westmere Media is a media & entertainment organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "westmeremedia.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Kavya Al Nuaimi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Noor Bhatia"
+      }
+    ]
+  },
+  "Ridgeline Academy": {
+    "name": "Ridgeline Academy",
+    "sector": "EDUCATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Education",
+    "companyType": "Education",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "4.54",
+    "ratingBucket": "4.5 & up",
+    "about": "Ridgeline Academy is a education organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "ridgelineacademy.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Vikram Al Falasi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Faisal Rahman"
+      }
+    ]
+  },
+  "Marlow Retail": {
+    "name": "Marlow Retail",
+    "sector": "RETAIL & APPAREL · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Retail & Apparel",
+    "companyType": "Retail",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "4.49",
+    "ratingBucket": "4.0–4.49",
+    "about": "Marlow Retail is a retail & apparel organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "marlowretail.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Mohammed Haddad"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Vikram Menon"
+      }
+    ]
+  },
+  "Granite Pay": {
+    "name": "Granite Pay",
+    "sector": "FINANCIAL SERVICES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Financial Services",
+    "companyType": "Fintech",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "4.45",
+    "ratingBucket": "4.0–4.49",
+    "about": "Granite Pay is a financial services organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "granitepay.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Yusuf Rahman"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Mohammed Nair"
+      }
+    ]
+  },
+  "Beacon Connect": {
+    "name": "Beacon Connect",
+    "sector": "TELECOMMUNICATIONS · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Telecommunications",
+    "companyType": "Telecom",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "4.41",
+    "ratingBucket": "4.0–4.49",
+    "about": "Beacon Connect is a telecommunications organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "beaconconnect.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Priya Al Suwaidi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Sara Iyer"
+      }
+    ]
+  },
+  "Lumen Technologies": {
+    "name": "Lumen Technologies",
+    "sector": "TECHNOLOGY & SOFTWARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Technology & Software",
+    "companyType": "Technology",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "4.37",
+    "ratingBucket": "4.0–4.49",
+    "about": "Lumen Technologies is a technology & software organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "lumentechnologies.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Rahul Sharma"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Omar Al Falasi"
+      }
+    ]
+  },
+  "Halcyon Clinics": {
+    "name": "Halcyon Clinics",
+    "sector": "HEALTHCARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Healthcare",
+    "companyType": "Healthcare",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "4.33",
+    "ratingBucket": "4.0–4.49",
+    "about": "Halcyon Clinics is a healthcare organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "halcyonclinics.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Aisha Nair"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "James Reddy"
+      }
+    ]
+  },
+  "Zenith Realty": {
+    "name": "Zenith Realty",
+    "sector": "CONSTRUCTION & REAL ESTATE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Construction & Real Estate",
+    "companyType": "Construction",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "4.29",
+    "ratingBucket": "4.0–4.49",
+    "about": "Zenith Realty is a construction & real estate organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "zenithrealty.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Ahmed Othman"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Ahmed Al Nuaimi"
+      }
+    ]
+  },
+  "Umber Resources": {
+    "name": "Umber Resources",
+    "sector": "ENERGY & UTILITIES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Energy & Utilities",
+    "companyType": "Energy",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "4.24",
+    "ratingBucket": "4.0–4.49",
+    "about": "Umber Resources is a energy & utilities organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "umberresources.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Meera Pillai"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Meera Al Qahtani"
+      }
+    ]
+  },
+  "Orbis Supply Co.": {
+    "name": "Orbis Supply Co.",
+    "sector": "LOGISTICS & TRANSPORTATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Logistics & Transportation",
+    "companyType": "Logistics",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "4.20",
+    "ratingBucket": "4.0–4.49",
+    "about": "Orbis Supply Co. is a logistics & transportation organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "orbissupplyco.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Arjun Kamal"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Zainab Okoye"
+      }
+    ]
+  },
+  "Juniper Resorts": {
+    "name": "Juniper Resorts",
+    "sector": "HOSPITALITY & TOURISM · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Hospitality & Tourism",
+    "companyType": "Hospitality",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "4.16",
+    "ratingBucket": "4.0–4.49",
+    "about": "Juniper Resorts is a hospitality & tourism organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "juniperresorts.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Kavya Whitaker"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Tariq Whitaker"
+      }
+    ]
+  },
+  "Everline Works": {
+    "name": "Everline Works",
+    "sector": "MANUFACTURING · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Manufacturing",
+    "companyType": "Manufacturing",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "4.12",
+    "ratingBucket": "4.0–4.49",
+    "about": "Everline Works is a manufacturing organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "everlineworks.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Vikram Al Qahtani"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Fatima Al-Sayed"
+      }
+    ]
+  },
+  "Cinder Broadcasting": {
+    "name": "Cinder Broadcasting",
+    "sector": "MEDIA & ENTERTAINMENT · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Media & Entertainment",
+    "companyType": "Media",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "4.08",
+    "ratingBucket": "4.0–4.49",
+    "about": "Cinder Broadcasting is a media & entertainment organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "cinderbroadcasting.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Mohammed Al Zaabi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Divya Kamal"
+      }
+    ]
+  },
+  "Meridian Institute": {
+    "name": "Meridian Institute",
+    "sector": "EDUCATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Education",
+    "companyType": "Education",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "4.03",
+    "ratingBucket": "4.0–4.49",
+    "about": "Meridian Institute is a education organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "meridianinstitute.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Yusuf Iyer"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Priya Khan"
+      }
+    ]
+  },
+  "Clearwater Group": {
+    "name": "Clearwater Group",
+    "sector": "RETAIL & APPAREL · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Retail & Apparel",
+    "companyType": "Retail",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.99",
+    "ratingBucket": "3.5–3.99",
+    "about": "Clearwater Group is a retail & apparel organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "clearwatergroup.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Priya Fischer"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Rahul Pillai"
+      }
+    ]
+  },
+  "Westmere Finance": {
+    "name": "Westmere Finance",
+    "sector": "FINANCIAL SERVICES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Financial Services",
+    "companyType": "Fintech",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "3.95",
+    "ratingBucket": "3.5–3.99",
+    "about": "Westmere Finance is a financial services organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "westmerefinance.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Lena Krishnan"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Daniel Bhatia"
+      }
+    ]
+  },
+  "Ridgeline Networks": {
+    "name": "Ridgeline Networks",
+    "sector": "TELECOMMUNICATIONS · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Telecommunications",
+    "companyType": "Telecom",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "3.91",
+    "ratingBucket": "3.5–3.99",
+    "about": "Ridgeline Networks is a telecommunications organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "ridgelinenetworks.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Daniel Reddy"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Layla Rahman"
+      }
+    ]
+  },
+  "Marlow Labs": {
+    "name": "Marlow Labs",
+    "sector": "TECHNOLOGY & SOFTWARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Technology & Software",
+    "companyType": "Technology",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.87",
+    "ratingBucket": "3.5–3.99",
+    "about": "Marlow Labs is a technology & software organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "marlowlabs.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Layla Verma"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Noor Menon"
+      }
+    ]
+  },
+  "Granite Medical": {
+    "name": "Granite Medical",
+    "sector": "HEALTHCARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Healthcare",
+    "companyType": "Healthcare",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "3.82",
+    "ratingBucket": "3.5–3.99",
+    "about": "Granite Medical is a healthcare organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "granitemedical.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Hassan Menon"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Faisal Nair"
+      }
+    ]
+  },
+  "Beacon Properties": {
+    "name": "Beacon Properties",
+    "sector": "CONSTRUCTION & REAL ESTATE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Construction & Real Estate",
+    "companyType": "Construction",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "3.78",
+    "ratingBucket": "3.5–3.99",
+    "about": "Beacon Properties is a construction & real estate organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "beaconproperties.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Zainab Bhatia"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Vikram Iyer"
+      }
+    ]
+  },
+  "Lumen Power": {
+    "name": "Lumen Power",
+    "sector": "ENERGY & UTILITIES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Energy & Utilities",
+    "companyType": "Energy",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "3.74",
+    "ratingBucket": "3.5–3.99",
+    "about": "Lumen Power is a energy & utilities organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "lumenpower.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Tariq Khan"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Karan Al Falasi"
+      }
+    ]
+  },
+  "Halcyon Logistics": {
+    "name": "Halcyon Logistics",
+    "sector": "LOGISTICS & TRANSPORTATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Logistics & Transportation",
+    "companyType": "Logistics",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.70",
+    "ratingBucket": "3.5–3.99",
+    "about": "Halcyon Logistics is a logistics & transportation organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "halcyonlogistics.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Reem Al-Sayed"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Sara Reddy"
+      }
+    ]
+  },
+  "Zenith Hotels": {
+    "name": "Zenith Hotels",
+    "sector": "HOSPITALITY & TOURISM · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Hospitality & Tourism",
+    "companyType": "Hospitality",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "3.66",
+    "ratingBucket": "3.5–3.99",
+    "about": "Zenith Hotels is a hospitality & tourism organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "zenithhotels.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Karan Al Mansoori"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Nadia Al Nuaimi"
+      }
+    ]
+  },
+  "Umber Industries": {
+    "name": "Umber Industries",
+    "sector": "MANUFACTURING · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Manufacturing",
+    "companyType": "Manufacturing",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "3.61",
+    "ratingBucket": "3.5–3.99",
+    "about": "Umber Industries is a manufacturing organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "umberindustries.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Sara Al Nuaimi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "James Al Qahtani"
+      }
+    ]
+  },
+  "Orbis Media": {
+    "name": "Orbis Media",
+    "sector": "MEDIA & ENTERTAINMENT · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Media & Entertainment",
+    "companyType": "Media",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.57",
+    "ratingBucket": "3.5–3.99",
+    "about": "Orbis Media is a media & entertainment organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "orbismedia.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Omar D'Souza"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Ahmed Al Mansoori"
+      }
+    ]
+  },
+  "Juniper Academy": {
+    "name": "Juniper Academy",
+    "sector": "EDUCATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Education",
+    "companyType": "Education",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "3.53",
+    "ratingBucket": "3.5–3.99",
+    "about": "Juniper Academy is a education organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "juniperacademy.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Lena Haddad"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Meera Whitaker"
+      }
+    ]
+  },
+  "Everline Retail": {
+    "name": "Everline Retail",
+    "sector": "RETAIL & APPAREL · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Retail & Apparel",
+    "companyType": "Retail",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "3.49",
+    "ratingBucket": "Under 3.5",
+    "about": "Everline Retail is a retail & apparel organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "everlineretail.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Daniel Okoye"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Zainab Al-Sayed"
+      }
+    ]
+  },
+  "Cinder Bank": {
+    "name": "Cinder Bank",
+    "sector": "FINANCIAL SERVICES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Financial Services",
+    "companyType": "Fintech",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "3.45",
+    "ratingBucket": "Under 3.5",
+    "about": "Cinder Bank is a financial services organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "cinderbank.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Layla Al Suwaidi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Tariq Sharma"
+      }
+    ]
+  },
+  "Meridian Connect": {
+    "name": "Meridian Connect",
+    "sector": "TELECOMMUNICATIONS · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Telecommunications",
+    "companyType": "Telecom",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "3.40",
+    "ratingBucket": "Under 3.5",
+    "about": "Meridian Connect is a telecommunications organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "meridianconnect.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Hassan Al Falasi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Fatima Khan"
+      }
+    ]
+  },
+  "Clearwater Technologies": {
+    "name": "Clearwater Technologies",
+    "sector": "TECHNOLOGY & SOFTWARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Technology & Software",
+    "companyType": "Technology",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "3.36",
+    "ratingBucket": "Under 3.5",
+    "about": "Clearwater Technologies is a technology & software organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "clearwatertechnologies.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Zainab Haddad"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Divya Pillai"
+      }
+    ]
+  },
+  "Westmere Clinics": {
+    "name": "Westmere Clinics",
+    "sector": "HEALTHCARE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Healthcare",
+    "companyType": "Healthcare",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "3.32",
+    "ratingBucket": "Under 3.5",
+    "about": "Westmere Clinics is a healthcare organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "westmereclinics.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Tariq Rahman"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Priya Krishnan"
+      }
+    ]
+  },
+  "Ridgeline Realty": {
+    "name": "Ridgeline Realty",
+    "sector": "CONSTRUCTION & REAL ESTATE · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Construction & Real Estate",
+    "companyType": "Construction",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "4.68",
+    "ratingBucket": "4.5 & up",
+    "about": "Ridgeline Realty is a construction & real estate organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "ridgelinerealty.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Reem Al Suwaidi"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Rahul Rahman"
+      }
+    ]
+  },
+  "Marlow Resources": {
+    "name": "Marlow Resources",
+    "sector": "ENERGY & UTILITIES · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Energy & Utilities",
+    "companyType": "Energy",
+    "location": "Dubai, United Arab Emirates",
+    "size": "10,000+",
+    "rating": "4.64",
+    "ratingBucket": "4.5 & up",
+    "about": "Marlow Resources is a energy & utilities organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "10,000+"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "marlowresources.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Karan Sharma"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Daniel Menon"
+      }
+    ]
+  },
+  "Highline Cargo": {
+    "name": "Highline Cargo",
+    "sector": "LOGISTICS & TRANSPORTATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Logistics & Transportation",
+    "companyType": "Logistics",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "4.60",
+    "ratingBucket": "4.5 & up",
+    "about": "Highline Cargo is a logistics & transportation organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "highlinecargo.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Sara Nair"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Rohan Haddad"
+      }
+    ]
+  },
+  "Beacon Resorts": {
+    "name": "Beacon Resorts",
+    "sector": "HOSPITALITY & TOURISM · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Hospitality & Tourism",
+    "companyType": "Hospitality",
+    "location": "Dubai, United Arab Emirates",
+    "size": "201 – 1,000",
+    "rating": "4.55",
+    "ratingBucket": "4.5 & up",
+    "about": "Beacon Resorts is a hospitality & tourism organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "201 – 1,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "beaconresorts.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Omar Othman"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Noor Iyer"
+      }
+    ]
+  },
+  "Lumen Works": {
+    "name": "Lumen Works",
+    "sector": "MANUFACTURING · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Manufacturing",
+    "companyType": "Manufacturing",
+    "location": "Dubai, United Arab Emirates",
+    "size": "51 – 200",
+    "rating": "4.51",
+    "ratingBucket": "4.5 & up",
+    "about": "Lumen Works is a manufacturing organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "51 – 200"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "lumenworks.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Lena Pillai"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Kavya Al Falasi"
+      }
+    ]
+  },
+  "Northwind Broadcasting": {
+    "name": "Northwind Broadcasting",
+    "sector": "MEDIA & ENTERTAINMENT · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Media & Entertainment",
+    "companyType": "Media",
+    "location": "Dubai, United Arab Emirates",
+    "size": "5,000 – 10,000",
+    "rating": "4.47",
+    "ratingBucket": "4.0–4.49",
+    "about": "Northwind Broadcasting is a media & entertainment organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "5,000 – 10,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "northwindbroadcasting.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Daniel Kamal"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Vikram Al Zaabi"
+      }
+    ]
+  },
+  "Zenith Institute": {
+    "name": "Zenith Institute",
+    "sector": "EDUCATION · DUBAI, UNITED ARAB EMIRATES",
+    "industry": "Education",
+    "companyType": "Education",
+    "location": "Dubai, United Arab Emirates",
+    "size": "1,000 – 5,000",
+    "rating": "4.43",
+    "ratingBucket": "4.0–4.49",
+    "about": "Zenith Institute is a education organisation headquartered in Dubai, with a growing footprint across the Gulf and South Asia. Most current hiring sits in teams built out since 2022, and design, product and engineering work in the same cycle.",
+    "facts": [
+      {
+        "label": "NUMBER OF EMPLOYEES",
+        "value": "1,000 – 5,000"
+      },
+      {
+        "label": "WEBSITE",
+        "value": "zenithinstitute.ae"
+      },
+      {
+        "label": "CHIEF EXECUTIVE",
+        "value": "Rohan Whitaker"
+      },
+      {
+        "label": "HR HEAD",
+        "value": "Karan Al Nuaimi"
+      }
+    ]
+  }
+}
